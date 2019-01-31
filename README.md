@@ -1,3 +1,14 @@
+# About me
+I am a graduate student at Northeastern University. My major is Computer Science. 
+
+# Repo Intro
+This Repo is used for CS5610 web develpment class
+
+# Links
+HEROKU https://dashboard.heroku.com/apps/webdev-shufanxing-cs5610
+Git link:https://github.com/shufanxing/cs5610
+Heroku link:https://webdev-shufanxing-cs5610.herokuapp.com/
+
 # project
 # WebMaker
 
