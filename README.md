@@ -9,7 +9,6 @@ HEROKU https://dashboard.heroku.com/apps/webdev-shufanxing-cs5610
 Git link:https://github.com/shufanxing/cs5610
 Heroku link:https://webdev-shufanxing-cs5610.herokuapp.com/
 
-# project
 # WebMaker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
