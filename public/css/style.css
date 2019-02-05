@@ -104,7 +104,7 @@ a:hover{
 
 @media all and (orientation:landscape) {
   nav div p a span{
-    visibility: hidden;
+    visibility: visible;
   }
   nav div a span{
     visibility: hidden;
