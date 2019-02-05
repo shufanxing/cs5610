@@ -102,14 +102,9 @@ a:hover{
   position: relative;
 }
 
-@media all and (orientation:landscape) {
-  nav div p a span{
-    visibility: hidden;
-  }
-  nav div a span{
-    visibility: hidden;
-  }
-  div ul li a span{
-    visibility: hidden;
+@media all and (orientation:portrait) {
+  span.glyphicon{
+    display: none;
   }
 }
+
