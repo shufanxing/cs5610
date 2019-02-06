@@ -101,3 +101,41 @@ a:hover{
   z-index: 100;
   position: relative;
 }
+
+@media all and (orientation:landscape) {
+  /*   nav div div div p a span{
+         visibility: visible;
+     }
+
+     nav div div div a span{
+         visibility: hidden;
+     }
+
+     nav div a span{
+         visibility: hidden;
+     }*/
+
+  #icon-ok{
+    visibility: hidden;
+  }
+  #icon-user{
+    visibility: hidden;
+  }
+
+
+  /* Styles for Landscape screen */
+}
+
+@media all and (orientation: portrait){
+  #division2{
+    display: none;
+  }
+  #chevron-left{
+    display: all;
+  }
+  #division-col1{
+    display: none;
+  }
+
+
+}

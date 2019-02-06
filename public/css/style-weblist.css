@@ -101,3 +101,15 @@ a:hover{
   z-index: 100;
   position: relative;
 }
+
+@media all and (orientation:landscape) {
+  nav div p a span{
+    visibility: visible;
+  }
+  nav div a span{
+    visibility: hidden;
+  }
+  div ul li a span{
+    visibility: hidden;
+  }
+}
