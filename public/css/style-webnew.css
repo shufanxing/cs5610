@@ -110,6 +110,9 @@ a:hover{
   #icon-user{
     visibility: hidden;
   }
+  #icon-chev2{
+    visibility: hidden;
+  }
 
 
   /* Styles for Landscape screen */
@@ -134,12 +137,13 @@ a:hover{
   /*#websites{*/
     /*display: none;*/
   /*}*/
-  /*!*#icon-plus{*!*/
+  /*#icon-plus{*/
     /*display: none;*/
   /*}*/
   /*#division-col1{*/
     /*display: none;*/
   /*}*/
+
 
  #division-col1{
    display: none;
@@ -147,5 +151,6 @@ a:hover{
  #division-col2{
    margin-left: 5px;
  }
+
 
 }
