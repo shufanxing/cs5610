@@ -3,29 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Widget List</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
   <link href="css/style.css" rel="stylesheet"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid row">
 
-    <div class="navbar-text pull-left">
+    <div >
       <a href="widget-list.html" class="cl-text-black cl-icon-padding">
-          <span class="glyphicon glyphicon-chevron-left">
+          <span class="fas fa-chevron-left">
           </span>
       </a>
+      <a  class = "navbar-brand navbar-text cl-text-black cl-text-bold"href="#">
+        Widgets Edit
+      </a>
     </div>
+
     <div class="navbar-text pull-right">
       <a href="widget-list.html" class="cl-icon-padding cl-text-black">
-          <span class="glyphicon glyphicon-ok">
+          <span class="fas fa-check">
           </span>
       </a>
     </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" href="#">
-      Widgets Edit
-    </a>
+
   </div>
 </nav>
 
@@ -48,24 +53,25 @@
       <input type="text" class="form-control" id="image-width" placeholder="100%">
     </div>
     <div class="form-group">
-      <label for="exampleInputFile">Upload</label>
-      <input type="file" class="form-control" id="exampleInputFile">
+      <label for="exampleFormControlFile1">Upload</label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1">
     </div>
   </form>
   <a class="btn btn-primary btn-block" href="#">Upload Image</a>
   <a class="btn btn-danger  btn-block" href="widget-list.html">Delete</a>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar  navbar-light bg-light fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
-
+    </div>
+    <div class = "navbar-text">
       <a href="profile.html" class="cl-icon-padding">
-        <span class="glyphicon glyphicon-user"></span>
+        <span class="fas fa-user"></span>
       </a>
-
     </div>
   </div>
+
 </nav>
 
 </body>

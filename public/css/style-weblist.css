@@ -103,10 +103,13 @@ a:hover{
 }
 
 @media all and (orientation:landscape) {
-  nav div p a span{
+  #left-chev{
     visibility: visible;
   }
-  nav div a span{
+  #icon-plus{
+    visibility: hidden;
+  }
+  #icon-user{
     visibility: hidden;
   }
   div ul li a span{

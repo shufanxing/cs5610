@@ -7,57 +7,71 @@
 
 
   <link medida = "all and (orientation:portrait)"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css"
         rel="stylesheet"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
   <link medida = "all and (orientation:portrait)" href="css/style.css" rel="stylesheet"/>
   <link medida = "all and (orientation:landscape)" href="css/style-weblist.css" rel="stylesheet"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 </head>
 <body>
-<nav class="navbar navbar-fixed-top cl-blue-navbar">
-  <div class="container-fluid">
-    <p class="navbar-text pull-left">
+<nav class="navbar fixed-top cl-blue-navbar ">
+    <div class = "fluid-container">
       <a href="profile.html" class="navbar-link cl-text-white">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span id = "left-chev" class="fas fa-chevron-left " ></span>
       </a>
-    </p>
-    <a class="cl-text-white navbar-brand cl-text-bold" href="#">
-      Websites
+      <a class="cl-text-white navbar-text cl-text-bold" href="#">
+        Websites
+      </a>
+    </div>
+
+    <a href="website-new.html" class="navbar-link navbar-text cl-text-white ">
+      <span id = "icon-plus" class="fas fa-plus cl-icon-padding "></span>
     </a>
-    <a href="website-new.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-plus"></span>
-    </a>
-  </div>
+
 </nav>
 
 <div class="container">
   <ul class="list-group cl-list-group-borderless">
     <li class="list-group-item cl-list-item-borderless">
-      <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+      <a href="website-edit.html" ><span class="fas float-right fa-cogs" ></span></a>
       <a href="page-list.html">Address Book App</a>
+
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+      <a href="website-edit.html"><span class="fas fa-cogs float-right xs-visible"></span></a>
       <a href="page-list.html">Blogger</a>
+
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-      <a href="page-list.html">Blogging App</a>
+      <a href="website-edit.html"><span class="fas fa-cogs float-right xs-visible"></span></a>
+      <a href="page-list.html" >Blogging App</a>
+
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-      <a href="page-list.html">Script Testing App</a>
+      <a href="website-edit.html"><span class="fas fa-cogs float-right xs-visible"></span></a>
+      <a href="page-list.html" >Script Testing App</a>
+
     </li>
   </ul>
 </div>
 
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div class="container-fuild">
-    <a href="profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+
+
+<nav class="navbar  fixed-bottom cl-blue-navbar">
+  <div class="container-fluid row">
+    <div class="float-right navbar-text">
+    </div>
+    <div class = "navbar-text">
+      <a href="profile.html" >
+        <span id = "icon-user" class="fas fa-user cl-text-white "></span>
+      </a>
+    </div>
   </div>
+
 </nav>
 </body>
 </html>

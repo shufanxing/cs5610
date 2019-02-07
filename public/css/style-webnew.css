@@ -36,7 +36,7 @@ a:hover{
 }
 
 .cl-icon-padding {
-  padding-left: 10px;
+  padding-left: 0px;
   padding-right: 10px;
 }
 
@@ -103,17 +103,6 @@ a:hover{
 }
 
 @media all and (orientation:landscape) {
-  /*   nav div div div p a span{
-         visibility: visible;
-     }
-
-     nav div div div a span{
-         visibility: hidden;
-     }
-
-     nav div a span{
-         visibility: hidden;
-     }*/
 
   #icon-ok{
     visibility: hidden;
@@ -130,12 +119,33 @@ a:hover{
   #division2{
     display: none;
   }
-  #chevron-left{
-    display: all;
-  }
-  #division-col1{
-    display: none;
-  }
+  /*#chevron-left{*/
+    /*behavior: inherit;*/
+    /*position: fixed;*/
+    /*left: 2%;*/
+    /*padding-right: 2px;*/
+    /*padding-left: 2px;*/
+    /*display: block;*/
+  /*}*/
+  /*#icon-plus{*/
+    /*positon: fixed;*/
+    /**/
+  /*}*/
+  /*#websites{*/
+    /*display: none;*/
+  /*}*/
+  /*!*#icon-plus{*!*/
+    /*display: none;*/
+  /*}*/
+  /*#division-col1{*/
+    /*display: none;*/
+  /*}*/
 
+ #division-col1{
+   display: none;
+ }
+ #division-col2{
+   margin-left: 5px;
+ }
 
 }
