@@ -1,0 +1,57 @@
+
+
+
+<!--<div *ngIf="errorFlag"-->
+     <!--class="alert alert-danger">-->
+  <!--{{errorMsg}}-->
+
+<!--</div>-->
+
+
+<!--<form (ngSubmit) = "login()" #f="ngForm">-->
+  <!--<label>Username</label>-->
+  <!--<input   placeholder="username" name="username" type="text" class="form-control"-->
+           <!--ngModel required #username="ngModel"/>-->
+
+  <!--<label>Password</label>-->
+  <!--<input   placeholder="password" name="password" type="text" class="form-control"-->
+           <!--ngModel required #password="ngModel"/>-->
+
+  <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
+        <!--Please enter username!-->
+  <!--</span>-->
+  <!--<button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Login</button>-->
+  <!--<i class = "fas fa-cogs"></i>-->
+
+  <!--{{f.valid}}-->
+
+<!--</form>-->
+
+<div *ngIf="errorFlag"
+     class="alert alert-danger">
+  {{errorMsg}}
+</div>
+
+
+<form (ngSubmit) = "login()" #f="ngForm">
+<div class="container" >
+  <h1 class = "cl-padding-top">Login</h1>
+  <input class = "cl-margin-bottom"
+         type="text"
+         class = "form-control"
+         placeholder="username"
+         name="username"
+         ngModel required #username="ngModel"/>
+  <input class = "cl-margin-bottom"
+         type="password"
+         class = "form-control"
+         placeholder="password"
+         name="password"
+         ngModel required #password="ngModel"/>
+  <span class="help-block" *ngIf="!username.valid && username.touched">
+        Please enter username!
+  </span>
+  <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Login</button>
+  <a class="btn btn-success btn-block" routerLink="/register">Register</a>
+</div>
+</form>

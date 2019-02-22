@@ -1,24 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>
-     Hello cs5610
-  </h1>
-  <h1>
-    Hello cs5610
-  </h1>
 
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<a class = "button" routerLink="/login">Login</a>​
+<a class = "button" routerLink="/register">Register</a>​
+<a class = "button" routerLink="/user/:uid">Profile</a>​
+
+<a class = "button" routerLink="user/:uid/website">Website-List</a>​
+<a class = "button" routerLink="user/:uid/website/new">Website-New</a>​
+<a class = "button" routerLink="user/:uid/website/:wid">Website-Edit</a>​
+
+<a class = "button" routerLink="user/:uid/website/:wid/page">Page-List</a>​
+<a class = "button" routerLink="user/:uid/website/:wid/page/new">Page-New</a>
+​<a class = "button" routerLink="user/:uid/website/:wid/page/:pid">Page-Edit</a>​
+
+​<a class = "button" routerLink="user/:uid/website/:wid/page/:pid/widget">Widget-List</a>​
+​<a class = "button" routerLink="user/:uid/website/:wid/page/:pid/widget/new">Widget-Chooser</a>​
+​<a class = "button" routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid">Widget-Edit</a>​
+
 
 <router-outlet></router-outlet>

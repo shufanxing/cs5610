@@ -1,0 +1,82 @@
+<body>
+<nav class = "navbar navbar-brand cl-blue-navbar fixed-top cl-full-width" >
+  <div class="row" >
+    <div class="col-sm-4 navbar-text  cl-blue-navbar"  id = "division2">
+      <a href="website-list.html" class="navbar-link cl-text-white">
+        <span class="fas fa-chevron-left"></span>
+      </a>
+
+      <a  class="cl-text-white navbar-brand cl-text-bold" href="#" id = "websites">
+        Websites
+      </a>
+      <a href="#" class="navbar-link navbar-text float-right cl-text-white">
+
+        <span class="fas fa-plus" id = "icon-plus cl-icon-padding"></span>
+      </a>
+
+
+    </div>
+
+    <div class="col-sm-8 navbar-text  cl-blue-navbar">
+      <!--<div class="container-fluid">-->
+      <a href="website-list.html" class="navbar-link cl-text-white" id = "icon-chev2">
+        <span class="fas fa-chevron-left"></span>
+      </a>
+      <a class="cl-text-white navbar-brand cl-text-bold" href="#">
+        Edit Websites
+      </a>
+      <a href="website-list.html" class="navbar-link navbar-text float-right cl-text-white " id = "icon-ok">
+        <span class="fas fa-check"></span>
+      </a>
+      <!--</div>-->
+    </div>
+  </div>
+</nav>
+<div class = "row">
+
+  <div class="col-sm-4" id = "division-col1">
+    <ul class="list-group cl-list-group-borderless">
+      <li class="list-group-item cl-list-item-borderless">
+        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
+        <a href="page-list.html">Blogging App</a>
+      </li>
+      <li class="list-group-item cl-list-item-borderless">
+        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
+        <a href="page-list.html">Address Book App</a>
+      </li>
+      <li class="list-group-item cl-list-item-borderless">
+        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
+        <a href="page-list.html">Script Testing App</a>
+      </li>
+      <li class="list-group-item cl-list-item-borderless">
+        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
+        <a href="page-list.html">Blogger</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-8" id = "division-col2">
+    <form>
+      <div class="form-group">
+        <label for="website-name" class = "cl-text-bold" >Website Name</label>
+        <input [(ngModel)]="website.name" type="text" class="form-control" id="website-name" placeholder="Blogger">
+      </div>
+      <div class="form-group">
+        <label for="website-description" class = "cl-text-bold">Website Description</label>
+        <textarea [(ngModel)]="website.description" id="website-description" class="form-control" rows="5"
+                  placeholder="Blogger is a blog-publishing service."></textarea>
+      </div>
+      <a (click)="delete()" )class="btn btn-danger  btn-block" routerLink="/user/{{userId}}/website">Delete</a>
+    </form>
+  </div>
+</div>
+
+
+<nav class="navbar fixed-bottom cl-blue-navbar">
+  <div class="container-fuild">
+  </div>
+  <a href="profile.html" class="navbar-text cl-text-white cl-icon-padding">
+    <span class="fas fa-user cl-text-white " id = "icon-user"></span>
+  </a>
+</nav>
+
+</body>

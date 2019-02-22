@@ -1,0 +1,56 @@
+@media all and (orientation:landscape) {
+
+  #icon-ok{
+    visibility: hidden;
+  }
+  #icon-user{
+    visibility: hidden;
+  }
+  #icon-chev2{
+    visibility: hidden;
+  }
+
+
+  /* Styles for Landscape screen */
+}
+
+@media all and (orientation: portrait){
+  #division2{
+    display: none;
+  }
+  /*#chevron-left{*/
+  /*behavior: inherit;*/
+  /*position: fixed;*/
+  /*left: 2%;*/
+  /*padding-right: 2px;*/
+  /*padding-left: 2px;*/
+  /*display: block;*/
+  /*}*/
+  /*#icon-plus{*/
+  /*positon: fixed;*/
+  /**/
+  /*}*/
+  /*#websites{*/
+  /*display: none;*/
+  /*}*/
+  /*#icon-plus{*/
+  /*display: none;*/
+  /*}*/
+  /*#division-col1{*/
+  /*display: none;*/
+  /*}*/
+
+
+  #division-col1{
+    display: none;
+  }
+  #division-col2{
+    margin-left: 5px;
+  }
+
+
+}
+body {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}

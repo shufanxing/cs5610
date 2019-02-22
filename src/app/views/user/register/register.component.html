@@ -1,0 +1,40 @@
+
+<div *ngIf="errorFlag1" class="alert alert-danger">
+{{errorMsg1}}
+</div>
+
+<div *ngIf="errorFlag2"
+     class="alert alert-danger">
+  {{errorMsg2}}
+</div>
+
+
+<form (ngSubmit)="register()" #fr="ngForm">
+<div class="container">
+  <h1 class = "cl-padding-top">Register</h1>
+  <input
+         class = "cl-margin-bottom"
+         type="text"
+         name = "username"
+         class="form-control"
+         placeholder="username"
+         ngModel required #username="ngModel"/>
+  <input
+         class = "cl-margin-bottom"
+         type="password"
+         name = "password"
+         class="form-control"
+         placeholder="password"
+         ngModel required #password="ngModel"/>
+  <input
+         class = "cl-margin-bottom"
+         name = "v_password"
+         type="password"
+         class="form-control"
+         placeholder="verify password"
+         ngModel required #v_password="ngModel"/>
+  <button class=" btn-primary btn-block" type = "submit">Register</button>
+  <a class="btn btn-danger  btn-block"
+     routerLink="/login"> Cancel </a>
+</div>
+</form>

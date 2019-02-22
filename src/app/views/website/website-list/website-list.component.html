@@ -1,0 +1,58 @@
+<body>
+<nav class="navbar fixed-top cl-blue-navbar ">
+  <div class = "fluid-container">
+    <a routerLink="/user/{{userId}}" class="navbar-link cl-text-white">
+      <span id = "left-chev" class="fas fa-chevron-left " ></span>
+    </a>
+    <a class="cl-text-white navbar-text cl-text-bold" href="#">
+      Websites
+    </a>
+  </div>
+
+  <a routerLink="/user/{{userId}}/website/new" class="navbar-link navbar-text cl-text-white ">
+    <span id = "icon-plus" class="fas fa-plus cl-icon-padding "></span>
+  </a>
+
+</nav>
+
+<div class="container" >
+  <ul class="list-group cl-list-group-borderless" *ngFor="let website of websites">
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="/user/{{userId}}/website/{{website._id}}" ><span class="fas float-right fa-cogs" ></span></a>
+      <a routerLink="/user/{{userId}}/website/{{website._id}}/page">Address Book App</a>
+
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>
+      <a routerLink="/user/{{userId}}/website/{{website._id}}/page">Blogger</a>
+
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>
+      <a routerLink="/user/{{userId}}/website/{{website._id}}/page" >Blogging App</a>
+
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>
+      <a routerLink="/user/{{userId}}/website/{{website._id}}/page" >Script Testing App</a>
+
+    </li>
+  </ul>
+</div>
+
+
+
+<nav class="navbar fixed-bottom cl-blue-navbar">
+  <div class="container-fluid row">
+    <div class="float-right navbar-text">
+    </div>
+    <div class = "navbar-text">
+      <a routerLink="/user/{{userId}}">
+        <span id = "icon-user" class="fas fa-user cl-text-white "></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+</body>
