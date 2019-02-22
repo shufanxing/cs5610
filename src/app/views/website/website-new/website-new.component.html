@@ -3,10 +3,10 @@
 <nav class = "navbar navbar-brand cl-blue-navbar fixed-top cl-full-width">
   <div class="row " >
     <div class="col-sm-4 navbar-text  cl-blue-navbar"  id = "division2">
-      <a href="website-list.html" class="navbar-link cl-text-white">
+      <a routerLink="/user/{{userId}}/website" class="navbar-link cl-text-white">
         <span class="fas fa-chevron-left"></span>
       </a>
-      <a  class="cl-text-white navbar-brand cl-text-bold" href="#" id = "websites">
+      <a  class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/{{userId}}/website" id = "websites">
         Websites
       </a>
       <a href="#" class="navbar-link navbar-text float-right cl-text-white">
@@ -16,13 +16,13 @@
 
     <div class="col-sm-8 navbar-text  cl-blue-navbar">
       <div class="container-fluid">
-        <a href="website-list.html" class="navbar-link cl-text-white" id = "icon-chev2">
+        <a routerLink="/user/{{userId}}/website" class="navbar-link cl-text-white" id = "icon-chev2">
           <span class="fas fa-chevron-left"></span>
         </a>
-        <a class="cl-text-white navbar-brand cl-text-bold" href="#">
+        <a class="cl-text-white navbar-brand cl-text-bold" class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/{{userId}}/website/new">
           New Websites
         </a>
-        <a href="website-list.html" class="navbar-link navbar-text float-right cl-text-white " id = "icon-ok">
+        <a (click) ="create()" class="navbar-link navbar-text float-right cl-text-white " id = "icon-ok">
           <span class="fas fa-check"></span>
         </a>
       </div>
@@ -31,22 +31,10 @@
 </nav>
 <div class = "row">
   <div class="col-sm-4" id = "division-col1">
-    <ul class="list-group cl-list-group-borderless">
+    <ul class="list-group cl-list-group-borderless" *ngFor="let web of websites">
       <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
-        <a href="page-list.html">Blogging App</a>
-      </li>
-      <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
-        <a href="page-list.html">Address Book App</a>
-      </li>
-      <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
-        <a href="page-list.html">Script Testing App</a>
-      </li>
-      <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="fas fa-cog float-right"></span></a>
-        <a href="page-list.html">Blogger</a>
+        <a routerLink="/user/{{userId}}/website/{{web._id}}"><span class="fas fa-cog float-right"></span></a>
+        <a routerLink="/user/{{userId}}/website/{{web._id}}/page">{{web.name}}</a>
       </li>
     </ul>
   </div>
@@ -54,11 +42,11 @@
     <form>
       <div class="form-group">
         <label for="website-name">Name</label>
-        <input type="text" class="form-control" id="website-name" placeholder="Name">
+        <input [(ngModel)] = "curweb.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="website-name" placeholder="Name">
       </div>
       <div class="form-group">
         <label for="website-description">Description</label>
-        <textarea id="website-description" class="form-control" rows="5" placeholder="Description"></textarea>
+        <textarea [(ngModel)] = "curweb.description" [ngModelOptions]="{standalone: true}" id="website-description" class="form-control" rows="5" placeholder="Description"></textarea>
       </div>
     </form>
   </div>
@@ -68,7 +56,7 @@
 <nav class="navbar fixed-bottom cl-blue-navbar">
   <div class="container-fuild">
   </div>
-  <a href="profile.html" class="navbar-text cl-text-white cl-icon-padding">
+  <a routerLink="/user/{{userId}}" class="navbar-text cl-text-white cl-icon-padding">
     <span class="fas fa-user cl-text-white " id = "icon-user"></span>
   </a>
 </nav>

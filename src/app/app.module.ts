@@ -23,6 +23,7 @@ import { YoutubeComponent } from './views/widget/widget-edit/youtube/youtube.com
 import {HttpClientModule} from '@angular/common/http';
 import {WidgetService} from './service/widget.service.client';
 import {PageService} from './service/page.service.client';
+import { WidgetEditComponent } from './views/widget/widget-edit/widget-edit.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {PageService} from './service/page.service.client';
     HeadingComponent,
     ImageComponent,
     YoutubeComponent,
+    WidgetEditComponent,
   ],
   imports: [
     BrowserModule,

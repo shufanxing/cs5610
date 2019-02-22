@@ -68,7 +68,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: 'login', component: _views_user_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] },
+    { path: '', component: _views_user_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] },
     { path: 'user/:uid', component: _views_user_profile_profile_component__WEBPACK_IMPORTED_MODULE_4__["ProfileComponent"] },
     { path: 'register', component: _views_user_register_register_component__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"] },
     { path: 'user/:uid/website', component: _views_website_website_list_website_list_component__WEBPACK_IMPORTED_MODULE_6__["WebsiteListComponent"] },
@@ -117,7 +117,7 @@ module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJz
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<a class = \"button\" routerLink=\"/login\">Login</a>​\n<a class = \"button\" routerLink=\"/register\">Register</a>​\n<a class = \"button\" routerLink=\"/user/:uid\">Profile</a>​\n\n<a class = \"button\" routerLink=\"user/:uid/website\">Website-List</a>​\n<a class = \"button\" routerLink=\"user/:uid/website/new\">Website-New</a>​\n<a class = \"button\" routerLink=\"user/:uid/website/:wid\">Website-Edit</a>​\n\n<a class = \"button\" routerLink=\"user/:uid/website/:wid/page\">Page-List</a>​\n<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/new\">Page-New</a>\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid\">Page-Edit</a>​\n\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget\">Widget-List</a>​\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/new\">Widget-Chooser</a>​\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/:wgid\">Widget-Edit</a>​\n\n\n<router-outlet></router-outlet>\n"
+module.exports = "\n<a class = \"button\" routerLink=\"/login\">Login</a>​\n<a class = \"button\" routerLink=\"/register\">Register</a>​\n<a class = \"button\" routerLink=\"/user/:uid\">Profile</a>​\n\n<a class = \"button\" routerLink=\"user/:uid/website\">Website-List</a>​\n<a class = \"button\" routerLink=\"user/:uid/website/new\">Website-New</a>​\n<a class = \"button\" routerLink=\"user/:uid/website/:wid\">Website-Edit</a>​\n\n<a class = \"button\" routerLink=\"user/:uid/website/:wid/page\">Page-List</a>​\n<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/new\">Page-New</a>\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid\">Page-Edit</a>​\n\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget\">Widget-List</a>​\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/new\">Widget-Chooser</a>​\n​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/:wgid\">Widget-Edit</a>​\n\n\n<!--<script>-->\n  <!--$(function) {-->\n    <!--$(#sortable)-->\n  <!--}-->\n  <!---->\n<!--</script>-->\n\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -188,6 +188,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _service_widget_service_client__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./service/widget.service.client */ "./src/app/service/widget.service.client.ts");
 /* harmony import */ var _service_page_service_client__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./service/page.service.client */ "./src/app/service/page.service.client.ts");
+/* harmony import */ var _views_widget_widget_edit_widget_edit_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./views/widget/widget-edit/widget-edit.component */ "./src/app/views/widget/widget-edit/widget-edit.component.ts");
+
 
 
 
@@ -234,6 +236,7 @@ var AppModule = /** @class */ (function () {
                 _views_widget_widget_edit_heading_heading_component__WEBPACK_IMPORTED_MODULE_19__["HeadingComponent"],
                 _views_widget_widget_edit_image_image_component__WEBPACK_IMPORTED_MODULE_20__["ImageComponent"],
                 _views_widget_widget_edit_youtube_youtube_component__WEBPACK_IMPORTED_MODULE_21__["YoutubeComponent"],
+                _views_widget_widget_edit_widget_edit_component__WEBPACK_IMPORTED_MODULE_25__["WidgetEditComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -318,6 +321,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Website", function() { return Website; });
 var Website = /** @class */ (function () {
     function Website(_id, name, developerId, description) {
+        if (_id === void 0) { _id = '9899999'; }
+        if (name === void 0) { name = 'name'; }
+        if (description === void 0) { description = 'description'; }
         this._id = _id;
         this.name = name;
         this.description = description;
@@ -561,10 +567,12 @@ var WebsiteService = /** @class */ (function () {
             return website.developerId === userId;
         });
     };
-    WebsiteService.prototype.findWebsitesById = function (websiteId) {
-        return this.websites.filter(function (website) {
-            return website._id === websiteId;
-        });
+    WebsiteService.prototype.findWebsiteById = function (websiteId) {
+        for (var i in this.websites) {
+            if (this.websites[i]._id === websiteId) {
+                return this.websites[i];
+            }
+        }
     };
     WebsiteService.prototype.updateWebsite = function (websiteId, website) {
         for (var i in this.websites) {
@@ -1175,7 +1183,7 @@ var RegisterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n@media all and (orientation:landscape) {\n\n  #icon-ok{\n    visibility: hidden;\n  }\n  #icon-user{\n    visibility: hidden;\n  }\n  #icon-chev2{\n    visibility: hidden;\n  }\n\n\n  /* Styles for Landscape screen */\n}\n\n@media all and (orientation: portrait){\n  #division2{\n    display: none;\n  }\n  /*#chevron-left{*/\n  /*behavior: inherit;*/\n  /*position: fixed;*/\n  /*left: 2%;*/\n  /*padding-right: 2px;*/\n  /*padding-left: 2px;*/\n  /*display: block;*/\n  /*}*/\n  /*#icon-plus{*/\n  /*positon: fixed;*/\n  /**/\n  /*}*/\n  /*#websites{*/\n  /*display: none;*/\n  /*}*/\n  /*#icon-plus{*/\n  /*display: none;*/\n  /*}*/\n  /*#division-col1{*/\n  /*display: none;*/\n  /*}*/\n\n\n  #division-col1{\n    display: none;\n  }\n  #division-col2{\n    margin-left: 5px;\n  }\n\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3Mvd2Vic2l0ZS93ZWJzaXRlLWVkaXQvd2Vic2l0ZS1lZGl0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7RUFDakIsb0JBQW9CO0FBQ3RCOztBQUVBOztFQUVFO0lBQ0Usa0JBQWtCO0VBQ3BCO0VBQ0E7SUFDRSxrQkFBa0I7RUFDcEI7RUFDQTtJQUNFLGtCQUFrQjtFQUNwQjs7O0VBR0EsZ0NBQWdDO0FBQ2xDOztBQUVBO0VBQ0U7SUFDRSxhQUFhO0VBQ2Y7RUFDQSxpQkFBaUI7RUFDakIscUJBQXFCO0VBQ3JCLG1CQUFtQjtFQUNuQixZQUFZO0VBQ1osc0JBQXNCO0VBQ3RCLHFCQUFxQjtFQUNyQixrQkFBa0I7RUFDbEIsSUFBSTtFQUNKLGNBQWM7RUFDZCxrQkFBa0I7RUFDbEIsR0FBRztFQUNILElBQUk7RUFDSixhQUFhO0VBQ2IsaUJBQWlCO0VBQ2pCLElBQUk7RUFDSixjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLElBQUk7RUFDSixrQkFBa0I7RUFDbEIsaUJBQWlCO0VBQ2pCLElBQUk7OztFQUdKO0lBQ0UsYUFBYTtFQUNmO0VBQ0E7SUFDRSxnQkFBZ0I7RUFDbEI7OztBQUdGIiwiZmlsZSI6InNyYy9hcHAvdmlld3Mvd2Vic2l0ZS93ZWJzaXRlLWVkaXQvd2Vic2l0ZS1lZGl0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgcGFkZGluZy10b3A6IDcwcHg7XG4gIHBhZGRpbmctYm90dG9tOiA3MHB4O1xufVxuXG5AbWVkaWEgYWxsIGFuZCAob3JpZW50YXRpb246bGFuZHNjYXBlKSB7XG5cbiAgI2ljb24tb2t7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG4gICNpY29uLXVzZXJ7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG4gICNpY29uLWNoZXYye1xuICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcbiAgfVxuXG5cbiAgLyogU3R5bGVzIGZvciBMYW5kc2NhcGUgc2NyZWVuICovXG59XG5cbkBtZWRpYSBhbGwgYW5kIChvcmllbnRhdGlvbjogcG9ydHJhaXQpe1xuICAjZGl2aXNpb24ye1xuICAgIGRpc3BsYXk6IG5vbmU7XG4gIH1cbiAgLyojY2hldnJvbi1sZWZ0eyovXG4gIC8qYmVoYXZpb3I6IGluaGVyaXQ7Ki9cbiAgLypwb3NpdGlvbjogZml4ZWQ7Ki9cbiAgLypsZWZ0OiAyJTsqL1xuICAvKnBhZGRpbmctcmlnaHQ6IDJweDsqL1xuICAvKnBhZGRpbmctbGVmdDogMnB4OyovXG4gIC8qZGlzcGxheTogYmxvY2s7Ki9cbiAgLyp9Ki9cbiAgLyojaWNvbi1wbHVzeyovXG4gIC8qcG9zaXRvbjogZml4ZWQ7Ki9cbiAgLyoqL1xuICAvKn0qL1xuICAvKiN3ZWJzaXRlc3sqL1xuICAvKmRpc3BsYXk6IG5vbmU7Ki9cbiAgLyp9Ki9cbiAgLyojaWNvbi1wbHVzeyovXG4gIC8qZGlzcGxheTogbm9uZTsqL1xuICAvKn0qL1xuICAvKiNkaXZpc2lvbi1jb2wxeyovXG4gIC8qZGlzcGxheTogbm9uZTsqL1xuICAvKn0qL1xuXG5cbiAgI2RpdmlzaW9uLWNvbDF7XG4gICAgZGlzcGxheTogbm9uZTtcbiAgfVxuICAjZGl2aXNpb24tY29sMntcbiAgICBtYXJnaW4tbGVmdDogNXB4O1xuICB9XG5cblxufVxuIl19 */"
+module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\ninput.form-control {\n  margin-bottom: 5px;\n}\n.cl-form-bottom-padding{\n  margin-bottom: 2em;\n}\na:hover{\n  text-decoration: none;\n}\n.cl-container-padding {\n  padding-top: 5%;\n  padding-bottom: 10%;\n}\n.cl-blue-navbar{\n  background-color: #337ab7;\n}\n.cl-text-white{\n  color: #fff;\n}\n.cl-text-black{\n  color: #000000;\n}\n.cl-text-bold{\n  font-weight: bold;\n}\n.cl-icon-padding {\n  padding-left: 0px;\n  padding-right: 10px;\n}\n.cl-header-padding{\n  padding-left: 5%;\n}\n.cl-full-width{\n  width: 100%;\n}\n.cl-widget-list-item{\n  padding-bottom: 20px;\n}\n.cl-v-divider{\n  border-right: 1px solid #808080;\n  height: 100%;\n}\n.cl-widget-heading{\n  margin-top: 0px;\n  margin-bottom: 0px;\n}\n.cl-widget-paragraph{\n  margin-top: 0px;\n  margin-bottom: 0px;\n}\n.cl-height{\n  height: 100%;\n  min-height: 100%;\n}\n.cl-relative-position{\n  position: relative;\n}\n.cl-absolute-position{\n  position: absolute;\n}\n.cl-widget-list-icons{\n  top: 0px;\n  right: 0px;\n  z-index: 10;\n  background-color: white;\n}\n.cl-zero-right-padding{\n  padding-right: 0px;\n}\n.cl-list-item-borderless {\n  border-top: 0 none;\n  border-bottom: 0 none;\n  border-left: 0 none;\n  border-right: 0 none;\n}\n.cl-widget-images{\n  display: inline;\n  width: 85%;\n  z-index: 100;\n  position: relative;\n}\n@media all and (orientation:landscape) {\n\n  #icon-ok{\n    visibility: hidden;\n  }\n  #icon-user{\n    visibility: hidden;\n  }\n  #icon-chev2{\n    visibility: hidden;\n  }\n\n\n  /* Styles for Landscape screen */\n}\n@media all and (orientation: portrait){\n  #division2{\n    display: none;\n  }\n  /*#chevron-left{*/\n  /*behavior: inherit;*/\n  /*position: fixed;*/\n  /*left: 2%;*/\n  /*padding-right: 2px;*/\n  /*padding-left: 2px;*/\n  /*display: block;*/\n  /*}*/\n  /*#icon-plus{*/\n  /*positon: fixed;*/\n  /**/\n  /*}*/\n  /*#websites{*/\n  /*display: none;*/\n  /*}*/\n  /*#icon-plus{*/\n  /*display: none;*/\n  /*}*/\n  /*#division-col1{*/\n  /*display: none;*/\n  /*}*/\n\n\n  #division-col1{\n    display: none;\n  }\n  #division-col2{\n    margin-left: 5px;\n  }\n\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3Mvd2Vic2l0ZS93ZWJzaXRlLWVkaXQvd2Vic2l0ZS1lZGl0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7RUFDakIsb0JBQW9CO0FBQ3RCO0FBQ0E7RUFDRSxrQkFBa0I7QUFDcEI7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjtBQUVBO0VBQ0UscUJBQXFCO0FBQ3ZCO0FBRUE7RUFDRSxlQUFlO0VBQ2YsbUJBQW1CO0FBQ3JCO0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7QUFFQTtFQUNFLFdBQVc7QUFDYjtBQUVBO0VBQ0UsY0FBYztBQUNoQjtBQUVBO0VBQ0UsaUJBQWlCO0FBQ25CO0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsbUJBQW1CO0FBQ3JCO0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEI7QUFFQTtFQUNFLFdBQVc7QUFDYjtBQUVBO0VBQ0Usb0JBQW9CO0FBQ3RCO0FBRUE7RUFDRSwrQkFBK0I7RUFDL0IsWUFBWTtBQUNkO0FBRUE7RUFDRSxlQUFlO0VBQ2Ysa0JBQWtCO0FBQ3BCO0FBRUE7RUFDRSxlQUFlO0VBQ2Ysa0JBQWtCO0FBQ3BCO0FBRUE7RUFDRSxZQUFZO0VBQ1osZ0JBQWdCO0FBQ2xCO0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7QUFDQTtFQUNFLGtCQUFrQjtBQUNwQjtBQUNBO0VBQ0UsUUFBUTtFQUNSLFVBQVU7RUFDVixXQUFXO0VBQ1gsdUJBQXVCO0FBQ3pCO0FBQ0E7RUFDRSxrQkFBa0I7QUFDcEI7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixxQkFBcUI7RUFDckIsbUJBQW1CO0VBQ25CLG9CQUFvQjtBQUN0QjtBQUVBO0VBQ0UsZUFBZTtFQUNmLFVBQVU7RUFDVixZQUFZO0VBQ1osa0JBQWtCO0FBQ3BCO0FBRUE7O0VBRUU7SUFDRSxrQkFBa0I7RUFDcEI7RUFDQTtJQUNFLGtCQUFrQjtFQUNwQjtFQUNBO0lBQ0Usa0JBQWtCO0VBQ3BCOzs7RUFHQSxnQ0FBZ0M7QUFDbEM7QUFFQTtFQUNFO0lBQ0UsYUFBYTtFQUNmO0VBQ0EsaUJBQWlCO0VBQ2pCLHFCQUFxQjtFQUNyQixtQkFBbUI7RUFDbkIsWUFBWTtFQUNaLHNCQUFzQjtFQUN0QixxQkFBcUI7RUFDckIsa0JBQWtCO0VBQ2xCLElBQUk7RUFDSixjQUFjO0VBQ2Qsa0JBQWtCO0VBQ2xCLEdBQUc7RUFDSCxJQUFJO0VBQ0osYUFBYTtFQUNiLGlCQUFpQjtFQUNqQixJQUFJO0VBQ0osY0FBYztFQUNkLGlCQUFpQjtFQUNqQixJQUFJO0VBQ0osa0JBQWtCO0VBQ2xCLGlCQUFpQjtFQUNqQixJQUFJOzs7RUFHSjtJQUNFLGFBQWE7RUFDZjtFQUNBO0lBQ0UsZ0JBQWdCO0VBQ2xCOzs7QUFHRiIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3dlYnNpdGUvd2Vic2l0ZS1lZGl0L3dlYnNpdGUtZWRpdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIHBhZGRpbmctdG9wOiA3MHB4O1xuICBwYWRkaW5nLWJvdHRvbTogNzBweDtcbn1cbmlucHV0LmZvcm0tY29udHJvbCB7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbn1cblxuLmNsLWZvcm0tYm90dG9tLXBhZGRpbmd7XG4gIG1hcmdpbi1ib3R0b206IDJlbTtcbn1cblxuYTpob3ZlcntcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xufVxuXG4uY2wtY29udGFpbmVyLXBhZGRpbmcge1xuICBwYWRkaW5nLXRvcDogNSU7XG4gIHBhZGRpbmctYm90dG9tOiAxMCU7XG59XG5cbi5jbC1ibHVlLW5hdmJhcntcbiAgYmFja2dyb3VuZC1jb2xvcjogIzMzN2FiNztcbn1cblxuLmNsLXRleHQtd2hpdGV7XG4gIGNvbG9yOiAjZmZmO1xufVxuXG4uY2wtdGV4dC1ibGFja3tcbiAgY29sb3I6ICMwMDAwMDA7XG59XG5cbi5jbC10ZXh0LWJvbGR7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uY2wtaWNvbi1wYWRkaW5nIHtcbiAgcGFkZGluZy1sZWZ0OiAwcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG59XG5cbi5jbC1oZWFkZXItcGFkZGluZ3tcbiAgcGFkZGluZy1sZWZ0OiA1JTtcbn1cblxuLmNsLWZ1bGwtd2lkdGh7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uY2wtd2lkZ2V0LWxpc3QtaXRlbXtcbiAgcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbi5jbC12LWRpdmlkZXJ7XG4gIGJvcmRlci1yaWdodDogMXB4IHNvbGlkICM4MDgwODA7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLmNsLXdpZGdldC1oZWFkaW5ne1xuICBtYXJnaW4tdG9wOiAwcHg7XG4gIG1hcmdpbi1ib3R0b206IDBweDtcbn1cblxuLmNsLXdpZGdldC1wYXJhZ3JhcGh7XG4gIG1hcmdpbi10b3A6IDBweDtcbiAgbWFyZ2luLWJvdHRvbTogMHB4O1xufVxuXG4uY2wtaGVpZ2h0e1xuICBoZWlnaHQ6IDEwMCU7XG4gIG1pbi1oZWlnaHQ6IDEwMCU7XG59XG5cbi5jbC1yZWxhdGl2ZS1wb3NpdGlvbntcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLmNsLWFic29sdXRlLXBvc2l0aW9ue1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59XG4uY2wtd2lkZ2V0LWxpc3QtaWNvbnN7XG4gIHRvcDogMHB4O1xuICByaWdodDogMHB4O1xuICB6LWluZGV4OiAxMDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG4uY2wtemVyby1yaWdodC1wYWRkaW5ne1xuICBwYWRkaW5nLXJpZ2h0OiAwcHg7XG59XG5cbi5jbC1saXN0LWl0ZW0tYm9yZGVybGVzcyB7XG4gIGJvcmRlci10b3A6IDAgbm9uZTtcbiAgYm9yZGVyLWJvdHRvbTogMCBub25lO1xuICBib3JkZXItbGVmdDogMCBub25lO1xuICBib3JkZXItcmlnaHQ6IDAgbm9uZTtcbn1cblxuLmNsLXdpZGdldC1pbWFnZXN7XG4gIGRpc3BsYXk6IGlubGluZTtcbiAgd2lkdGg6IDg1JTtcbiAgei1pbmRleDogMTAwO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbkBtZWRpYSBhbGwgYW5kIChvcmllbnRhdGlvbjpsYW5kc2NhcGUpIHtcblxuICAjaWNvbi1va3tcbiAgICB2aXNpYmlsaXR5OiBoaWRkZW47XG4gIH1cbiAgI2ljb24tdXNlcntcbiAgICB2aXNpYmlsaXR5OiBoaWRkZW47XG4gIH1cbiAgI2ljb24tY2hldjJ7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG5cblxuICAvKiBTdHlsZXMgZm9yIExhbmRzY2FwZSBzY3JlZW4gKi9cbn1cblxuQG1lZGlhIGFsbCBhbmQgKG9yaWVudGF0aW9uOiBwb3J0cmFpdCl7XG4gICNkaXZpc2lvbjJ7XG4gICAgZGlzcGxheTogbm9uZTtcbiAgfVxuICAvKiNjaGV2cm9uLWxlZnR7Ki9cbiAgLypiZWhhdmlvcjogaW5oZXJpdDsqL1xuICAvKnBvc2l0aW9uOiBmaXhlZDsqL1xuICAvKmxlZnQ6IDIlOyovXG4gIC8qcGFkZGluZy1yaWdodDogMnB4OyovXG4gIC8qcGFkZGluZy1sZWZ0OiAycHg7Ki9cbiAgLypkaXNwbGF5OiBibG9jazsqL1xuICAvKn0qL1xuICAvKiNpY29uLXBsdXN7Ki9cbiAgLypwb3NpdG9uOiBmaXhlZDsqL1xuICAvKiovXG4gIC8qfSovXG4gIC8qI3dlYnNpdGVzeyovXG4gIC8qZGlzcGxheTogbm9uZTsqL1xuICAvKn0qL1xuICAvKiNpY29uLXBsdXN7Ki9cbiAgLypkaXNwbGF5OiBub25lOyovXG4gIC8qfSovXG4gIC8qI2RpdmlzaW9uLWNvbDF7Ki9cbiAgLypkaXNwbGF5OiBub25lOyovXG4gIC8qfSovXG5cblxuICAjZGl2aXNpb24tY29sMXtcbiAgICBkaXNwbGF5OiBub25lO1xuICB9XG4gICNkaXZpc2lvbi1jb2wye1xuICAgIG1hcmdpbi1sZWZ0OiA1cHg7XG4gIH1cblxuXG59XG4iXX0= */"
 
 /***/ }),
 
@@ -1186,7 +1194,7 @@ module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n@m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n<nav class = \"navbar navbar-brand cl-blue-navbar fixed-top cl-full-width\" >\n  <div class=\"row\" >\n    <div class=\"col-sm-4 navbar-text  cl-blue-navbar\"  id = \"division2\">\n      <a href=\"website-list.html\" class=\"navbar-link cl-text-white\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n\n      <a  class=\"cl-text-white navbar-brand cl-text-bold\" href=\"#\" id = \"websites\">\n        Websites\n      </a>\n      <a href=\"#\" class=\"navbar-link navbar-text float-right cl-text-white\">\n\n        <span class=\"fas fa-plus\" id = \"icon-plus cl-icon-padding\"></span>\n      </a>\n\n\n    </div>\n\n    <div class=\"col-sm-8 navbar-text  cl-blue-navbar\">\n      <!--<div class=\"container-fluid\">-->\n      <a href=\"website-list.html\" class=\"navbar-link cl-text-white\" id = \"icon-chev2\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n      <a class=\"cl-text-white navbar-brand cl-text-bold\" href=\"#\">\n        Edit Websites\n      </a>\n      <a href=\"website-list.html\" class=\"navbar-link navbar-text float-right cl-text-white \" id = \"icon-ok\">\n        <span class=\"fas fa-check\"></span>\n      </a>\n      <!--</div>-->\n    </div>\n  </div>\n</nav>\n<div class = \"row\">\n\n  <div class=\"col-sm-4\" id = \"division-col1\">\n    <ul class=\"list-group cl-list-group-borderless\">\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Blogging App</a>\n      </li>\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Address Book App</a>\n      </li>\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Script Testing App</a>\n      </li>\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Blogger</a>\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-sm-8\" id = \"division-col2\">\n    <form>\n      <div class=\"form-group\">\n        <label for=\"website-name\" class = \"cl-text-bold\" >Website Name</label>\n        <input [(ngModel)]=\"website.website\" )]type=\"text\" class=\"form-control\" id=\"website-name\" placeholder=\"Blogger\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"website-description\" class = \"cl-text-bold\">Website Description</label>\n        <textarea id=\"website-description\" class=\"form-control\" rows=\"5\"\n                  placeholder=\"Blogger is a blog-publishing service.\"></textarea>\n      </div>\n      <a class=\"btn btn-danger  btn-block\" href=\"website-list.html\">Delete</a>\n    </form>\n  </div>\n</div>\n\n\n<nav class=\"navbar fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fuild\">\n  </div>\n  <a href=\"profile.html\" class=\"navbar-text cl-text-white cl-icon-padding\">\n    <span class=\"fas fa-user cl-text-white \" id = \"icon-user\"></span>\n  </a>\n</nav>\n\n</body>\n"
+module.exports = "<body>\n<nav class = \"navbar navbar-brand cl-blue-navbar fixed-top cl-full-width\" >\n  <div class=\"row\" >\n    <div class=\"col-sm-4 navbar-text  cl-blue-navbar\"  id = \"division2\">\n      <a routerLink=\"/user/{{userId}}/website\" class=\"navbar-link cl-text-white\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n\n      <a  class=\"cl-text-white navbar-brand cl-text-bold\" routerLink=\"/user/{{userId}}/website\" id = \"websites\">\n        Websites\n      </a>\n      <a routerLink=\"/user/{{userId}}/website/new\" class=\"navbar-link navbar-text float-right cl-text-white\">\n\n        <span class=\"fas fa-plus\" id = \"icon-plus cl-icon-padding\"></span>\n      </a>\n\n\n    </div>\n\n    <div class=\"col-sm-8 navbar-text  cl-blue-navbar\">\n      <!--<div class=\"container-fluid\">-->\n      <a routerLink=\"/user/{{userId}}/website\" class=\"navbar-link cl-text-white\" id = \"icon-chev2\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n      <a class=\"cl-text-white navbar-brand cl-text-bold\" href=\"#\">\n        Edit Websites\n      </a>\n      <a (click)=\"update()\" class=\"navbar-link navbar-text float-right cl-text-white \" id = \"icon-ok\">\n        <span class=\"fas fa-check\"></span>\n      </a>\n      <!--</div>-->\n    </div>\n  </div>\n</nav>\n<div class = \"row\" >\n\n  <div class=\"col-sm-4\" id = \"division-col1\" >\n    <ul class=\"list-group cl-list-group-borderless\" *ngFor=\"let website of websites\">\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a routerLink=\"/user/{{userId}}/website/{{website._id}}\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a routerLink= \"/user/{{userId}}/website/{{website._id}}/page\">{{website.name}}</a>\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-sm-8\" id = \"division-col2\">\n    <form >\n      <div class=\"form-group\">\n        <label for=\"website-name\" class = \"cl-text-bold\" >Website Name</label>\n        <input [(ngModel)]=\"curweb.name\" [ngModelOptions]=\"{standalone: true}\" type=\"text\" class=\"form-control\" id=\"website-name\" placeholder=\"Blogger\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"website-description\" class = \"cl-text-bold\">Website Description</label>\n        <textarea [(ngModel)]=\"curweb.description\" [ngModelOptions]=\"{standalone: true}\" id=\"website-description\" class=\"form-control\" rows=\"5\"\n                  placeholder=\"Blogger is a blog-publishing service.\"></textarea>\n      </div>\n      <a (click)=\"delete()\" class=\"btn btn-danger  btn-block\">Delete</a>\n    </form>\n  </div>\n</div>\n\n\n<nav class=\"navbar fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fuild\">\n  </div>\n  <a routerLink= \"/user/{{userId}}\" class=\"navbar-text cl-text-white cl-icon-padding\">\n    <span class=\"fas fa-user cl-text-white \" id = \"icon-user\"></span>\n  </a>\n</nav>\n\n</body>\n"
 
 /***/ }),
 
@@ -1209,16 +1217,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var WebsiteEditComponent = /** @class */ (function () {
-    function WebsiteEditComponent(websiteService, route) {
+    function WebsiteEditComponent(websiteService, route, link) {
         this.websiteService = websiteService;
         this.route = route;
-        this.websites = this.websiteService.findWebsitesByUser(this.userId);
+        this.link = link;
         // console.log(this.user.username);
         // console.log(this.user.password);
     }
+    WebsiteEditComponent.prototype.delete = function () {
+        this.websiteService.deleteWebsite(this.webId);
+        var url = '/user/' + this.userId + '/website';
+        console.log(url);
+        this.link.navigateByUrl(url);
+    };
+    WebsiteEditComponent.prototype.update = function () {
+        this.websiteService.updateWebsite(this.webId, this.curweb);
+        var url = '/user/' + this.userId + '/website';
+        this.link.navigateByUrl(url);
+    };
     WebsiteEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.params.subscribe(function (params) { _this.userId = params.uid; });
+        this.route.params.subscribe(function (params) {
+            _this.userId = params.uid;
+            _this.webId = params.wid;
+        });
+        console.log('************');
+        console.log('userId' + this.userId);
+        console.log('webId' + this.webId);
+        this.curweb = this.websiteService.findWebsiteById(this.webId);
         this.websites = this.websiteService.findWebsitesByUser(this.userId);
     };
     WebsiteEditComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1227,7 +1253,7 @@ var WebsiteEditComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./website-edit.component.html */ "./src/app/views/website/website-edit/website-edit.component.html"),
             styles: [__webpack_require__(/*! ./website-edit.component.css */ "./src/app/views/website/website-edit/website-edit.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_website_service_client__WEBPACK_IMPORTED_MODULE_3__["WebsiteService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_website_service_client__WEBPACK_IMPORTED_MODULE_3__["WebsiteService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], WebsiteEditComponent);
     return WebsiteEditComponent;
 }());
@@ -1254,7 +1280,7 @@ module.exports = ".cl-widget-images{\n  display: inline;\n  width: 85%;\n  z-ind
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n<nav class=\"navbar fixed-top cl-blue-navbar \">\n  <div class = \"fluid-container\">\n    <a routerLink=\"/user/{{userId}}\" class=\"navbar-link cl-text-white\">\n      <span id = \"left-chev\" class=\"fas fa-chevron-left \" ></span>\n    </a>\n    <a class=\"cl-text-white navbar-text cl-text-bold\" href=\"#\">\n      Websites\n    </a>\n  </div>\n\n  <a routerLink=\"/user/{{userId}}/website/new\" class=\"navbar-link navbar-text cl-text-white \">\n    <span id = \"icon-plus\" class=\"fas fa-plus cl-icon-padding \"></span>\n  </a>\n\n</nav>\n\n<div class=\"container\" >\n  <ul class=\"list-group cl-list-group-borderless\" *ngFor=\"let website of websites\">\n    <li class=\"list-group-item cl-list-item-borderless\">\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}\" ><span class=\"fas float-right fa-cogs\" ></span></a>\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\">Address Book App</a>\n\n    </li>\n    <li class=\"list-group-item cl-list-item-borderless\">\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}\"><span class=\"fas fa-cogs float-right xs-visible\"></span></a>\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\">Blogger</a>\n\n    </li>\n    <li class=\"list-group-item cl-list-item-borderless\">\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}\"><span class=\"fas fa-cogs float-right xs-visible\"></span></a>\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\" >Blogging App</a>\n\n    </li>\n    <li class=\"list-group-item cl-list-item-borderless\">\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}\"><span class=\"fas fa-cogs float-right xs-visible\"></span></a>\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\" >Script Testing App</a>\n\n    </li>\n  </ul>\n</div>\n\n\n\n<nav class=\"navbar fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fluid row\">\n    <div class=\"float-right navbar-text\">\n    </div>\n    <div class = \"navbar-text\">\n      <a routerLink=\"/user/{{userId}}\">\n        <span id = \"icon-user\" class=\"fas fa-user cl-text-white \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n\n\n</body>\n"
+module.exports = "<body>\n<nav class=\"navbar fixed-top cl-blue-navbar \">\n  <div class = \"fluid-container\">\n    <a routerLink=\"/user/{{userId}}\" class=\"navbar-link cl-text-white\">\n      <span id = \"left-chev\" class=\"fas fa-chevron-left \" ></span>\n    </a>\n    <a class=\"cl-text-white navbar-text cl-text-bold\" href=\"#\">\n      Websites\n    </a>\n  </div>\n\n  <a routerLink=\"/user/{{userId}}/website/new\" class=\"navbar-link navbar-text cl-text-white \">\n    <span id = \"icon-plus\" class=\"fas fa-plus cl-icon-padding \"></span>\n  </a>\n\n</nav>\n\n<div class=\"container\" >\n  <ul class=\"list-group cl-list-group-borderless\" *ngFor=\"let website of websites\">\n    <li class=\"list-group-item cl-list-item-borderless\">\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}\" ><span class=\"fas float-right fa-cogs\" >{{website._id}}</span></a>\n      <a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\">{{website.name}}</a>\n\n    </li>\n    <!--<li class=\"list-group-item cl-list-item-borderless\">-->\n      <!--<a routerLink=\"/user/{{userId}}/website/{{website._id}}\"><span class=\"fas fa-cogs float-right xs-visible\"></span></a>-->\n      <!--<a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\">Blogger</a>-->\n\n    <!--</li>-->\n    <!--<li class=\"list-group-item cl-list-item-borderless\">-->\n      <!--<a routerLink=\"/user/{{userId}}/website/{{website._id}}\"><span class=\"fas fa-cogs float-right xs-visible\"></span></a>-->\n      <!--<a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\" >Blogging App</a>-->\n\n    <!--</li>-->\n    <!--<li class=\"list-group-item cl-list-item-borderless\">-->\n      <!--<a routerLink=\"/user/{{userId}}/website/{{website._id}}\"><span class=\"fas fa-cogs float-right xs-visible\"></span></a>-->\n      <!--<a routerLink=\"/user/{{userId}}/website/{{website._id}}/page\" >Script Testing App</a>-->\n\n    <!--</li>-->\n  </ul>\n</div>\n\n\n\n<nav class=\"navbar fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fluid row\">\n    <div class=\"float-right navbar-text\">\n    </div>\n    <div class = \"navbar-text\">\n      <a routerLink=\"/user/{{userId}}\">\n        <span id = \"icon-user\" class=\"fas fa-user cl-text-white \"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n\n\n</body>\n"
 
 /***/ }),
 
@@ -1323,7 +1349,7 @@ module.exports = "@media all and (orientation:landscape) {\n\n  #icon-ok{\n    v
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n\n<nav class = \"navbar navbar-brand cl-blue-navbar fixed-top cl-full-width\">\n  <div class=\"row \" >\n    <div class=\"col-sm-4 navbar-text  cl-blue-navbar\"  id = \"division2\">\n      <a href=\"website-list.html\" class=\"navbar-link cl-text-white\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n      <a  class=\"cl-text-white navbar-brand cl-text-bold\" href=\"#\" id = \"websites\">\n        Websites\n      </a>\n      <a href=\"#\" class=\"navbar-link navbar-text float-right cl-text-white\">\n        <span class=\"fas fa-plus\" id = \"icon-plus\"></span>\n      </a>\n    </div>\n\n    <div class=\"col-sm-8 navbar-text  cl-blue-navbar\">\n      <div class=\"container-fluid\">\n        <a href=\"website-list.html\" class=\"navbar-link cl-text-white\" id = \"icon-chev2\">\n          <span class=\"fas fa-chevron-left\"></span>\n        </a>\n        <a class=\"cl-text-white navbar-brand cl-text-bold\" href=\"#\">\n          New Websites\n        </a>\n        <a href=\"website-list.html\" class=\"navbar-link navbar-text float-right cl-text-white \" id = \"icon-ok\">\n          <span class=\"fas fa-check\"></span>\n        </a>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class = \"row\">\n  <div class=\"col-sm-4\" id = \"division-col1\">\n    <ul class=\"list-group cl-list-group-borderless\">\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Blogging App</a>\n      </li>\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Address Book App</a>\n      </li>\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Script Testing App</a>\n      </li>\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a href=\"website-edit.html\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a href=\"page-list.html\">Blogger</a>\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-sm-8\" id = \"division-col2\">\n    <form>\n      <div class=\"form-group\">\n        <label for=\"website-name\">Name</label>\n        <input type=\"text\" class=\"form-control\" id=\"website-name\" placeholder=\"Name\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"website-description\">Description</label>\n        <textarea id=\"website-description\" class=\"form-control\" rows=\"5\" placeholder=\"Description\"></textarea>\n      </div>\n    </form>\n  </div>\n</div>\n\n\n<nav class=\"navbar fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fuild\">\n  </div>\n  <a href=\"profile.html\" class=\"navbar-text cl-text-white cl-icon-padding\">\n    <span class=\"fas fa-user cl-text-white \" id = \"icon-user\"></span>\n  </a>\n</nav>\n</body>\n"
+module.exports = "<body>\n\n<nav class = \"navbar navbar-brand cl-blue-navbar fixed-top cl-full-width\">\n  <div class=\"row \" >\n    <div class=\"col-sm-4 navbar-text  cl-blue-navbar\"  id = \"division2\">\n      <a routerLink=\"/user/{{userId}}/website\" class=\"navbar-link cl-text-white\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n      <a  class=\"cl-text-white navbar-brand cl-text-bold\" href=\"#\" id = \"websites\">\n        Websites\n      </a>\n      <a href=\"#\" class=\"navbar-link navbar-text float-right cl-text-white\">\n        <span class=\"fas fa-plus\" id = \"icon-plus\"></span>\n      </a>\n    </div>\n\n    <div class=\"col-sm-8 navbar-text  cl-blue-navbar\">\n      <div class=\"container-fluid\">\n        <a routerLink=\"/user/{{userId}}/website\" class=\"navbar-link cl-text-white\" id = \"icon-chev2\">\n          <span class=\"fas fa-chevron-left\"></span>\n        </a>\n        <a class=\"cl-text-white navbar-brand cl-text-bold\" href=\"#\">\n          New Websites\n        </a>\n        <a (click) =\"create()\" class=\"navbar-link navbar-text float-right cl-text-white \" id = \"icon-ok\">\n          <span class=\"fas fa-check\"></span>\n        </a>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class = \"row\">\n  <div class=\"col-sm-4\" id = \"division-col1\">\n    <ul class=\"list-group cl-list-group-borderless\" *ngFor=\"let web of websites\">\n      <li class=\"list-group-item cl-list-item-borderless\">\n        <a routerLink=\"/user/{{userId}}/website/{{web._id}}\"><span class=\"fas fa-cog float-right\"></span></a>\n        <a routerLink=\"/user/{{userId}}/website/{{web._id}}/page\">{{web.name}}</a>\n      </li>\n    </ul>\n  </div>\n  <div class=\"col-sm-8\" id = \"division-col2\">\n    <form>\n      <div class=\"form-group\">\n        <label for=\"website-name\">Name</label>\n        <input [(ngModel)] = \"curweb.name\" [ngModelOptions]=\"{standalone: true}\" type=\"text\" class=\"form-control\" id=\"website-name\" placeholder=\"Name\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"website-description\">Description</label>\n        <textarea [(ngModel)] = \"curweb.description\" [ngModelOptions]=\"{standalone: true}\" id=\"website-description\" class=\"form-control\" rows=\"5\" placeholder=\"Description\"></textarea>\n      </div>\n    </form>\n  </div>\n</div>\n\n\n<nav class=\"navbar fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fuild\">\n  </div>\n  <a routerLink=\"/user/{{userId}}\" class=\"navbar-text cl-text-white cl-icon-padding\">\n    <span class=\"fas fa-user cl-text-white \" id = \"icon-user\"></span>\n  </a>\n</nav>\n</body>\n"
 
 /***/ }),
 
@@ -1339,12 +1365,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebsiteNewComponent", function() { return WebsiteNewComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _models_website_model_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../models/website.model.client */ "./src/app/models/website.model.client.ts");
+/* harmony import */ var _service_website_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../service/website.service.client */ "./src/app/service/website.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
 
 
 var WebsiteNewComponent = /** @class */ (function () {
-    function WebsiteNewComponent() {
+    function WebsiteNewComponent(webservice, route, activeroute) {
+        this.webservice = webservice;
+        this.route = route;
+        this.activeroute = activeroute;
     }
+    WebsiteNewComponent.prototype.create = function () {
+        this.webservice.createWebsite(this.userId, this.curweb);
+        console.log('cur developerid' + this.curweb.developerId);
+        var url = '/user/' + this.userId + '/website';
+        this.route.navigateByUrl(url);
+    };
     WebsiteNewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.activeroute.params.subscribe(function (params) { _this.userId = params.uid; });
+        this.websites = this.webservice.findWebsitesByUser(this.userId);
+        this.curweb = new _models_website_model_client__WEBPACK_IMPORTED_MODULE_2__["Website"]('id', 'name', this.userId, 'des');
+        console.log(this.curweb.developerId);
     };
     WebsiteNewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1352,7 +1398,8 @@ var WebsiteNewComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./website-new.component.html */ "./src/app/views/website/website-new/website-new.component.html"),
             styles: [__webpack_require__(/*! ./website-new.component.css */ "./src/app/views/website/website-new/website-new.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_website_service_client__WEBPACK_IMPORTED_MODULE_3__["WebsiteService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]])
     ], WebsiteNewComponent);
     return WebsiteNewComponent;
 }());
@@ -1523,6 +1570,62 @@ var ImageComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], ImageComponent);
     return ImageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/widget-edit.component.css":
+/*!********************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/widget-edit.component.css ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3dpZGdldC93aWRnZXQtZWRpdC93aWRnZXQtZWRpdC5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/widget-edit.component.html":
+/*!*********************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/widget-edit.component.html ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  widget-edit works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/widget-edit.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/widget-edit.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: WidgetEditComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WidgetEditComponent", function() { return WidgetEditComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var WidgetEditComponent = /** @class */ (function () {
+    function WidgetEditComponent() {
+    }
+    WidgetEditComponent.prototype.ngOnInit = function () {
+    };
+    WidgetEditComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-widget-edit',
+            template: __webpack_require__(/*! ./widget-edit.component.html */ "./src/app/views/widget/widget-edit/widget-edit.component.html"),
+            styles: [__webpack_require__(/*! ./widget-edit.component.css */ "./src/app/views/widget/widget-edit/widget-edit.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], WidgetEditComponent);
+    return WidgetEditComponent;
 }());
 
 

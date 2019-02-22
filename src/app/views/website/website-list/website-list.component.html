@@ -18,25 +18,25 @@
 <div class="container" >
   <ul class="list-group cl-list-group-borderless" *ngFor="let website of websites">
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/{{userId}}/website/{{website._id}}" ><span class="fas float-right fa-cogs" ></span></a>
-      <a routerLink="/user/{{userId}}/website/{{website._id}}/page">Address Book App</a>
+      <a routerLink="/user/{{userId}}/website/{{website._id}}" ><span class="fas float-right fa-cogs" >{{website._id}}</span></a>
+      <a routerLink="/user/{{userId}}/website/{{website._id}}/page">{{website.name}}</a>
 
     </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>
-      <a routerLink="/user/{{userId}}/website/{{website._id}}/page">Blogger</a>
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>-->
+      <!--<a routerLink="/user/{{userId}}/website/{{website._id}}/page">Blogger</a>-->
 
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>
-      <a routerLink="/user/{{userId}}/website/{{website._id}}/page" >Blogging App</a>
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>-->
+      <!--<a routerLink="/user/{{userId}}/website/{{website._id}}/page" >Blogging App</a>-->
 
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>
-      <a routerLink="/user/{{userId}}/website/{{website._id}}/page" >Script Testing App</a>
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cogs float-right xs-visible"></span></a>-->
+      <!--<a routerLink="/user/{{userId}}/website/{{website._id}}/page" >Script Testing App</a>-->
 
-    </li>
+    <!--</li>-->
   </ul>
 </div>
 
