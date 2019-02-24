@@ -14,6 +14,7 @@ import {WidgetChooserComponent} from './views/widget/widget-chooser/widget-choos
 import {HeadingComponent} from './views/widget/widget-edit/heading/heading.component';
 import {ImageComponent} from './views/widget/widget-edit/image/image.component';
 import {YoutubeComponent} from './views/widget/widget-edit/youtube/youtube.component';
+import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'user/:uid/website/:wid/page/:pid', component: PageEditComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
+  {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:header', component: HeadingComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:image', component: ImageComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:youtube', component: YoutubeComponent}

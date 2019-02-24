@@ -4,50 +4,23 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a href="widget-list.html" class="cl-text-black cl-icon-padding">
+      <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+         class="cl-text-black cl-icon-padding">
           <span class="fas fa-chevron-left">
           </span>
       </a>
-      <a class="navbar-brand navbar-text cl-text-white cl-text-bold" href="#">
+      <a class="navbar-brand navbar-text cl-text-white cl-text-bold"
+         routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/new">
         Choose Widget
       </a>
     </div>
-
-
   </div>
 </nav>
 
 <div class="container-fluid cl-container-padding">
-  <ul class="list-group cl-list-group-borderless">
+  <ul class="list-group cl-list-group-borderless" *ngFor="let widget of widgets">
     <li class="list-group-item cl-list-item-borderless">
-      <a href="widget-heading.html">Header</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="#">Label</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="#">HTML</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="#">Text Input</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="#">Link</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="#">Button</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="widget-image.html">Image</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="widget-youtube.html">YouTube</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="#">Data Table</a>
-    </li>
-    <li class="list-group-item cl-list-item-borderless">
-      <a href="#">Repeater</a>
+      <a (click)= "creat(widget)" class = "cl-text-bold">{{widget.widgetType}}</a>
     </li>
   </ul>
 </div>
@@ -57,7 +30,8 @@
     <div class="pull-right navbar-text">
     </div>
     <div class = "navbar-text">
-      <a href="profile.html" class="cl-icon-padding">
+      <a routerLink="/user/{{userid}}"
+         class="cl-icon-padding">
         <span class="fas fa-user"></span>
       </a>
     </div>

@@ -1,3 +1,12 @@
-<p>
-  widget-edit works!
-</p>
+<div [ngSwitch]="widget.widgetType" >
+  <div *ngSwitchCase="'HEADER'">
+    <app-heading></app-heading>
+  </div>
+  <div *ngSwitchCase="'IMAGE'">
+    <app-image></app-image>
+  </div>
+  <div *ngSwitchCase="'YOUTUBE'">
+    <app-youtube></app-youtube>
+  </div>
+
+</div>

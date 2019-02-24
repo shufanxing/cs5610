@@ -4,12 +4,15 @@ import {Page} from '../models/page.model.client';
 @Injectable()
 export class PageService {
   pages: Page[] = [
-    new Page ("321", "Post 1","456", "Lorem"),
-    new Page ("432", "Post 2", "456", "Lorem"),
-    new Page ( "543", "Post 3", "456", "Lorem")
+    new Page ('321', 'Post 1','890', 'Lorem'),
+    new Page ('432', 'Post 2', '890', 'Lorem'),
+    new Page ( '543', 'Post 3', '890', 'Lorem'),
+    new Page ('678', 'Post 1','678', 'Lorem'),
+    new Page ('7789', 'Post 2', '678', 'Lorem'),
+    new Page ( '3456', 'Post 3', '678', 'Lorem')
   ];
 
-  reateWebsite(websiteId: String, page: Page) {
+  createWebsite(websiteId: String, page: Page) {
 
     const new_page = {
       _id: (new Date()).getTime() + '',

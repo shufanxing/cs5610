@@ -1,18 +1,19 @@
 <body>
 <nav class="navbar navbar-brand navbar-light bg-light fixed-top">
   <div class="container-fluid row">
-
-    <div >
-      <a href="page-list.html" class="cl-text-black cl-icon-padding">
+    <div>
+      <a routerLink="/user/{{userid}}/website/{{webid}}/page" class="cl-text-black cl-icon-padding">
           <span class="fas fa-chevron-left">
           </span>
       </a>
-      <a class="navbar-brand navbar-text cl-text-white cl-text-bold" href="#">
+      <a class="navbar-brand navbar-text cl-text-white cl-text-bold"
+         routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget">
         Widgets
       </a>
     </div>
     <div class="navbar-text float-right">
-      <a href="widget-chooser.html" class="cl-icon-padding cl-text-black">
+      <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/new"
+         class="cl-icon-padding cl-text-black">
           <span class="fas fa-plus">
           </span>
       </a>
@@ -22,102 +23,79 @@
 </nav>
 
 <div class="container cl-container-padding">
-  <div>
-    <div class="float-right">
-      <a href="#" class="float-right">
-        <span class="fas fa-bars"></span>
-      </a>
-      <a href="widget-heading.html">
-        <span class="fas fa-cog"></span>
-      </a>
-    </div>
-    <h1>London terror attack: Police fired 'unprecedented' number of rounds</h1>
-  </div>
-
-  <div>
-    <div class="float-right">
-      <a href="#" class="float-right">
-        <span class="fas fa-bars"></span>
-      </a>
-      <a href="widget-heading.html">
-        <span class="fas fa-cog"></span>
-      </a>
-    </div>
-    <h3>Counterterrorism officers patrol near the scene of the attack on London Bridge.</h3>
-  </div>
-
-  <div>
-    <div class="float-right">
+  <div *ngFor="let widget of widgets">
+  <div [ngSwitch]="widget.widgetType">
+    <div *ngSwitchCase="'HEADER'">
       <div class="float-right">
-
-        <a href="#" class="float-right">
+        <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+           class="float-right">
           <span class="fas fa-bars"></span>
         </a>
-        <a href="widget-image.html">
+        <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}">
           <span class="fas fa-cog"></span>
         </a>
       </div>
-      <img class="img-responsive img-rounded cl-widget-images"
-           src="http://i2.cdn.cnn.com/cnnnext/dam/assets/170604130220-41-london-bridge-incident-0604-gallery-exlarge-169.jpg">
+      <div [ngSwitch]="widget.size">
+        <div *ngSwitchCase="1">
+          <h1>{{ widget.text }}</h1>
+        </div>
+        <div *ngSwitchCase="2">
+          <h2>{{ widget.text }}</h2>
+        </div>
+        <div *ngSwitchCase="3">
+          <h3>{{ widget.text }}</h3>
+        </div>
+        <div *ngSwitchCase="4">
+          <h4>{{ widget.text }}</h4>
+        </div>
+        <div *ngSwitchCase="5">
+          <p>{{ widget.text }}</p>
+        </div>
+        <div *ngSwitchCase="6">
+          <h6>{{ widget.text }}</h6>
+        </div>
+      </div>
+    </div>
 
 
-      <div>
-        <div class=" float-right">
-
-          <a href="#" class="float-right">
+    <div *ngSwitchCase="'IMAGE'">
+        <div class="float-right">
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+             class="float-right">
             <span class="fas fa-bars"></span>
           </a>
-          <a href="widget-heading.html">
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}">
             <span class="fas fa-cog"></span>
           </a>
         </div>
-        <p>Armed officers responding to the London Bridge terror attack fired an "unprecedented" number of rounds at the three attackers because they were wearing what appeared to be suicide belts, police said.
-        </p>
+        <img class="img-responsive img-rounded cl-widget-images"
+             src="{{widget.url}}">
+    </div>
 
+
+    <div *ngSwitchCase="'YOUTUBE'">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class = "embed-responsive-item" width="640" height="360"
+                [src]="getUrl(widget)"
+                frameborder="0"
+                allow="accelerometer autoplay encrypted-media gyroscope picture-in-picture"
+                allowfullscreen>
+        </iframe>
+        <div class = "overlay cl-relative-position">
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+             class="float-right overlay cl-relative-position">
+
+            <span class="fas fa-bars cl-white-background" ></span>
+          </a>
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}"
+             class="float-right overlay cl-relative-position">
+            <span class="fas fa-cog cl-relative-position cl-white-background" ></span>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-
-
-  <div>
-    <div class="float-right">
-      <a href="#" class="float-right">
-        <span class="fas fa-bars"></span>
-      </a>
-      <a href="widget-heading.html">
-        <span class="fas fa-cog"></span>
-      </a>
     </div>
-    <h3>Report: Incident at London Bridge</h3>
-  </div>
-
-  <div>
-    <div class="embed-responsive embed-responsive-16by9 main">
-      <iframe class = "embed-responsive-item" width="640" height="360" src="https://www.youtube.com/embed/APexI9Zb6iE" frameborder="0" allowfullscreen></iframe>"
-      <div class = "overlay cl-relative-position">
-        <a href="#" class="float-right overlay cl-relative-position">
-
-          <span class="fas fa-bars cl-white-background" ></span>
-        </a>
-        <a href="widget-youtube.html" class="float-right overlay cl-relative-position">
-          <span class="fas fa-cog cl-relative-position cl-white-background" ></span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <div class="float-right">
-      <a href="#" class="float-right">
-        <span class="fas fa-bars"></span>
-      </a>
-      <a href="widget-heading.html">
-        <span class="fas fa-cog"></span>
-      </a>
-    </div>
-    <p>There is a report of an incident has occurred at London Bridge. From CNN London.</p>
-  </div>
-
+</div>
 </div>
 
 <nav class="navbar navbar-brand navbar-light bg-light fixed-bottom">
@@ -125,17 +103,19 @@
 
 
     <div class="float-left navbar-text">
-      <a href="#" class="cl-icon-padding">
+      <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+         class="cl-icon-padding">
         <span class="fas fa-play"></span>
       </a>
-      <a href="#" class="cl-icon-padding">
+      <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+         class="cl-icon-padding">
         <span class="fas fa-eye"></span>
       </a>
 
     </div>
     <div class="float-right navbar-text">
 
-      <a href="profile.html" class="cl-icon-padding">
+      <a routerLink="/user/{{userid}}" class="cl-icon-padding">
         <span class="fas fa-user"></span>
       </a>
 

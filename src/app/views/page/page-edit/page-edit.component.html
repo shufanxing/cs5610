@@ -3,16 +3,16 @@
   <div class="container-fluid row">
 
     <div >
-      <a href="page-list.html" class="cl-text-black cl-icon-padding">
+      <a routerLink="/user/{{userid}}/website/{{webid}}/page" class="cl-text-black cl-icon-padding">
         <span class="fas fa-chevron-left">
           </span>
       </a>
-      <a class="navbar-text cl-text-white cl-text-bold" href="#">
+      <a class="navbar-text cl-text-white cl-text-bold" routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}">
         Edit Page
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a href="page-list.html" class="cl-icon-padding cl-text-black">
+      <a (click) = "update()" class="cl-icon-padding cl-text-black">
           <span class="fas fa-check">
           </span>
       </a>
@@ -25,14 +25,16 @@
   <form>
     <div class="form-group">
       <label for="page-name">Name</label>
-      <input type="text" class="form-control" id="page-name" placeholder="Page Name">
+      <input [(ngModel)]="curpage.name" [ngModelOptions]="{standalone: true}"
+             type="text" class="form-control" id="page-name" placeholder="Page Name">
     </div>
     <div class="form-group">
       <label for="page-title">Title</label>
-      <input type="text" class="form-control" id="page-title" placeholder="Page Title">
+      <input [(ngModel)]="curpage.description" [ngModelOptions]="{standalone: true}"
+             type="text" class="form-control" id="page-title" placeholder="Page Title">
     </div>
   </form>
-  <a class="btn btn-danger  btn-block" href="page-list.html">Delete</a>
+  <a (click) = "delete()" class="btn btn-danger  btn-block">Delete</a>
 </div>
 
 <nav class="navbar  navbar-light bg-light fixed-bottom">
@@ -40,7 +42,7 @@
     <div class="pull-right navbar-text">
     </div>
     <div class = "navbar-text">
-      <a href="profile.html" class="cl-icon-padding">
+      <a routerLink="/user/{{userid}}" class="cl-icon-padding">
         <span class="fas fa-user"></span>
       </a>
     </div>
