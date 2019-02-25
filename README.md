@@ -9,6 +9,15 @@ HEROKU https://dashboard.heroku.com/apps/webdev-shufanxing-cs5610
 Git link:https://github.com/shufanxing/cs5610
 Heroku link:https://webdev-shufanxing-cs5610.herokuapp.com/
 
+# for Assignment3 
+For login, please use 
+    Username : alice 
+    Password: qq 
+Choose website:
+    Go
+Choose page: 
+    Post 1
+
 # WebMaker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
