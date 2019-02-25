@@ -29,7 +29,9 @@
       <div class="float-right">
         <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
            class="float-right">
-          <span class="fas fa-bars"></span>
+          <router-outlet (click)="onActivate()" >
+            <span class="fas fa-bars"></span>
+          </router-outlet>
         </a>
         <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}">
           <span class="fas fa-cog"></span>
@@ -62,7 +64,9 @@
         <div class="float-right">
           <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
              class="float-right">
-            <span class="fas fa-bars"></span>
+            <router-outlet (click)="onActivate()">
+              <span class="fas fa-bars"></span>
+            </router-outlet>
           </a>
           <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}">
             <span class="fas fa-cog"></span>
@@ -84,8 +88,9 @@
         <div class = "overlay cl-relative-position">
           <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
              class="float-right overlay cl-relative-position">
-
-            <span class="fas fa-bars cl-white-background" ></span>
+            <router-outlet (click)="onActivate()" >
+              <span class="fas fa-bars cl-white-background" ></span>
+            </router-outlet>
           </a>
           <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}"
              class="float-right overlay cl-relative-position">
@@ -105,11 +110,15 @@
     <div class="float-left navbar-text">
       <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
          class="cl-icon-padding">
-        <span class="fas fa-play"></span>
+        <router-outlet (click)="onActivate()" >
+          <span class="fas fa-play"></span>
+        </router-outlet>
       </a>
       <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
          class="cl-icon-padding">
-        <span class="fas fa-eye"></span>
+        <router-outlet (click)="onActivate()">
+          <span class="fas fa-eye"></span>
+        </router-outlet>
       </a>
 
     </div>

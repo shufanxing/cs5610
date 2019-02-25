@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.username = this.myloginForm.value.username;
     this.password = this.myloginForm.value.password;
-    alert(this.username);
+    // alert(this.username);
     this.errorFlag = false;
 
     const user: User = this.userService.findUserByCredential(this.username, this.password);

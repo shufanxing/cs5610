@@ -4,7 +4,7 @@
     <a routerLink="/user/{{userId}}" class="navbar-link cl-text-white">
       <span id = "left-chev" class="fas fa-chevron-left " ></span>
     </a>
-    <a class="cl-text-white navbar-text cl-text-bold" href="#">
+    <a class="cl-text-white navbar-text cl-text-bold" routerLink="/user/{{userId}}/website">
       Websites
     </a>
   </div>
@@ -18,7 +18,7 @@
 <div class="container" >
   <ul class="list-group cl-list-group-borderless" *ngFor="let website of websites">
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/{{userId}}/website/{{website._id}}" ><span class="fas float-right fa-cogs" >{{website._id}}</span></a>
+      <a routerLink="/user/{{userId}}/website/{{website._id}}" ><span class="fas float-right fa-cogs" ></span></a>
       <a routerLink="/user/{{userId}}/website/{{website._id}}/page">{{website.name}}</a>
 
     </li>

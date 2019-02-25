@@ -1,8 +1,12 @@
 
 import {Injectable} from '@angular/core';
 import { Widget } from '../models/widget.model.client';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable()
+
+
 export  class WidgetService {
 
   // constructor(_id:String, type:String, pageId:String, size= '1', text = 'text', width = '100%',url = 'url')
@@ -126,4 +130,6 @@ export  class WidgetService {
     }
 
   }
+
+
 }

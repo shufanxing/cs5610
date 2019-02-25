@@ -23,6 +23,9 @@ export class WidgetListComponent implements OnInit {
   getUrl(widget: Widget) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(widget.url + '');
   }
+  onActivate() {
+    window.scroll(0, 0);
+  }
   ngOnInit() {
     this.activeroute.params.subscribe((params: any) => { this.userid = params.uid;
                                                                this.webid = params.wid;

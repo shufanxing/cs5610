@@ -21,7 +21,7 @@ export class WidgetChooserComponent implements OnInit {
   creat(widget) {
       const new_widget = {
         _id: (new Date()).getTime() + '',
-          name: widget.name,
+        name: widget.name,
         pageId: this.pageid,
         widgetType: widget.widgetType,
         text: widget.text,
@@ -35,7 +35,7 @@ export class WidgetChooserComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.activeroute.params.subscribe((params:any) => {
+    this.activeroute.params.subscribe((params: any) => {
       this.userid = params.uid;
       this.webid = params.wid;
       this.pageid = params.pid;
