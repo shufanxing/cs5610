@@ -12,26 +12,44 @@ export class PageEditComponent implements OnInit {
   webid: string;
   userid: string;
   pageid: string;
-  curpage: Page;
+  curpage = {};
+  pages = [];
   constructor(private pageservice: PageService,
               private pagerouter: Router,
               private activatedRouter: ActivatedRoute) { }
   delete() {
-    this.pageservice.deleteWebsite(this.pageid);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page';
-    this.pagerouter.navigateByUrl(url);
+    this.pageservice.deletePage(this.pageid).subscribe(
+      (data: any) => {
+        this.pages = data;
+        console.log(this.pages);
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page';
+        this.pagerouter.navigateByUrl(url);
+      }
+    );
   }
   update() {
-    this.pageservice.updatePage(this.pageid, this.curpage);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid;
-    this.pagerouter.navigateByUrl(url);
-    alert('update success!');
+    this.pageservice.updatePage(this.pageid, this.curpage).subscribe(
+      (data: any ) => {
+        this.curpage = data;
+        console.log('updated page' + this.curpage);
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid;
+        this.pagerouter.navigateByUrl(url);
+        alert('update success!');
+      }, (error: any) => {
+        alert ('update not successful');
+      }
+    );
   }
 
   ngOnInit() {
     this.activatedRouter.params.subscribe(
       (params: any) => {this.userid = params.uid; this.webid = params.wid, this.pageid = params.pid; });
-    this.curpage = this.pageservice.findPageById(this.pageid);
+    this.pageservice.findPageById(this.pageid)
+      .subscribe((data: any) => {
+        console.log('in login comp...');
+        console.log(data);
+        this.curpage = data;
+      });
   }
 
 }

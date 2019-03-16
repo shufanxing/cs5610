@@ -9,7 +9,7 @@ import {WidgetService} from '../../../service/widget.service.client';
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
-  widget: Widget;
+  widget = {};
   widgetid: string;
   userid: string;
   pageid: string;
@@ -23,6 +23,9 @@ export class WidgetEditComponent implements OnInit {
       this.webid = params.wid;
       this.widgetid = params.wgid;
     });
-    this.widget = this.service.findWidgetById(this.widgetid);
+    this.service.findWidgetById(this.widgetid).subscribe((data: any) => {
+      this.widget = data;
+      console.log(this.widget);
+    });
   }
 }

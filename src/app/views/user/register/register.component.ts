@@ -11,10 +11,9 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   @ViewChild('fr') myRegisterForm: NgForm;
-    username: String;
-    password: String;
-    v_password: String;
-  // v_password: String;
+    username: string;
+    password: string;
+    v_password: string;
   errorFlag1: boolean;
   errorFlag2: boolean;
   errorMsg1 = 'Password mis-matching!';
@@ -29,17 +28,35 @@ export class RegisterComponent implements OnInit {
     this.v_password = this.myRegisterForm.value.v_password;
     this.errorFlag1 = false;
     this.errorFlag2 = false;
-    if ( this.v_password === this.password && !this.userService.findUserByName(this.username)) {
+    if (this.v_password !== this.password) {
+      this.errorFlag1 = true;
+      return;
+    }
+    this.userService.findUserByName(this.username).subscribe(
+      (user: User) => {
+      if (user) {
+        this.errorFlag2 = true;
+      }
+      },
+      (error: any) => {
+        const curuser: User = new User('', this.username, this.password);
+        this.userService.createUser(curuser).subscribe(
+          (user: User) => {
+            console.log(user);
+          }
+        );
+        alert('Registration succeed!');
+        this.router.navigate(['/', 'login']);
+      }
+    );
+
+
+    /*if ( (!this.errorFlag1) && (!this.errorFlag2)) {
       const user: User = new User('', this.username, this.password);
       this.userService.createUser(user);
       alert('Registration succeed!');
       this.router.navigate(['/', 'login']);
-
-    } else if (this.userService.findUserByName(this.username)) {
-      this.errorFlag2 = true;
-    } else {
-      this.errorFlag1 = true;
-    }
+    }*/
   }
 
   ngOnInit() {

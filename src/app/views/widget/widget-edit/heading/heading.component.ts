@@ -9,26 +9,35 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./heading.component.css']
 })
 export class HeadingComponent implements OnInit {
-  widget: Widget;
+  widget = {};
   userid: string;
   webid: string;
   pageid: string;
   widgetid: string;
+  allwidgets = [] ;
 
   constructor(private headingService: WidgetService, private route: Router,
               private activeRoute: ActivatedRoute) { }
 
   update() {
-    this.headingService.updateWidget(this.widgetid, this.widget);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
-    this.route.navigateByUrl(url);
-    alert('header update success');
+    this.headingService.updateWidget(this.widgetid, this.widget).subscribe(
+      (data: any) => {
+        this.widget = data;
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
+        this.route.navigateByUrl(url);
+        alert('header update success');
+      }
+    );
   }
 
   delete() {
-    this.headingService.deleteWidget(this.widgetid);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
-    this.route.navigateByUrl(url);
+    this.headingService.deleteWidget(this.widgetid).subscribe(
+      (data: any) => {
+        this.allwidgets = data;
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
+        this.route.navigateByUrl(url);
+      }
+    );
   }
 
   ngOnInit() {
@@ -38,7 +47,9 @@ export class HeadingComponent implements OnInit {
       this.pageid = params.pid;
       this.widgetid = params.wgid;
     });
-    this.widget = this.headingService.findWidgetById(this.widgetid);
+    this.headingService.findWidgetById(this.widgetid).subscribe((data: any) => {
+      this.widget = data;
+    });
   }
 
 }

@@ -24,7 +24,7 @@
 
 <div class="container cl-container-padding">
   <div *ngFor="let widget of widgets">
-  <div [ngSwitch]="widget.widgetType">
+  <div [ngSwitch]="widget['widgetType']">
     <div *ngSwitchCase="'HEADER'">
       <div class="float-right">
         <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
@@ -33,28 +33,28 @@
             <span class="fas fa-bars"></span>
           </router-outlet>
         </a>
-        <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}">
+        <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}">
           <span class="fas fa-cog"></span>
         </a>
       </div>
-      <div [ngSwitch]="widget.size">
+      <div [ngSwitch]="widget['size']">
         <div *ngSwitchCase="1">
-          <h1>{{ widget.text }}</h1>
+          <h1>{{ widget['text'] }}</h1>
         </div>
         <div *ngSwitchCase="2">
-          <h2>{{ widget.text }}</h2>
+          <h2>{{ widget['text'] }}</h2>
         </div>
         <div *ngSwitchCase="3">
-          <h3>{{ widget.text }}</h3>
+          <h3>{{ widget['text'] }}</h3>
         </div>
         <div *ngSwitchCase="4">
-          <h4>{{ widget.text }}</h4>
+          <h4>{{ widget['text'] }}</h4>
         </div>
         <div *ngSwitchCase="5">
-          <p>{{ widget.text }}</p>
+          <p>{{ widget['text'] }}</p>
         </div>
         <div *ngSwitchCase="6">
-          <h6>{{ widget.text }}</h6>
+          <h6>{{ widget['text'] }}</h6>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
           </a>
         </div>
         <img class="img-responsive img-rounded cl-widget-images"
-             src="{{widget.url}}">
+             src="{{widget['url']}}">
     </div>
 
 
@@ -92,7 +92,7 @@
               <span class="fas fa-bars cl-white-background" ></span>
             </router-outlet>
           </a>
-          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}"
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}"
              class="float-right overlay cl-relative-position">
             <span class="fas fa-cog cl-relative-position cl-white-background" ></span>
           </a>

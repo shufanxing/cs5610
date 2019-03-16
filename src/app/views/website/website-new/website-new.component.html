@@ -9,7 +9,7 @@
       <a  class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/{{userId}}/website" id = "websites">
         Websites
       </a>
-      <a href="#" class="navbar-link navbar-text float-right cl-text-white">
+      <a (click) ="create()" class="navbar-link navbar-text float-right cl-text-white">
         <span class="fas fa-plus" id = "icon-plus"></span>
       </a>
     </div>
@@ -33,8 +33,8 @@
   <div class="col-sm-4" id = "division-col1">
     <ul class="list-group cl-list-group-borderless" *ngFor="let web of websites">
       <li class="list-group-item cl-list-item-borderless">
-        <a routerLink="/user/{{userId}}/website/{{web._id}}"><span class="fas fa-cog float-right"></span></a>
-        <a routerLink="/user/{{userId}}/website/{{web._id}}/page">{{web.name}}</a>
+        <a routerLink="/user/{{userId}}/website/{{web['_id']}}"><span class="fas fa-cog float-right"></span></a>
+        <a routerLink="/user/{{userId}}/website/{{web['_id']}}/page">{{web['name']}}</a>
       </li>
     </ul>
   </div>
@@ -42,11 +42,11 @@
     <form>
       <div class="form-group">
         <label for="website-name">Name</label>
-        <input [(ngModel)] = "curweb.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="website-name" placeholder="Name">
+        <input [(ngModel)] = "curweb['name']" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="website-name" placeholder="Name">
       </div>
       <div class="form-group">
         <label for="website-description">Description</label>
-        <textarea [(ngModel)] = "curweb.description" [ngModelOptions]="{standalone: true}" id="website-description" class="form-control" rows="5" placeholder="Description"></textarea>
+        <textarea [(ngModel)] = "curweb['description']" [ngModelOptions]="{standalone: true}" id="website-description" class="form-control" rows="5" placeholder="Description"></textarea>
       </div>
     </form>
   </div>

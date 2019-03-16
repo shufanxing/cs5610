@@ -17,7 +17,8 @@ class ImageSnippet {
 
 
 export class ImageComponent implements OnInit {
-  widget: Widget;
+  widget = {};
+  allwidgets = [] ;
   userid: string;
   webid: string;
   pageid: string;
@@ -30,16 +31,24 @@ export class ImageComponent implements OnInit {
               private activeRoute: ActivatedRoute, private http: HttpClient) { }
 
   update() {
-    this.imageService.updateWidget(this.widgetid, this.widget);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
-    this.route.navigateByUrl(url);
-    alert('header update success');
+    this.imageService.updateWidget(this.widgetid, this.widget).subscribe(
+      (data: any) => {
+        this.widget = data;
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
+        this.route.navigateByUrl(url);
+        alert('header update success');
+      }
+    );
   }
 
   delete() {
-    this.imageService.deleteWidget(this.widgetid);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
-    this.route.navigateByUrl(url);
+    this.imageService.deleteWidget(this.widgetid).subscribe(
+      (data: any) => {
+        this.allwidgets = data;
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
+        this.route.navigateByUrl(url);
+      }
+    );
   }
 
   onFileChange(event) {
@@ -75,6 +84,8 @@ export class ImageComponent implements OnInit {
       this.pageid = params.pid;
       this.widgetid = params.wgid;
     });
-    this.widget = this.imageService.findWidgetById(this.widgetid);
+    this.imageService.findWidgetById(this.widgetid).subscribe((data: any) => {
+      this.widget = data;
+    });
   }
 }

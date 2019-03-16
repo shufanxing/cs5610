@@ -9,7 +9,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./youtube.component.css']
 })
 export class YoutubeComponent implements OnInit {
-  widget: Widget;
+  widget = {};
+  allwidgets = [];
   userid: string;
   webid: string;
   pageid: string;
@@ -19,16 +20,24 @@ export class YoutubeComponent implements OnInit {
               private activeRoute: ActivatedRoute) { }
 
   update() {
-    this.youtubeService.updateWidget(this.widgetid, this.widget);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
-    this.route.navigateByUrl(url);
-    alert('youtube update success');
+    this.youtubeService.updateWidget(this.widgetid, this.widget).subscribe(
+      (data: any) => {
+        this.widget = data;
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
+        this.route.navigateByUrl(url);
+        alert('youtube update success');
+      }
+    );
   }
 
   delete() {
-    this.youtubeService.deleteWidget(this.widgetid);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
-    this.route.navigateByUrl(url);
+    this.youtubeService.deleteWidget(this.widgetid).subscribe(
+      (data: any) => {
+        this.allwidgets = data;
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget';
+        this.route.navigateByUrl(url);
+      }
+    );
   }
 
   ngOnInit() {
@@ -38,8 +47,9 @@ export class YoutubeComponent implements OnInit {
       this.pageid = params.pid;
       this.widgetid = params.wgid;
     });
-    this.widget = this.youtubeService.findWidgetById(this.widgetid);
+    this.youtubeService.findWidgetById(this.widgetid).subscribe(data => {
+      this.widget = data;
+      console.log(this.widget);
+    });
   }
-
-
 }

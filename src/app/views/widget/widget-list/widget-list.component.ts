@@ -13,7 +13,7 @@ export class WidgetListComponent implements OnInit {
   userid: string;
   pageid: string;
   webid: string;
-  widgets: Widget[];
+  widgets: [];
 
   constructor(private widgetservice: WidgetService,
               private route: Router,
@@ -30,8 +30,10 @@ export class WidgetListComponent implements OnInit {
     this.activeroute.params.subscribe((params: any) => { this.userid = params.uid;
                                                                this.webid = params.wid;
                                                                this.pageid = params.pid; });
-    this.widgets = this.widgetservice.findWidgetByPageId(this.pageid);
-    console.log(this.widgets);
+    this.widgetservice.findWidgetByPageId(this.pageid).subscribe((data: any) => {
+      this.widgets = data;
+      console.log(this.widgets);
+    });
   }
 
 }

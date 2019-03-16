@@ -14,14 +14,20 @@ export class PageNewComponent implements OnInit {
   curpage: Page;
   name: string;
   newdescription: string;
+  pages = [];
   constructor(private route: Router, private activatedroute: ActivatedRoute, private pageservice: PageService) {
   }
   creat() {
-    this.pageservice.createWebsite(this.webid, this.curpage);
-    console.log('page name' + this.curpage.name);
-    console.log('description' + this.curpage.description);
-    const url = '/user/' + this.userid + '/website/' + this.webid + '/page';
-    this.route.navigateByUrl(url);
+    this.pageservice.createPage(this.webid, this.curpage).subscribe(
+      (data: any) => {
+        this.pages = data;
+        console.log(this.pages);
+        console.log('page name' + this.curpage.name);
+        console.log('description' + this.curpage.description);
+        const url = '/user/' + this.userid + '/website/' + this.webid + '/page';
+        this.route.navigateByUrl(url);
+      }
+    );
   }
 
   ngOnInit() {

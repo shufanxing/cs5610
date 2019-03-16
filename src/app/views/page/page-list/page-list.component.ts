@@ -16,7 +16,13 @@ export class PageListComponent implements OnInit {
 
   ngOnInit() {
     this.activeRouter.params.subscribe((params: any) => {this.userid = params.uid; this.webid = params.wid; });
-    this.pages = this.pageService.findPageByWebsiteId2(this.webid);
+
+    this.pageService.findPageByWebsiteId2(this.webid)
+      .subscribe((data: any) => {
+        console.log('in login comp...');
+        console.log(data);
+        this.pages = data;
+      });
     console.log(this.userid);
     console.log(this.webid);
   }

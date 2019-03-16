@@ -17,6 +17,7 @@ export class WidgetChooserComponent implements OnInit {
     new Widget('id', 'name', 'IMAGE', 'pageid'),
     new Widget('id', 'name', 'YOUTUBE', 'pageid')
   ];
+
   constructor(private service: WidgetService, private route: Router, private activeroute: ActivatedRoute ) { }
   creat(widget) {
       const new_widget = {
@@ -28,10 +29,14 @@ export class WidgetChooserComponent implements OnInit {
         url: widget.url,
         size: widget.size,
         width: widget.width};
-      this.service.createWidget(this.pageid, new_widget);
-      const url = '/user/' + this.userid + '/website/' + this.webid
-        + '/page/' + this.pageid + '/widget/' + new_widget._id;
-      this.route.navigateByUrl(url);
+      this.service.createWidget(this.pageid, new_widget).subscribe(
+        (newWidget: Widget) => {
+          console.log(newWidget);
+          const url = '/user/' + this.userid + '/website/' + this.webid
+            + '/page/' + this.pageid + '/widget/' + new_widget._id;
+          this.route.navigateByUrl(url);
+        }
+      );
     }
 
   ngOnInit() {

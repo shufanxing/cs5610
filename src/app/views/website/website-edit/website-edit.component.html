@@ -38,8 +38,8 @@
   <div class="col-sm-4" id = "division-col1" >
     <ul class="list-group cl-list-group-borderless" *ngFor="let website of websites">
       <li class="list-group-item cl-list-item-borderless">
-        <a routerLink="/user/{{userId}}/website/{{website._id}}"><span class="fas fa-cog float-right"></span></a>
-        <a routerLink= "/user/{{userId}}/website/{{website._id}}/page">{{website.name}}</a>
+        <a (click)="findWebByWebId(website['_id'])" ><span class="fas fa-cog float-right"></span></a>
+        <a routerLink= "/user/{{userId}}/website/{{website['_id']}}/page">{{website['name']}}</a>
       </li>
     </ul>
   </div>
@@ -47,11 +47,11 @@
     <form >
       <div class="form-group">
         <label for="website-name" class = "cl-text-bold" >Website Name</label>
-        <input [(ngModel)]="curweb.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="website-name" placeholder="Blogger">
+        <input [(ngModel)]="curweb['name']" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="website-name" placeholder="Blogger">
       </div>
       <div class="form-group">
         <label for="website-description" class = "cl-text-bold">Website Description</label>
-        <textarea [(ngModel)]="curweb.description" [ngModelOptions]="{standalone: true}" id="website-description" class="form-control" rows="5"
+        <textarea [(ngModel)]="curweb['description']" [ngModelOptions]="{standalone: true}" id="website-description" class="form-control" rows="5"
                   placeholder="Blogger is a blog-publishing service."></textarea>
       </div>
       <a (click)="delete()" class="btn btn-danger  btn-block">Delete</a>

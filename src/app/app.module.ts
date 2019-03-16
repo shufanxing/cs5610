@@ -24,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {WidgetService} from './service/widget.service.client';
 import {PageService} from './service/page.service.client';
 import { WidgetEditComponent } from './views/widget/widget-edit/widget-edit.component';
+import { MydirectiveDirective } from './mydirective.directive';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { WidgetEditComponent } from './views/widget/widget-edit/widget-edit.comp
     ImageComponent,
     YoutubeComponent,
     WidgetEditComponent,
+    MydirectiveDirective,
   ],
   imports: [
     BrowserModule,

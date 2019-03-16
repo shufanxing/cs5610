@@ -8,6 +8,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Point static path to dist -- For building -- REMOVE
 //app.use(express.static(path.join(__dirname, 'dist/web-maker')));
@@ -29,6 +30,8 @@ app.set('port', port);
 const server = http.createServer(app);
 server.listen( port , () => console.log('Running on port 3200'));
 
+
+
 /*var dbServer = require('./test-mongodb/app');
 dbServer(app);*/
 
@@ -41,7 +44,20 @@ dbServer(app);*/
 //   res.sendFile(path.join(__dirname, 'public/index.html'));
 // });
 
+// const express = require('express');
+// const app = express();
+//app.set('process.env.PORT||3200',port);
 
+//************************************* Feb.28 2019
+// app.get("/api/hello", function(req,res){
+// //   res.send("Hello World!")
+// // });
+// //
+// // app.get("/api/hellofunction",helloFun);
+// // function helloFun(req,res){
+// //   res.send("response message");
+// // }
+// require('./test')(app);
 
-
-//require('./assignment/app')(app);
+//require('./server/app')(app);
+require("./server/app")(app);

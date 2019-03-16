@@ -74,8 +74,14 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  username: String;
+  firstName: String;
+  lastName: String;
+  email: String;
+  user = {};
   userId: String;
-  user: User;
+  errorFlag : boolean;
+  errorMsg = 'Invalid username or password !';
 
   constructor(private userService: UserService, private route: ActivatedRoute) {
     //this.user = this.userService.findUserById(this.userId);
@@ -84,19 +90,36 @@ export class ProfileComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.user.username);
-    console.log(this.user.firstname);
-    console.log(this.user.lastname);
+
     // const cur_user: User = new User(this.user._id, this.user.username, this.user.password,
     //   String(this.firstname), String(this.lastname), String(this.email));
-    this.user = this.userService.updateUser(this.user);
+     this.userService.updateUser(this.user).subscribe(
+       (data: any) => {
+         this.user = data;
+         console.log(this.user);
+       },
+       (error: any) => {
+         alert('update failed!');
+       }
+     );
   }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {this.userId = params.uid; });
-    this.user = this.userService.findUserById(this.userId);
+    //this.user = this.userService.findUserById(this.userId);
     console.log('user id: ' + this.userId);
-    console.log('user name' + this.user.username);
+    //console.log('user name' + this.user.username);
+    this.userService.findUserById(this.userId)
+      .subscribe((data: any) => {
+        console.log('in login comp...');
+        console.log(data);
+        this.user = data;
+      });
+    // this.username = this.user['username'];
+    // this.lastName = this.user['lastName'];
+    // this.firstName = this.user['firstName'];
+    // this.email = this.user['email'];
+
   }
 }
 

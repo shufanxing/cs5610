@@ -1,8 +1,11 @@
 
 import {Injectable} from '@angular/core';
 import { Widget } from '../models/widget.model.client';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+
 
 @Injectable()
 
@@ -62,73 +65,33 @@ export  class WidgetService {
       'has occurred at London Bridge. From CNN London.')
   ];
 
+  constructor(private http: HttpClient) {}
 
-  createWidget(pageId, widget) {
-    const new_widget = {
-      _id: (new Date()).getTime() + '',
-      name: widget.name,
-      pageId: pageId,
-      widgetType: widget.widgetType,
-      text: widget.text,
-      url: widget.url,
-      size: widget.size,
-      width: widget.width
-    };
-    this.widgets.push(new_widget);
+
+  createWidget(pageId: String, widget: Widget) {
+    const curWidget = {_id: widget._id, name: widget.name,
+      widgetType: widget.widgetType, pageId: widget.pageId, size: widget.size,
+      text: widget.text, width: widget.width, url: widget.url }
+    return this.http.post('http://localhost:3200/api/page/' + pageId + '/widget', curWidget);
   }
 
-  findWidgetByPageId(pageId) {
-    return this.widgets.filter(function (widget) {
-      return widget.pageId === pageId;
-    });
+  findWidgetByPageId(pageId: String) {
+    return this.http.get('http://localhost:3200/api/page/' + pageId + '/widget');
   }
 
-  findWidgetById(widgetId) {
-    for ( let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x]._id === widgetId) {
-        return this.widgets[x];
-      }
-    }
+  findWidgetById(widgetId: String) {
+    return this.http.get('http://localhost:3200/api/widget/' + widgetId);
   }
 
-  updateWidget(widgetId, widget) {
-    for ( const i in this.widgets ) {
-      if ( this.widgets[i]._id === widgetId ) {
-        switch (widget.widgetType) {
-          case 'HEADER':
-            this.widgets[i].name = widget.name;
-            this.widgets[i].text = widget.text;
-            this.widgets[i].size = widget.size;
-            return true;
-
-          case 'IMAGE':
-            this.widgets[i].name = widget.name;
-            this.widgets[i].text = widget.text;
-            this.widgets[i].url = widget.url;
-            this.widgets[i].width = widget.width;
-            return true;
-
-          case 'YOUTUBE':
-            this.widgets[i].name = widget.name;
-            this.widgets[i].text = widget.text;
-            this.widgets[i].url = widget.url;
-            this.widgets[i].width = widget.width;
-            return true;
-        }
-
-      }
-    }
-    return false;
+  updateWidget(widgetId: String, widget: any) {
+    const curwidget = {_id: widget['_id'], name: widget['name'], widgetType: widget['widgetType'],
+      pageId: widget['pageId'], size: widget['size'],
+      text: widget['text'], width: widget['width'], url: widget['url'] };
+    return this.http.put('http://localhost:3200/api/widget/' + widgetId, curwidget);
   }
 
-  deleteWidget(widgetId) {
-    for (const i in this.widgets) {
-      if (this.widgets[i]._id === widgetId) {
-        const j = +i;
-        this.widgets.splice(j, 1);
-      }
-    }
-
+  deleteWidget(widgetId: String) {
+    return this.http.delete('http://localhost:3200/api/widget/' + widgetId);
   }
 
 

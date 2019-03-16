@@ -15,7 +15,13 @@
 <!--​<a class = "button" routerLink="user/:uid/website/:wid/page/:pid/widget/new">Widget-Chooser</a>​-->
 <!--​<a class = "button" routerLink="user/:uid/website/:wid/page/:pid/widget/:wgid">Widget-Edit</a>​-->
 
-
+<ul appSortable (newIndexes) = "reorderItems($event)">
+  <li>One</li>
+  <li>Two</li>
+  <li>Three</li>
+  <li>Four</li>
+  <li>Five</li>
+</ul>
 
 
 <router-outlet></router-outlet>

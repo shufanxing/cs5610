@@ -31,25 +31,25 @@
   <form>
     <div class="form-group">
       <label for="youtube-name">Name</label>
-      <input [(ngModel)]="widget.name"
+      <input [(ngModel)]="widget['name']"
              [ngModelOptions]="{standalone: true}"
              type="text" class="form-control" id="youtube-name" placeholder="Name">
     </div>
     <div class="form-group">
       <label for="youtube-text">Text</label>
-      <input [(ngModel)]="widget.text"
+      <input [(ngModel)]="widget['text']"
              [ngModelOptions]="{standalone: true}"
              type="text" class="form-control" id="youtube-text" placeholder="Text">
     </div>
     <div class="form-group">
       <label for="youtube-URL">URL</label>
-      <input [(ngModel)]="widget.url"
+      <input [(ngModel)]="widget['url']"
              [ngModelOptions]="{standalone: true}"
              type="text" class="form-control" id="youtube-URL" placeholder="URL">
     </div>
     <div class="form-group">
       <label for="youtube-width">Width</label>
-      <input [(ngModel)]="widget.width"
+      <input [(ngModel)]="widget['width']"
              [ngModelOptions]="{standalone: true}"
              type="text" class="form-control" id="youtube-width" placeholder="100%">
     </div>

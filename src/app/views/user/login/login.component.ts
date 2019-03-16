@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('f') myloginForm: NgForm;
   username: String; // see usage as two-way data binding
   password: String; // see usage as two-way data binding
-
+  //user: User = null;
   errorFlag: boolean;
   errorMsg = 'Invalid username or password !';
 
@@ -24,28 +24,23 @@ export class LoginComponent implements OnInit {
     this.username = 'hello world!';
   }
 
-  /*login(username: String, password: String) {
-    //alert('username: ' + username);
-   // if (username === 'alice' && password == "qqq") {
-      const user: User = this.userService.findUserByCredential(username, password);
-      if (user) {
-        this.router.navigate(['/profile', user._id ]);
-      }
-   // }
-  }*/
 
   login() {
     this.username = this.myloginForm.value.username;
     this.password = this.myloginForm.value.password;
     // alert(this.username);
     this.errorFlag = false;
-
-    const user: User = this.userService.findUserByCredential(this.username, this.password);
-    if (user) {
-      this.router.navigate(['/user', user._id]);
-    } else {
-      this.errorFlag = true;
-    }
+    this.userService.findUserByCredential(this.username, this.password)
+      .subscribe((user: User) => {
+        //this.user = user;
+          if (user) {
+            console.log(user);
+            this.router.navigate(['/user', user._id]);
+          } else {
+            this.errorFlag = true;
+          }
+        }
+      );
   }
 
 

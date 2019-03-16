@@ -25,12 +25,12 @@
   <form>
     <div class="form-group">
       <label for="page-name">Name</label>
-      <input [(ngModel)]="curpage.name" [ngModelOptions]="{standalone: true}"
+      <input [(ngModel)]="curpage['name']" [ngModelOptions]="{standalone: true}"
              type="text" class="form-control" id="page-name" placeholder="Page Name">
     </div>
     <div class="form-group">
       <label for="page-title">Title</label>
-      <input [(ngModel)]="curpage.description" [ngModelOptions]="{standalone: true}"
+      <input [(ngModel)]="curpage['description']" [ngModelOptions]="{standalone: true}"
              type="text" class="form-control" id="page-title" placeholder="Page Title">
     </div>
   </form>

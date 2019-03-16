@@ -1,5 +1,10 @@
 import { Website} from '../models/website.model.client';
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import {User} from '../models/user.model.client';
 
 
 @Injectable()
@@ -14,49 +19,26 @@ export class WebsiteService {
     new Website('789', 'Chess', '234', 'Lorem')
   ];
 
-
+  constructor(private http: HttpClient) {}
   createWebsite(userId: String, website: Website) {
-
-
-    const new_website: Website = {
-      _id: (new Date()).getTime() + '',
-      name: website.name,
-      developerId: userId,
-      description: website.description
-    };
-
-    this.websites.push(new_website);
+    const web = {_id: '', name: website.name, developerId: website.developerId, description: website.description};
+    return this.http.post('http://localhost:3200/api/user/' + userId + '/website', web);
   }
 
   findWebsitesByUser(userId: String) {
-    return this.websites.filter(function (website) {
-      return website.developerId === userId;
-    });
+    return this.http.get('http://localhost:3200/api/user/' + userId + '/website');
   }
 
   findWebsiteById(websiteId: String) {
-    for (const i in this.websites) {
-      if (this.websites[i]._id === websiteId) {
-        return this.websites[i];
-      }
-    }
+    return this.http.get('http://localhost:3200/api/website/' + websiteId);
   }
 
-  updateWebsite(websiteId: String, website: Website) {
-    for (const i in this.websites) {
-      if (this.websites[i]._id === websiteId) {
-        this.websites[i].name = website.name;
-        this.websites[i].description = website.description;
-      }
-    }
+  updateWebsite(websiteId: String, website: any) {
+    const web = {_id: website._id, name: website.name, developerId: website.developerId, description: website.description};
+    return this.http.put('http://localhost:3200/api/website/' + websiteId, web);
   }
 
   deleteWebsite(websiteId: String) {
-    for (const i in this.websites) {
-      if (this.websites[i]._id === websiteId) {
-        const j = +i;
-        this.websites.splice(j, 1);
-      }
-    }
+    return this.http.delete('http://localhost:3200/api/website/' + websiteId);
   }
 }

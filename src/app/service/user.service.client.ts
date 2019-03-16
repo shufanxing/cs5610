@@ -1,5 +1,9 @@
 import { User } from '../models/user.model.client';
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 
 @Injectable()
@@ -14,52 +18,34 @@ export class UserService {
   //   {id: "111", username: "hunter", password: "hunter", firstname: "h" }
   // ]
 
+  constructor(private http: HttpClient) {}
+
   createUser(user: User) {
-    user._id = Math.floor(Math.random() * 1000).toString();
-    this.users.push(new User(user._id, user.username, user.password));
+    const userbody = {_id: '', username: user.username, password: user.password };
+    return this.http.post('http://localhost:3200/api/user', userbody);
   }
 
   findUserByCredential(username: String, password: String) {
-    return this.users.find( function (user) {
-      return user.username === username && user.password === password;
-    });
+    return this.http.get('http://localhost:3200/api/user?username=' + username + '&password=' + password);
   }
 
   findUserById(userId: String) {
-    for ( let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        return this.users[x];
-      }
-    }
+    return this.http.get('http://localhost:3200/api/user/' + userId);
   }
    getUserList() {
      return this.users;
    }
   findUserByName(username: String) {
-    for ( let x = 0; x < this.users.length; x++) {
-      if (this.users[x].username === username) {
-        return this.users[x];
-      }
-    }
+    return this.http.get('http://localhost:3200/api/username?username=' + username);
   }
 
-  updateUser(user: User) {
-    for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i]._id === user._id) {
-        this.users[i].firstname = user.firstname;
-        this.users[i].lastname = user.lastname;
-        this.users[i].email = user.email;
-        return this.users[i];
-      }
-    }
+  updateUser(user: any) {
+    const url =  'http://localhost:3200/api/user/' + user._id;
+    return this.http.put(url, user);
   }
 
   deleteUserById(userId: String) {
-    for (const i in this.users) {
-      if (this.users[i]._id === userId) {
-        const j = +i;
-        this.users.splice(j, 1);
-      }
-    }
+    const url =  'http://localhost:3200/api/user/' + userId;
+    return this.http.delete(url);
   }
 }

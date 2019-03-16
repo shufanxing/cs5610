@@ -15,14 +15,24 @@ export class WebsiteNewComponent implements OnInit {
   constructor(private webservice: WebsiteService, private route: Router,
               private activeroute: ActivatedRoute) { }
   create() {
-    this.webservice.createWebsite(this.userId, this.curweb);
-    console.log('cur developerid' + this.curweb.developerId);
-    const url = '/user/' + this.userId + '/website';
-    this.route.navigateByUrl(url);
+    this.curweb = new Website(this.curweb._id, this.curweb.name, this.userId, this.curweb.description);
+    this.webservice.createWebsite(this.userId, this.curweb).subscribe(
+      (data: any) => {
+        console.log('cur developerid' + this.curweb.developerId);
+        const url = '/user/' + this.userId + '/website';
+        this.route.navigateByUrl(url);
+        this.webservice.findWebsitesByUser(this.userId).subscribe((webs: any) => {
+          this.websites = webs;
+        });
+      }
+    );
+
   }
   ngOnInit() {
     this.activeroute.params.subscribe((params: any) => {this.userId = params.uid; });
-    this.websites = this.webservice.findWebsitesByUser(this.userId);
+    this.webservice.findWebsitesByUser(this.userId).subscribe((data: any) => {
+      this.websites = data;
+    });
     this.curweb = new Website('id', 'name', this.userId, 'des');
     console.log(this.curweb.developerId);
   }
