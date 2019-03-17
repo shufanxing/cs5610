@@ -121,7 +121,7 @@ module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJz
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!--<a class = \"button\" routerLink=\"/login\">Login</a>​-->\n<!--<a class = \"button\" routerLink=\"/register\">Register</a>​-->\n<!--<a class = \"button\" routerLink=\"/user/:uid\">Profile</a>​-->\n\n<!--<a class = \"button\" routerLink=\"user/:uid/website\">Website-List</a>​-->\n<!--<a class = \"button\" routerLink=\"user/:uid/website/new\">Website-New</a>​-->\n<!--<a class = \"button\" routerLink=\"user/:uid/website/:wid\">Website-Edit</a>​-->\n\n<!--<a class = \"button\" routerLink=\"user/:uid/website/:wid/page\">Page-List</a>​-->\n<!--<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/new\">Page-New</a>-->\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid\">Page-Edit</a>​-->\n\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget\">Widget-List</a>​-->\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/new\">Widget-Chooser</a>​-->\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/:wgid\">Widget-Edit</a>​-->\n\n<ul appSortable (newIndexes) = \"reorderItems($event)\">\n  <li>One</li>\n  <li>Two</li>\n  <li>Three</li>\n  <li>Four</li>\n  <li>Five</li>\n</ul>\n\n\n<router-outlet></router-outlet>\n"
+module.exports = "\n<!--<a class = \"button\" routerLink=\"/login\">Login</a>​-->\n<!--<a class = \"button\" routerLink=\"/register\">Register</a>​-->\n<!--<a class = \"button\" routerLink=\"/user/:uid\">Profile</a>​-->\n\n<!--<a class = \"button\" routerLink=\"user/:uid/website\">Website-List</a>​-->\n<!--<a class = \"button\" routerLink=\"user/:uid/website/new\">Website-New</a>​-->\n<!--<a class = \"button\" routerLink=\"user/:uid/website/:wid\">Website-Edit</a>​-->\n\n<!--<a class = \"button\" routerLink=\"user/:uid/website/:wid/page\">Page-List</a>​-->\n<!--<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/new\">Page-New</a>-->\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid\">Page-Edit</a>​-->\n\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget\">Widget-List</a>​-->\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/new\">Widget-Chooser</a>​-->\n<!--​<a class = \"button\" routerLink=\"user/:uid/website/:wid/page/:pid/widget/:wgid\">Widget-Edit</a>​-->\n\n\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -202,8 +202,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_widget_service_client__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./service/widget.service.client */ "./src/app/service/widget.service.client.ts");
 /* harmony import */ var _service_page_service_client__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./service/page.service.client */ "./src/app/service/page.service.client.ts");
 /* harmony import */ var _views_widget_widget_edit_widget_edit_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./views/widget/widget-edit/widget-edit.component */ "./src/app/views/widget/widget-edit/widget-edit.component.ts");
-/* harmony import */ var _mydirective_directive__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./mydirective.directive */ "./src/app/mydirective.directive.ts");
-
 
 
 
@@ -252,7 +250,6 @@ var AppModule = /** @class */ (function () {
                 _views_widget_widget_edit_image_image_component__WEBPACK_IMPORTED_MODULE_20__["ImageComponent"],
                 _views_widget_widget_edit_youtube_youtube_component__WEBPACK_IMPORTED_MODULE_21__["YoutubeComponent"],
                 _views_widget_widget_edit_widget_edit_component__WEBPACK_IMPORTED_MODULE_25__["WidgetEditComponent"],
-                _mydirective_directive__WEBPACK_IMPORTED_MODULE_26__["MydirectiveDirective"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -379,60 +376,6 @@ var Widget = /** @class */ (function () {
         this.width = width;
     }
     return Widget;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/mydirective.directive.ts":
-/*!******************************************!*\
-  !*** ./src/app/mydirective.directive.ts ***!
-  \******************************************/
-/*! exports provided: MydirectiveDirective */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MydirectiveDirective", function() { return MydirectiveDirective; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var MydirectiveDirective = /** @class */ (function () {
-    function MydirectiveDirective(el) {
-        this.el = el;
-        this.newIndexes = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"](); // this will emit an event for the parent component or the directive calling component
-    }
-    // Lifecycle hook that is called after a component's view has been fully initialized
-    MydirectiveDirective.prototype.ngAfterViewInit = function () {
-        this.appSortable(this);
-    };
-    MydirectiveDirective.prototype.appSortable = function (refe) {
-        jQuery(this.el.nativeElement).sortable({
-            axis: 'y',
-            start: function (event, ui) {
-                refe.initialIndex = ui.item.index();
-            },
-            stop: function (event, ui) {
-                refe.newIndexes.emit({
-                    startIndex: refe.initialIndex,
-                    endIndex: ui.item.index()
-                });
-            }
-        });
-    };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], MydirectiveDirective.prototype, "newIndexes", void 0);
-    MydirectiveDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"])({
-            selector: '[appSortable]'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]])
-    ], MydirectiveDirective);
-    return MydirectiveDirective;
 }());
 
 
@@ -1777,7 +1720,7 @@ module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n/*
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n<nav class=\"navbar navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n\n    <div >\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a  class = \"navbar-brand navbar-text cl-text-black cl-text-bold\"\n          routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widgetid}}/image\">\n        Widgets Edit\n      </a>\n    </div>\n\n    <div class=\"navbar-text pull-right\">\n      <a (click)= \"update()\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-check\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <form>\n    <div class=\"form-group\">\n      <label for=\"image-name\">Name</label>\n      <input [(ngModel)]=\"widget['name']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-name\" placeholder=\"Name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-text\">Text</label>\n      <input [(ngModel)]=\"widget['text']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-text\" placeholder=\"Text\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-URL\">URL</label>\n      <input [(ngModel)]=\"widget['url']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-URL\" placeholder=\"URL\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-width\">Width</label>\n      <input [(ngModel)]=\"widget['width']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-width\" placeholder=\"100%\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"exampleFormControlFile1\">Upload</label>\n      <input (change)=\"onFileChange($event)\" type=\"file\" class=\"form-control-file\" id=\"exampleFormControlFile1\">\n    </div>\n  </form>\n  <a  (click)=\"upload()\" class=\"btn btn-primary btn-block\" >Upload Image</a>\n  <a (click)=\"delete()\" class=\"btn btn-danger  btn-block\">Delete</a>\n</div>\n\n<nav class=\"navbar  navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n    <div class=\"pull-right navbar-text\">\n    </div>\n    <div class = \"navbar-text\">\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n    </div>\n  </div>\n\n</nav>\n\n</body>\n"
+module.exports = "<body>\n<nav class=\"navbar navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n\n    <div >\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a  class = \"navbar-brand navbar-text cl-text-black cl-text-bold\"\n          routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widgetid}}/image\">\n        Widgets Edit\n      </a>\n    </div>\n\n    <div class=\"navbar-text pull-right\">\n      <a (click)= \"update()\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-check\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <form>\n    <div class=\"form-group\">\n      <label for=\"image-name\">Name</label>\n      <input [(ngModel)]=\"widget['name']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-name\" placeholder=\"Name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-text\">Text</label>\n      <input [(ngModel)]=\"widget['text']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-text\" placeholder=\"Text\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-URL\">URL</label>\n      <input [(ngModel)]=\"widget['url']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-URL\" placeholder=\"URL\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-width\">Width</label>\n      <input [(ngModel)]=\"widget['width']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-width\" placeholder=\"100%\">\n    </div>\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"exampleFormControlFile1\">Upload</label>-->\n      <!--<input (change)=\"onFileChange($event)\" type=\"file\" class=\"form-control-file\" id=\"exampleFormControlFile1\">-->\n    <!--</div>-->\n\n    <form ngNoForm action=\"{{baseUrl}}/api/upload\" method=\"post\" enctype=\"multipart/form-data\">\n      <input  name=\"myFile\"   type=\"file\" class=\"form-control\"/>\n      <input  name=\"widgetId\" value=\"{{widgetid}}\"   style=\"display: none\"/>\n      <input  name=\"websiteId\" value=\"{{webid}}\"   style=\"display: none\"/>\n      <input  name=\"pageId\" value=\"{{pageid}}\"   style=\"display: none\"/>\n      <input  name=\"userId\" value=\"{{userid}}\"   style=\"display: none\"/>\n      <button type=\"submit\"  onclick = \"submit()\" class=\"btn btn-block btn-primary\">Upload Image</button>\n      <br/>\n    </form>\n  </form>\n\n  <a (click)=\"delete()\" class=\"btn btn-danger  btn-block\">Delete</a>\n</div>\n\n<nav class=\"navbar  navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n    <div class=\"pull-right navbar-text\">\n    </div>\n    <div class = \"navbar-text\">\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n    </div>\n  </div>\n\n</nav>\n\n</body>\n"
 
 /***/ }),
 
@@ -1816,6 +1759,7 @@ var ImageComponent = /** @class */ (function () {
         this.http = http;
         this.widget = {};
         this.allwidgets = [];
+        this.baseUrl = 'http://localhost:3200';
     }
     ImageComponent.prototype.update = function () {
         var _this = this;
@@ -1834,27 +1778,30 @@ var ImageComponent = /** @class */ (function () {
             _this.route.navigateByUrl(url);
         });
     };
-    ImageComponent.prototype.onFileChange = function (event) {
-        this.file = event.target.files[0];
-        this.input = event.target.result;
-        console.log(event);
-    };
-    ImageComponent.prototype.upload = function () {
-        var _this = this;
-        var reader = new FileReader();
-        reader.addEventListener('load', function (event) {
-            _this.selectedfile = new ImageSnippet(event.target.result, _this.file);
-            _this.uploadImage(_this.selectedfile.file).subscribe(function (res) {
-            }, function (err) {
-            });
-        });
-        reader.readAsDataURL(this.file);
-    };
-    ImageComponent.prototype.uploadImage = function (image) {
-        var formData = new FormData();
-        formData.append('image', image);
-        return this.http.post('/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget', formData);
-    };
+    // onFileChange(event) {
+    //   this.file = <File> event.target.files[0];
+    //   this.input = event.target.result;
+    //   console.log(event);
+    // }
+    // upload() {
+    //   const reader = new FileReader();
+    //   reader.addEventListener('load', (event: any) => {
+    //     this.selectedfile = new ImageSnippet(event.target.result, this.file);
+    //     this.uploadImage(this.selectedfile.file).subscribe(
+    //       (res) => {
+    //       },
+    //       (err) => {
+    //       });
+    //     });
+    //   reader.readAsDataURL(this.file);
+    // }
+    // public uploadImage(image: File) {
+    //   const formData = new FormData();
+    //
+    //   formData.append('image', image);
+    //
+    //   return this.http.post('/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget', formData);
+    // }
     ImageComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activeRoute.params.subscribe(function (params) {
@@ -2069,7 +2016,7 @@ module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n/*
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n    <div>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page\" class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a class=\"navbar-brand navbar-text cl-text-white cl-text-bold\"\n         routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\">\n        Widgets\n      </a>\n    </div>\n    <div class=\"navbar-text float-right\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/new\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-plus\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container cl-container-padding\">\n  <div *ngFor=\"let widget of widgets\">\n  <div [ngSwitch]=\"widget['widgetType']\">\n    <div *ngSwitchCase=\"'HEADER'\">\n      <div class=\"float-right\">\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n           class=\"float-right\">\n          <router-outlet (click)=\"onActivate()\" >\n            <span class=\"fas fa-bars\"></span>\n          </router-outlet>\n        </a>\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n          <span class=\"fas fa-cog\"></span>\n        </a>\n      </div>\n      <div [ngSwitch]=\"widget['size']\">\n        <div *ngSwitchCase=\"1\">\n          <h1>{{ widget['text'] }}</h1>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <h2>{{ widget['text'] }}</h2>\n        </div>\n        <div *ngSwitchCase=\"3\">\n          <h3>{{ widget['text'] }}</h3>\n        </div>\n        <div *ngSwitchCase=\"4\">\n          <h4>{{ widget['text'] }}</h4>\n        </div>\n        <div *ngSwitchCase=\"5\">\n          <p>{{ widget['text'] }}</p>\n        </div>\n        <div *ngSwitchCase=\"6\">\n          <h6>{{ widget['text'] }}</h6>\n        </div>\n      </div>\n    </div>\n\n\n    <div *ngSwitchCase=\"'IMAGE'\">\n        <div class=\"float-right\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right\">\n            <router-outlet (click)=\"onActivate()\">\n              <span class=\"fas fa-bars\"></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}\">\n            <span class=\"fas fa-cog\"></span>\n          </a>\n        </div>\n        <img class=\"img-responsive img-rounded cl-widget-images\"\n             src=\"{{widget['url']}}\">\n    </div>\n\n\n    <div *ngSwitchCase=\"'YOUTUBE'\">\n      <div class=\"embed-responsive embed-responsive-16by9\">\n        <iframe class = \"embed-responsive-item\" width=\"640\" height=\"360\"\n                [src]=\"getUrl(widget)\"\n                frameborder=\"0\"\n                allow=\"accelerometer autoplay encrypted-media gyroscope picture-in-picture\"\n                allowfullscreen>\n        </iframe>\n        <div class = \"overlay cl-relative-position\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right overlay cl-relative-position\">\n            <router-outlet (click)=\"onActivate()\" >\n              <span class=\"fas fa-bars cl-white-background\" ></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\"\n             class=\"float-right overlay cl-relative-position\">\n            <span class=\"fas fa-cog cl-relative-position cl-white-background\" ></span>\n          </a>\n        </div>\n      </div>\n    </div>\n    </div>\n</div>\n</div>\n\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n\n\n    <div class=\"float-left navbar-text\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\" >\n          <span class=\"fas fa-play\"></span>\n        </router-outlet>\n      </a>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\">\n          <span class=\"fas fa-eye\"></span>\n        </router-outlet>\n      </a>\n\n    </div>\n    <div class=\"float-right navbar-text\">\n\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n\n    </div>\n  </div>\n</nav>\n</body>\n"
+module.exports = "<body>\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n    <div>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page\" class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a class=\"navbar-brand navbar-text cl-text-white cl-text-bold\"\n         routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\">\n        Widgets\n      </a>\n    </div>\n    <div class=\"navbar-text float-right\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/new\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-plus\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container cl-container-padding\">\n  <div *ngFor=\"let widget of widgets\">\n  <div [ngSwitch]=\"widget['widgetType']\">\n    <div *ngSwitchCase=\"'HEADER'\">\n      <div class=\"float-right\">\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n           class=\"float-right\">\n          <router-outlet (click)=\"onActivate()\" >\n            <span class=\"fas fa-bars\"></span>\n          </router-outlet>\n        </a>\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n          <span class=\"fas fa-cog\"></span>\n        </a>\n      </div>\n      <div [ngSwitch]=\"widget['size']\">\n        <div *ngSwitchCase=\"1\">\n          <h1>{{ widget['text'] }}</h1>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <h2>{{ widget['text'] }}</h2>\n        </div>\n        <div *ngSwitchCase=\"3\">\n          <h3>{{ widget['text'] }}</h3>\n        </div>\n        <div *ngSwitchCase=\"4\">\n          <h4>{{ widget['text'] }}</h4>\n        </div>\n        <div *ngSwitchCase=\"5\">\n          <p>{{ widget['text'] }}</p>\n        </div>\n        <div *ngSwitchCase=\"6\">\n          <h6>{{ widget['text'] }}</h6>\n        </div>\n      </div>\n    </div>\n\n\n    <div *ngSwitchCase=\"'IMAGE'\">\n        <div class=\"float-right\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right\">\n            <router-outlet (click)=\"onActivate()\">\n              <span class=\"fas fa-bars\"></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget._id}}\">\n            <span class=\"fas fa-cog\"></span>\n          </a>\n        </div>\n        <img class=\"img-responsive img-rounded cl-widget-images\"\n             src=\"{{widget['url']}}\">\n    </div>\n\n\n    <div *ngSwitchCase=\"'YOUTUBE'\">\n      <div class=\"embed-responsive embed-responsive-16by9\">\n        <iframe class = \"embed-responsive-item\" width=\"640\" height=\"360\"\n                [src]=\"getUrl(widget)\"\n                frameborder=\"0\"\n                allow=\"accelerometer autoplay encrypted-media gyroscope picture-in-picture\"\n                allowfullscreen>\n        </iframe>\n        <div class = \"overlay cl-relative-position\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right overlay cl-relative-position\">\n            <router-outlet (click)=\"onActivate()\" >\n              <span class=\"fas fa-bars cl-white-background\" ></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\"\n             class=\"float-right overlay cl-relative-position\">\n            <span class=\"fas fa-cog cl-relative-position cl-white-background\" ></span>\n          </a>\n        </div>\n      </div>\n    </div>\n    </div>\n</div>\n</div>\n\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n    <div class=\"float-left navbar-text\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\" >\n          <span class=\"fas fa-play\"></span>\n        </router-outlet>\n      </a>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\">\n          <span class=\"fas fa-eye\"></span>\n        </router-outlet>\n      </a>\n\n    </div>\n    <div class=\"float-right navbar-text\">\n\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n\n    </div>\n  </div>\n</nav>\n</body>\n"
 
 /***/ }),
 

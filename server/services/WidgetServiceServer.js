@@ -86,6 +86,7 @@ module.exports= function(app){
     var widget = req.body;
     //widget['_id'] = (new Date()).getTime() + "";
     widgets.push(widget);
+    console.log(widget);
     var allWidgetsForPage = getAllWidgetsForPage(pageId);
     res.json(allWidgetsForPage);
   }
@@ -176,7 +177,36 @@ module.exports= function(app){
   }
 
   function uploadImage(req, res){
+    curwidget = req.body;
+    widgetId = req.body['widgetId'];
+    console.log('I am uploading file');
+    console.log('widgetId is :' + widgetId);
+    var myFile = req.file;
+    console.log(req.body);
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageid = req.body.pageId;
+    var originalname = myFile.originalname; // file name on user's computer
+    var filename = myFile.filename; // new file name in upload folder
+    console.log('filename: '+filename)
+    var path = myFile.path; // full path of uploaded file
+    var destination = myFile.destination; // folder where file is saved to
+    var mysize = myFile.size;
+    var mimetype = myFile.mimetype;
+    var myurl = '/upload/'+filename;
+    for(var i in widgets){
+      if(widgets[i]._id === widgetId){
+        widgets[i].url = myurl;
+        widgets[i].size = mysize;
+        //res.redirect("http://localhost:3200/user/website/"+websiteId+"/page/"+pageid+"/widget/"+widgetId);
+        res.json(widgets[i]);
+        return;
+      }
+    }
 
   }
+
+
+
 
 }

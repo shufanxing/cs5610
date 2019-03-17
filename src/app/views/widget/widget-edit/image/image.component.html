@@ -51,12 +51,22 @@
              [ngModelOptions]="{standalone: true}"
              type="text" class="form-control" id="image-width" placeholder="100%">
     </div>
-    <div class="form-group">
-      <label for="exampleFormControlFile1">Upload</label>
-      <input (change)="onFileChange($event)" type="file" class="form-control-file" id="exampleFormControlFile1">
-    </div>
+    <!--<div class="form-group">-->
+      <!--<label for="exampleFormControlFile1">Upload</label>-->
+      <!--<input (change)="onFileChange($event)" type="file" class="form-control-file" id="exampleFormControlFile1">-->
+    <!--</div>-->
+
+    <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+      <input  name="myFile"   type="file" class="form-control"/>
+      <input  name="widgetId" value="{{widgetid}}"   style="display: none"/>
+      <input  name="websiteId" value="{{webid}}"   style="display: none"/>
+      <input  name="pageId" value="{{pageid}}"   style="display: none"/>
+      <input  name="userId" value="{{userid}}"   style="display: none"/>
+      <button type="submit"  onclick = "submit()" class="btn btn-block btn-primary">Upload Image</button>
+      <br/>
+    </form>
   </form>
-  <a  (click)="upload()" class="btn btn-primary btn-block" >Upload Image</a>
+
   <a (click)="delete()" class="btn btn-danger  btn-block">Delete</a>
 </div>
 

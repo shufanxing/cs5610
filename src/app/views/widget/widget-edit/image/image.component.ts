@@ -26,6 +26,7 @@ export class ImageComponent implements OnInit {
   file: any;
   input: string;
   selectedfile: ImageSnippet;
+  baseUrl = 'http://localhost:3200';
 
   constructor(private imageService: WidgetService, private route: Router,
               private activeRoute: ActivatedRoute, private http: HttpClient) { }
@@ -51,31 +52,31 @@ export class ImageComponent implements OnInit {
     );
   }
 
-  onFileChange(event) {
-    this.file = <File> event.target.files[0];
-    this.input = event.target.result;
-    console.log(event);
-  }
+  // onFileChange(event) {
+  //   this.file = <File> event.target.files[0];
+  //   this.input = event.target.result;
+  //   console.log(event);
+  // }
 
-  upload() {
-    const reader = new FileReader();
-    reader.addEventListener('load', (event: any) => {
-      this.selectedfile = new ImageSnippet(event.target.result, this.file);
-      this.uploadImage(this.selectedfile.file).subscribe(
-        (res) => {
-        },
-        (err) => {
-        });
-      });
-    reader.readAsDataURL(this.file);
-  }
-  public uploadImage(image: File) {
-    const formData = new FormData();
-
-    formData.append('image', image);
-
-    return this.http.post('/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget', formData);
-  }
+  // upload() {
+  //   const reader = new FileReader();
+  //   reader.addEventListener('load', (event: any) => {
+  //     this.selectedfile = new ImageSnippet(event.target.result, this.file);
+  //     this.uploadImage(this.selectedfile.file).subscribe(
+  //       (res) => {
+  //       },
+  //       (err) => {
+  //       });
+  //     });
+  //   reader.readAsDataURL(this.file);
+  // }
+  // public uploadImage(image: File) {
+  //   const formData = new FormData();
+  //
+  //   formData.append('image', image);
+  //
+  //   return this.http.post('/user/' + this.userid + '/website/' + this.webid + '/page/' + this.pageid + '/widget', formData);
+  // }
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: any) => {
