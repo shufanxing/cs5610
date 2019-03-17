@@ -55,7 +55,7 @@ module.exports= function(app){
           return;
         }
       }
-      res.send({});
+      res.send();
     }
 
   function updateWebsite(req, res){
@@ -95,7 +95,7 @@ module.exports= function(app){
         return;
       }
     }
-    res.send({});
+    res.send();
 
   }
 

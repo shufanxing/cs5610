@@ -24,6 +24,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {WidgetService} from './service/widget.service.client';
 import {PageService} from './service/page.service.client';
 import { WidgetEditComponent } from './views/widget/widget-edit/widget-edit.component';
+import { SortableDirective } from './views/widget/widget-list/sortable.directive';
+import {OrderByPipe} from './views/widget/widget-list/order-by-pipe.pipe';
+import {SafePipe} from './views/widget/widget-list/safe-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { WidgetEditComponent } from './views/widget/widget-edit/widget-edit.comp
     ImageComponent,
     YoutubeComponent,
     WidgetEditComponent,
+    SortableDirective,
+    OrderByPipe,
+    SafePipe
   ],
   imports: [
     BrowserModule,

@@ -46,7 +46,7 @@ module.exports= function(app){
   }
 
   function findAllPagesForWebsite(req, res){
-    console.log("I am in find all pages for webId");
+    //console.log("I am in find all pages for webId");
     var webId = req.params['websiteId'];
     var allPages=[];
     for(var i = 0; i<pages.length; i++){
@@ -54,7 +54,7 @@ module.exports= function(app){
         allPages.push(pages[i]);
       }
     }
-    console.log(allPages);
+    //console.log(allPages);
     res.json(allPages);
     return;
   }
@@ -67,7 +67,7 @@ module.exports= function(app){
         return;
       }
     }
-    res.send({});
+    res.send();
   }
 
 
@@ -81,7 +81,7 @@ module.exports= function(app){
         return;
       }
     }
-    res.send({});
+    res.send();
   }
    function getPageById(pageId){
     for(var i in pages){
@@ -108,7 +108,7 @@ module.exports= function(app){
         return;
       }
     }
-    res.send({});
+    res.send();
 
   }
 

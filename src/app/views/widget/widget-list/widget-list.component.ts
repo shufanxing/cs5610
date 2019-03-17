@@ -26,6 +26,17 @@ export class WidgetListComponent implements OnInit {
   onActivate() {
     window.scroll(0, 0);
   }
+
+  reorderWidgets(indexes) {
+    // call widget service function to update widget as per index
+    this.widgetservice.reorderWidgets(indexes.startIndex, indexes.endIndex, this.pageid)
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.widgets = data;
+        }
+      );
+  }
   ngOnInit() {
     this.activeroute.params.subscribe((params: any) => { this.userid = params.uid;
                                                                this.webid = params.wid;

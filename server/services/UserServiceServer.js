@@ -21,8 +21,8 @@ module.exports= function(app) {
 
   function createUser(req, res) {
     var user = req.body;
-    console.log("The new user's information: ");
-    console.log(req.body);
+    //console.log("The new user's information: ");
+   // console.log(req.body);
     user._id = Math.floor(Math.random() * 1000).toString();
     users.push(user);
     res.json(user);
@@ -30,7 +30,7 @@ module.exports= function(app) {
   }
 
   function findUserById(req, res) {
-    console.log("*********I am here*******");
+    //console.log("*********I am here*******");
     var userId = req.params.userId;
     for (var i in users) {
       if (users[i]._id === userId) {
@@ -39,11 +39,11 @@ module.exports= function(app) {
         return;
       }
     }
-    res.send({});
+    res.send();
   }
 
   function findUserByCredentials(req, res) {
-    console.log("I am in find credentials function");
+    //console.log("I am in find credentials function");
     var username = req.query["username"];
     var password = req.query["password"];
 
@@ -58,7 +58,7 @@ module.exports= function(app) {
   }
 
   function findUserByUserName(req, res) {
-    console.log("&&&&&&&&& I am in finduser server service&&&&&&&&&");
+    //console.log("&&&&&&&&& I am in finduser server service&&&&&&&&&");
     var myusername = req.query["username"];
     for (var i in users) {
       if (users[i].username === myusername) {

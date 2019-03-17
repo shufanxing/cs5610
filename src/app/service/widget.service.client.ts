@@ -94,5 +94,11 @@ export  class WidgetService {
     return this.http.delete('http://localhost:3200/api/widget/' + widgetId);
   }
 
+  reorderWidgets(startIndex, endIndex, pageId) {
+
+    const url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
+    return this.http.put(url, '');
+  }
+
 
 }

@@ -5,9 +5,10 @@ module.exports= function(app){
   app.get("/api/widget/:widgetId", findWidgetById);
   app.put("/api/widget/:widgetId", updateWidgets);
   app.delete("/api/widget/:widgetId", deleteWidget);
+  app.put("/api/page/:pageId/widget", changeOrderOfWidgets);
 
   var multer = require('multer');
-  var upload = multer({dest: __dirname + '/../../src/app/upload'});
+  var upload = multer({dest: __dirname + '/../../public/upload'});
   app.post("/api/upload",upload.single('myFile'),uploadImage);
 
   function newhello(req,res){
@@ -115,7 +116,7 @@ module.exports= function(app){
         return;
       }
     }
-    res.send({});
+    res.send();
   }
 
   function updateWidgets(req, res){
@@ -147,7 +148,7 @@ module.exports= function(app){
             res.json(widgets[i]);
             return;
         }
-        res.send({});
+        res.send();
       }
     }
   }
@@ -203,10 +204,30 @@ module.exports= function(app){
         return;
       }
     }
-
   }
 
+  function changeOrderOfWidgets(req, res){
+    console.log("I am changing the order of items");
 
-
+    var startIndex = parseInt(req.query["start"]);
+    var endIndex = parseInt(req.query["end"]);
+    array_swap(widgets, startIndex, endIndex);
+    res.json(widgets);
+  }
+  function array_swap(arr, old_index, new_index) {
+    while (old_index < 0) {
+      old_index += arr.length;
+    }
+    while (new_index < 0) {
+      new_index += arr.length;
+    }
+    if (new_index >= arr.length) {
+      var k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined);
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+  };
 
 }
