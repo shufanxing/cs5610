@@ -70,15 +70,8 @@ module.exports= function(app){
         pageId: '321',
         size: '5',
         text: 'There is a report of an incident ' +
-          'has occurred at London Bridge. From CNN London.'},
-      {
-        _id: '990',
-        name: 'name',
-        widgetType: 'HEADER',
-        pageId: '345',
-        size: '5',
-        text: 'There is a report of an incident ' +
           'has occurred at London Bridge. From CNN London.'}
+
         ];
 
   function createWidget (req, res) {
