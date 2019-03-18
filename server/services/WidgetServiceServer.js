@@ -217,7 +217,6 @@ module.exports= function(app){
               widgets[i].url = myurl;
               widgets[i].size = mysize;
               //res.redirect("http://localhost:3200/user/website/"+websiteId+"/page/"+pageid+"/widget/"+widgetId);
-              res.render();
               return;
             }
           }
