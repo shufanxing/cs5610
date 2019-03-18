@@ -33,7 +33,7 @@ export class WebsiteService {
   }
 
   findWebsiteById(websiteId: String) {
-    return this.http.get('http://localhost:3200/api/website/' + websiteId);
+    return this.http.get(this.baseUrl + '/api/website/' + websiteId);
   }
 
   updateWebsite(websiteId: String, website: any) {

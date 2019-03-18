@@ -1,3 +1,5 @@
+
+
 module.exports= function(app){
   app.get("/api/hello/widget", newhello);
   app.post("/api/page/:pageId/widget", createWidget);
@@ -6,11 +8,23 @@ module.exports= function(app){
   app.put("/api/widget/:widgetId", updateWidgets);
   app.delete("/api/widget/:widgetId", deleteWidget);
   app.put("/api/page/:pageId/widget", changeOrderOfWidgets);
-
   var multer = require('multer');
-  var upload = multer({dest: __dirname + '/../../public/upload'});
-  app.post("/api/upload",upload.single('myFile'),uploadImage);
+  //var path = require('path');
+  //var ejs = require('ejs');
+  //app.set('view engine', 'ejs');
+  var storage = multer.diskStorage({destination: __dirname+'/../../dist/web-maker/assets/uploads/',
+    filename: function (req, file, cb) {
+       cb(null, file.originalname);
+    }
+  }
 
+);
+
+  var upload = multer({storage: storage}).single('myFile');
+
+
+
+  app.post("/api/upload",uploadImage);
   function newhello(req,res){
     console.log("hello from root context handler");
     res.send({message: "Hello from handler in WidgetServer"});
@@ -170,32 +184,51 @@ module.exports= function(app){
   }
 
   function uploadImage(req, res){
-    curwidget = req.body;
-    widgetId = req.body['widgetId'];
-    console.log('I am uploading file');
-    console.log('widgetId is :' + widgetId);
-    var myFile = req.file;
-    console.log(req.body);
-    var userId = req.body.userId;
-    var websiteId = req.body.websiteId;
-    var pageid = req.body.pageId;
-    var originalname = myFile.originalname; // file name on user's computer
-    var filename = myFile.filename; // new file name in upload folder
-    console.log('filename: '+filename)
-    var path = myFile.path; // full path of uploaded file
-    var destination = myFile.destination; // folder where file is saved to
-    var mysize = myFile.size;
-    var mimetype = myFile.mimetype;
-    var myurl = '/upload/'+filename;
-    for(var i in widgets){
-      if(widgets[i]._id === widgetId){
-        widgets[i].url = myurl;
-        widgets[i].size = mysize;
-        //res.redirect("http://localhost:3200/user/website/"+websiteId+"/page/"+pageid+"/widget/"+widgetId);
-        res.json(widgets[i]);
-        return;
+    upload(req,res,(err) => {
+      if(err){
+        res.render('index', {
+          msg: err
+        });
+      }else{
+        if(req.file === undefined){
+          res.render('index',{
+            msg: 'no file selected'
+          });
+        }else {
+          var curwidget = req.body;
+          var widgetId = req.body['widgetId'];
+          console.log('I am uploading file');
+          console.log('widgetId is :' + widgetId);
+          var myFile = req.file;
+          console.log(req.body);
+          var userId = req.body.userId;
+          var websiteId = req.body.websiteId;
+          var pageid = req.body.pageId;
+          var originalname = myFile.originalname; // file name on user's computer
+          var filename = myFile.filename; // new file name in upload folder
+          console.log('filename: '+filename)
+          var path = myFile.path; // full path of uploaded file
+          var destination = myFile.destination; // folder where file is saved to
+          var mysize = myFile.size;
+          var mimetype = myFile.mimetype;
+          var myurl = '/assets/uploads/'+filename;
+          for(var i in widgets){
+            if(widgets[i]._id === widgetId){
+              widgets[i].url = myurl;
+              widgets[i].size = mysize;
+              //res.redirect("http://localhost:3200/user/website/"+websiteId+"/page/"+pageid+"/widget/"+widgetId);
+              res.render();
+              return;
+            }
+          }
+          res.render( {
+            msg: 'file uploaded'
+          });
+          res.send("test");
+        }
       }
-    }
+    })
+
   }
 
   function changeOrderOfWidgets(req, res){

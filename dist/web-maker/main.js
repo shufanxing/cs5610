@@ -589,7 +589,7 @@ var WebsiteService = /** @class */ (function () {
         return this.http.get(this.baseUrl + '/api/user/' + userId + '/website');
     };
     WebsiteService.prototype.findWebsiteById = function (websiteId) {
-        return this.http.get('http://localhost:3200/api/website/' + websiteId);
+        return this.http.get(this.baseUrl + '/api/website/' + websiteId);
     };
     WebsiteService.prototype.updateWebsite = function (websiteId, website) {
         var web = { _id: website._id, name: website.name, developerId: website.developerId, description: website.description };
