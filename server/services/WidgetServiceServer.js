@@ -16,7 +16,6 @@ module.exports= function(app){
     res.send({message: "Hello from handler in WidgetServer"});
   }
 
-
   var widgets = [
       {
         _id: '123',

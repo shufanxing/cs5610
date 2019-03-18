@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+//import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 
 @Injectable()
@@ -19,33 +21,34 @@ export class UserService {
   // ]
 
   constructor(private http: HttpClient) {}
+  baseUrl = environment.baseUrl;
 
   createUser(user: User) {
     const userbody = {_id: '', username: user.username, password: user.password };
-    return this.http.post('http://localhost:3200/api/user', userbody);
+    return this.http.post(this.baseUrl + '/api/user', userbody);
   }
 
   findUserByCredential(username: String, password: String) {
-    return this.http.get('http://localhost:3200/api/user?username=' + username + '&password=' + password);
+    return this.http.get(this.baseUrl + '/api/user?username=' + username + '&password=' + password);
   }
 
   findUserById(userId: String) {
-    return this.http.get('http://localhost:3200/api/user/' + userId);
+    return this.http.get(this.baseUrl + '/api/user/' + userId);
   }
    getUserList() {
      return this.users;
    }
   findUserByName(username: String) {
-    return this.http.get('http://localhost:3200/api/username?username=' + username);
+    return this.http.get(this.baseUrl + '/api/username?username=' + username);
   }
 
   updateUser(user: any) {
-    const url =  'http://localhost:3200/api/user/' + user._id;
+    const url =  this.baseUrl + '/api/user/' + user._id;
     return this.http.put(url, user);
   }
 
   deleteUserById(userId: String) {
-    const url =  'http://localhost:3200/api/user/' + userId;
+    const url =  this.baseUrl + '/api/user/' + userId;
     return this.http.delete(url);
   }
 }

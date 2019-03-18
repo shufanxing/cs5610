@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {HttpClient} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+//import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 
 @Injectable()
@@ -66,37 +68,39 @@ export  class WidgetService {
   ];
 
   constructor(private http: HttpClient) {}
-
+  baseUrl = environment.baseUrl;
 
   createWidget(pageId: String, widget: Widget) {
     const curWidget = {_id: widget._id, name: widget.name,
       widgetType: widget.widgetType, pageId: widget.pageId, size: widget.size,
       text: widget.text, width: widget.width, url: widget.url }
-    return this.http.post('http://localhost:3200/api/page/' + pageId + '/widget', curWidget);
+    return this.http.post(this.baseUrl + '/api/page/' + pageId + '/widget', curWidget);
   }
 
   findWidgetByPageId(pageId: String) {
-    return this.http.get('http://localhost:3200/api/page/' + pageId + '/widget');
+    return this.http.get(this.baseUrl + '/api/page/' + pageId + '/widget');
   }
 
   findWidgetById(widgetId: String) {
-    return this.http.get('http://localhost:3200/api/widget/' + widgetId);
+    return this.http.get(this.baseUrl + '/api/widget/' + widgetId);
   }
 
   updateWidget(widgetId: String, widget: any) {
     const curwidget = {_id: widget['_id'], name: widget['name'], widgetType: widget['widgetType'],
       pageId: widget['pageId'], size: widget['size'],
       text: widget['text'], width: widget['width'], url: widget['url'] };
-    return this.http.put('http://localhost:3200/api/widget/' + widgetId, curwidget);
+    return this.http.put(this.baseUrl + '/api/widget/' + widgetId, curwidget);
   }
 
   deleteWidget(widgetId: String) {
-    return this.http.delete('http://localhost:3200/api/widget/' + widgetId);
+    return this.http.delete(this.baseUrl + '/api/widget/' + widgetId);
   }
 
   reorderWidgets(startIndex, endIndex, pageId) {
 
-    const url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
+    //const url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
+    const url = 'https://webdev-shufanxing-cs5610.herokuapp.com' + '/api/page/' + pageId + '/widget?start='
+      + startIndex + '&end=' + endIndex;
     return this.http.put(url, '');
   }
 

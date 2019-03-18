@@ -5,6 +5,8 @@ import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {User} from '../models/user.model.client';
+//import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 
 @Injectable()
@@ -20,13 +22,14 @@ export class WebsiteService {
   ];
 
   constructor(private http: HttpClient) {}
+  baseUrl = environment.baseUrl;
   createWebsite(userId: String, website: Website) {
     const web = {_id: '', name: website.name, developerId: website.developerId, description: website.description};
-    return this.http.post('http://localhost:3200/api/user/' + userId + '/website', web);
+    return this.http.post(this.baseUrl + '/api/user/' + userId + '/website', web);
   }
 
   findWebsitesByUser(userId: String) {
-    return this.http.get('http://localhost:3200/api/user/' + userId + '/website');
+    return this.http.get(this.baseUrl + '/api/user/' + userId + '/website');
   }
 
   findWebsiteById(websiteId: String) {
@@ -35,10 +38,10 @@ export class WebsiteService {
 
   updateWebsite(websiteId: String, website: any) {
     const web = {_id: website._id, name: website.name, developerId: website.developerId, description: website.description};
-    return this.http.put('http://localhost:3200/api/website/' + websiteId, web);
+    return this.http.put(this.baseUrl + '/api/website/' + websiteId, web);
   }
 
   deleteWebsite(websiteId: String) {
-    return this.http.delete('http://localhost:3200/api/website/' + websiteId);
+    return this.http.delete(this.baseUrl + '/api/website/' + websiteId);
   }
 }

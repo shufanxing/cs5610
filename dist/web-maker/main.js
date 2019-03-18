@@ -407,6 +407,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 /* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -424,10 +426,11 @@ var PageService = /** @class */ (function () {
             new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('7789', 'Post 2', '678', 'Lorem'),
             new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('3456', 'Post 3', '678', 'Lorem')
         ];
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
     }
     PageService.prototype.createPage = function (websiteId, page) {
         var curpage = { _id: page._id, name: page.name, websiteId: page.websiteId, description: page.description };
-        return this.http.post('http://localhost:3200/api/website/' + websiteId + '/page', curpage);
+        return this.http.post(this.baseUrl + '/api/website/' + websiteId + '/page', curpage);
     };
     PageService.prototype.findPageByWebsiteId = function (websiteId) {
         var resultSet = [];
@@ -439,20 +442,20 @@ var PageService = /** @class */ (function () {
         return resultSet;
     };
     PageService.prototype.findPageByWebsiteId2 = function (websiteId) {
-        return this.http.get('http://localhost:3200/api/website/' + websiteId + '/page');
+        return this.http.get(this.baseUrl + '/api/website/' + websiteId + '/page');
         // return this.pages.filter(function (page) {
         //   return page.websiteId === websiteId;
         // });
     };
     PageService.prototype.findPageById = function (pageId) {
-        return this.http.get('http://localhost:3200/api/page/' + pageId);
+        return this.http.get(this.baseUrl + '/api/page/' + pageId);
     };
     PageService.prototype.updatePage = function (pageId, page) {
         var curpage = { _id: page['_id'], name: page['name'], websiteId: page['websiteId'], description: page['description'] };
-        return this.http.put('http://localhost:3200/api/page/' + pageId, curpage);
+        return this.http.put(this.baseUrl + '/api/page/' + pageId, curpage);
     };
     PageService.prototype.deletePage = function (pageId) {
-        return this.http.delete('http://localhost:3200/api/page/' + pageId);
+        return this.http.delete(this.baseUrl + '/api/page/' + pageId);
     };
     PageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -481,12 +484,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 /* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 
 
 
 
 
 
+
+//import {environment} from '../../environments/environment.prod';
 var UserService = /** @class */ (function () {
     // users = [
     //   {id: "111", username: "hunter", password: "hunter", firstname: "h" }
@@ -498,29 +504,30 @@ var UserService = /** @class */ (function () {
             new _models_user_model_client__WEBPACK_IMPORTED_MODULE_1__["User"]('234', 'bob', 'qq'),
             new _models_user_model_client__WEBPACK_IMPORTED_MODULE_1__["User"]('345', 'charlie', 'qq')
         ];
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
     }
     UserService.prototype.createUser = function (user) {
         var userbody = { _id: '', username: user.username, password: user.password };
-        return this.http.post('http://localhost:3200/api/user', userbody);
+        return this.http.post(this.baseUrl + '/api/user', userbody);
     };
     UserService.prototype.findUserByCredential = function (username, password) {
-        return this.http.get('http://localhost:3200/api/user?username=' + username + '&password=' + password);
+        return this.http.get(this.baseUrl + '/api/user?username=' + username + '&password=' + password);
     };
     UserService.prototype.findUserById = function (userId) {
-        return this.http.get('http://localhost:3200/api/user/' + userId);
+        return this.http.get(this.baseUrl + '/api/user/' + userId);
     };
     UserService.prototype.getUserList = function () {
         return this.users;
     };
     UserService.prototype.findUserByName = function (username) {
-        return this.http.get('http://localhost:3200/api/username?username=' + username);
+        return this.http.get(this.baseUrl + '/api/username?username=' + username);
     };
     UserService.prototype.updateUser = function (user) {
-        var url = 'http://localhost:3200/api/user/' + user._id;
+        var url = this.baseUrl + '/api/user/' + user._id;
         return this.http.put(url, user);
     };
     UserService.prototype.deleteUserById = function (userId) {
-        var url = 'http://localhost:3200/api/user/' + userId;
+        var url = this.baseUrl + '/api/user/' + userId;
         return this.http.delete(url);
     };
     UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -550,6 +557,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 /* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -568,23 +577,24 @@ var WebsiteService = /** @class */ (function () {
             new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('678', 'Checkers', '123', 'Lorem'),
             new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('789', 'Chess', '234', 'Lorem')
         ];
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
     }
     WebsiteService.prototype.createWebsite = function (userId, website) {
         var web = { _id: '', name: website.name, developerId: website.developerId, description: website.description };
-        return this.http.post('http://localhost:3200/api/user/' + userId + '/website', web);
+        return this.http.post(this.baseUrl + '/api/user/' + userId + '/website', web);
     };
     WebsiteService.prototype.findWebsitesByUser = function (userId) {
-        return this.http.get('http://localhost:3200/api/user/' + userId + '/website');
+        return this.http.get(this.baseUrl + '/api/user/' + userId + '/website');
     };
     WebsiteService.prototype.findWebsiteById = function (websiteId) {
         return this.http.get('http://localhost:3200/api/website/' + websiteId);
     };
     WebsiteService.prototype.updateWebsite = function (websiteId, website) {
         var web = { _id: website._id, name: website.name, developerId: website.developerId, description: website.description };
-        return this.http.put('http://localhost:3200/api/website/' + websiteId, web);
+        return this.http.put(this.baseUrl + '/api/website/' + websiteId, web);
     };
     WebsiteService.prototype.deleteWebsite = function (websiteId) {
-        return this.http.delete('http://localhost:3200/api/website/' + websiteId);
+        return this.http.delete(this.baseUrl + '/api/website/' + websiteId);
     };
     WebsiteService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -613,6 +623,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 /* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -634,27 +646,28 @@ var WidgetService = /** @class */ (function () {
             new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('789', 'name', 'HEADER', '321', '5', 'There is a report of an incident ' +
                 'has occurred at London Bridge. From CNN London.')
         ];
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
     }
     WidgetService.prototype.createWidget = function (pageId, widget) {
         var curWidget = { _id: widget._id, name: widget.name,
             widgetType: widget.widgetType, pageId: widget.pageId, size: widget.size,
             text: widget.text, width: widget.width, url: widget.url };
-        return this.http.post('http://localhost:3200/api/page/' + pageId + '/widget', curWidget);
+        return this.http.post(this.baseUrl + '/api/page/' + pageId + '/widget', curWidget);
     };
     WidgetService.prototype.findWidgetByPageId = function (pageId) {
-        return this.http.get('http://localhost:3200/api/page/' + pageId + '/widget');
+        return this.http.get(this.baseUrl + '/api/page/' + pageId + '/widget');
     };
     WidgetService.prototype.findWidgetById = function (widgetId) {
-        return this.http.get('http://localhost:3200/api/widget/' + widgetId);
+        return this.http.get(this.baseUrl + '/api/widget/' + widgetId);
     };
     WidgetService.prototype.updateWidget = function (widgetId, widget) {
         var curwidget = { _id: widget['_id'], name: widget['name'], widgetType: widget['widgetType'],
             pageId: widget['pageId'], size: widget['size'],
             text: widget['text'], width: widget['width'], url: widget['url'] };
-        return this.http.put('http://localhost:3200/api/widget/' + widgetId, curwidget);
+        return this.http.put(this.baseUrl + '/api/widget/' + widgetId, curwidget);
     };
     WidgetService.prototype.deleteWidget = function (widgetId) {
-        return this.http.delete('http://localhost:3200/api/widget/' + widgetId);
+        return this.http.delete(this.baseUrl + '/api/widget/' + widgetId);
     };
     WidgetService.prototype.reorderWidgets = function (startIndex, endIndex, pageId) {
         var url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
