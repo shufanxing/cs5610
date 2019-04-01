@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {HttpClient} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import {environment} from '../../environments/environment';
-//import {environment} from '../../environments/environment.prod';
+//import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 
 @Injectable()
@@ -100,9 +100,9 @@ export  class WidgetService {
 
   reorderWidgets(startIndex, endIndex, pageId) {
 
-    const url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
-    //const url = 'https://webdev-shufanxing-cs5610.herokuapp.com' + '/api/page/' + pageId + '/widget?start='
-     // + startIndex + '&end=' + endIndex;
+    //const url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
+    const url = 'https://webdev-shufanxing-cs5610.herokuapp.com' + '/api/page/' + pageId + '/widget?start='
+      + startIndex + '&end=' + endIndex;
     console.log('I will send request in this function');
     console.log('start index is: ' + startIndex);
     console.log('end index is: ' + endIndex);
