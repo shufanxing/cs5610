@@ -75,7 +75,7 @@ function updatePosition (pageId, start, end) {
       widgetModel.findOneAndUpdate({_id: wigs[start]._id}, {position: end+1},{new: true}).then(
         function(wig){
           console.log(wig);
-          wigs[end] = wig;
+          wigs[start] = wig;
 
         }
       )
