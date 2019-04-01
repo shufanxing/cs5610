@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   register() {
+    console.log('I am here to register a new user');
     this.username = this.myRegisterForm.value.username;
     this.password = this.myRegisterForm.value.password;
     this.v_password = this.myRegisterForm.value.v_password;
@@ -36,10 +37,21 @@ export class RegisterComponent implements OnInit {
       (user: User) => {
       if (user) {
         this.errorFlag2 = true;
+      } else {
+        console.log('I am in the right place');
+        const curuser = {username: this.username, password: this.password};
+        this.userService.createUser(curuser).subscribe(
+          (user: any) => {
+            console.log(user);
+          }
+        );
+        alert('Registration succeed!');
+        this.router.navigate(['/', 'login']);
       }
       },
       (error: any) => {
-        const curuser: User = new User('', this.username, this.password);
+        console.log('I am in the right place');
+        const curuser = {username: this.username, password: this.password};
         this.userService.createUser(curuser).subscribe(
           (user: User) => {
             console.log(user);

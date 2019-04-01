@@ -15,6 +15,9 @@ import {HeadingComponent} from './views/widget/widget-edit/heading/heading.compo
 import {ImageComponent} from './views/widget/widget-edit/image/image.component';
 import {YoutubeComponent} from './views/widget/widget-edit/youtube/youtube.component';
 import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.component';
+import {FlickrImageSearchComponent} from './views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component';
+import {HtmlComponent} from './views/widget/widget-edit/html/html.component';
+import {TextComponent} from './views/widget/widget-edit/text/text.component';
 
 
 const routes: Routes = [
@@ -33,7 +36,10 @@ const routes: Routes = [
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:header', component: HeadingComponent},
   {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:image', component: ImageComponent},
-  {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:youtube', component: YoutubeComponent}
+  {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:youtube', component: YoutubeComponent},
+  {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:html', component: HtmlComponent},
+  {path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:text', component: TextComponent},
+  {path: 'user/website/:wid/page/:pid/widget/:wgid/flickr', component: FlickrImageSearchComponent}
   ];
 
 @NgModule({

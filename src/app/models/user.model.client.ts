@@ -3,17 +3,17 @@ export class User {
   username: string;
   password: string;
 
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
 
   email: string;
 
-  constructor(_id, username, password, firstname = 'alice' , lastname = 'chase', email = 'alice@gmail') {
+  constructor( _id, username, password, firstName = 'alice' , lastName = 'chase', email = 'alice@gmail') {
     this._id = _id;
     this.username = username;
     this.password = password;
-    this.firstname = firstname;
-    this.lastname = lastname;
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.email = email;
   }
 }

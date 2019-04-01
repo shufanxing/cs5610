@@ -94,16 +94,15 @@ export class ProfileComponent implements OnInit {
     // const cur_user: User = new User(this.user._id, this.user.username, this.user.password,
     //   String(this.firstname), String(this.lastname), String(this.email));
      this.userService.updateUser(this.user).subscribe(
+       // (data: any) => {
+       //   this.user = data;
+       //   console.log(this.user);
+       // },
        (data: any) => {
-         this.user = data;
-         console.log(this.user);
-       },
-       (error: any) => {
-         alert('update failed!');
+         alert('update succeeded!');
        }
      );
   }
-
   ngOnInit() {
     this.route.params.subscribe((params: any) => {this.userId = params.uid; });
     //this.user = this.userService.findUserById(this.userId);

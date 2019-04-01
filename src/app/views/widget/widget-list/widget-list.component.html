@@ -78,9 +78,46 @@
         <img class="img-responsive img-rounded cl-widget-images"
              src="{{widget['url']}}">
     </div>
+      <div *ngSwitchCase = "'HTML'">
+        <div class="float-right">
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+             class="float-right">
+            <router-outlet (click)="onActivate()">
+              <span class="fas fa-bars"></span>
+            </router-outlet>
+          </a>
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}">
+            <span class="fas fa-cog"></span>
+          </a>
+        </div>
+        <quill-editor [(ngModel)]="widget['text']" name="text"></quill-editor>
+      </div>
 
+      <div *ngSwitchCase="'TEXT'">
+        <div class="float-right">
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget"
+             class="float-right">
+            <router-outlet (click)="onActivate()">
+              <span class="fas fa-bars"></span>
+            </router-outlet>
+          </a>
+          <a routerLink="/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}">
+            <span class="fas fa-cog"></span>
+          </a>
+        </div>
+        <div *ngIf="widget['formatted']">
+          <quill-editor [(ngModel)]="widget['text']" name="text"></quill-editor>
+        </div>
 
-    <div *ngSwitchCase="'YOUTUBE'">
+        <input *ngIf="!widget['formatted'] && (!widget['rows'] || widget['rows']===1)"
+               placeholder="{{widget['placeholder']}}" class="form-control"/>
+
+        <textarea *ngIf="!widget['formatted'] && (widget['rows'] > 1)"
+                  rows="{{widget['rows']}}" placeholder="{{widget['placeholder']}}"
+                  class="form-control">{{widget['text']}}</textarea>
+      </div>
+
+    <div *ngSwitchCase="'YOUTUBE'" class = "youtube-widget">
       <div class="embed-responsive embed-responsive-16by9">
         <iframe class = "embed-responsive-item" width="640" height="360"
                 [src]="getUrl(widget)"

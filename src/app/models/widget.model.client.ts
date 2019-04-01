@@ -7,8 +7,19 @@ export class Widget {
   text: String;
   url: String;
   width: String;
+  position: Number;
+  placeholder: String;
+  height: String;
+  rows: Number;
+  icon: String;
+  deletable: Boolean;
+  formatted: Boolean;
 
-  constructor(_id, name = 'name', widgetType, pageId, size= '1', text = 'text', width = '100%', url = 'url') {
+
+
+
+  constructor( _id, name = 'name', widgetType, pageId, position, size= '1', text = 'text', width = '100%', url = 'url'
+  , placeholder = '', height = '' , rows = 1, icon = '', deletable = false, formatted = false) {
     this._id = _id;
     this.name = name;
     this.widgetType = widgetType;
@@ -17,5 +28,12 @@ export class Widget {
     this.text = text;
     this.url = url;
     this.width = width;
+    this.position = position;
+    this.deletable = deletable;
+    this.formatted = formatted;
+    this.rows = rows;
+    this.height = height;
+    this.placeholder = placeholder;
+    this.icon = icon;
   }
 }

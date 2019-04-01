@@ -4,17 +4,17 @@ import {HttpClient} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-//import {environment} from '../../environments/environment';
-import {environment} from '../../environments/environment.prod';
+import {environment} from '../../environments/environment';
+//import {environment} from '../../environments/environment.prod';
 
 
 @Injectable()
 export class UserService {
-  users: User[] = [
-    new User('123', 'alice', 'qq'),
-    new User('234', 'bob', 'qq'),
-    new User('345', 'charlie', 'qq')
-  ];
+  // users: User[] = [
+  //   new User('123', 'alice', 'qq'),
+  //   new User('234', 'bob', 'qq'),
+  //   new User('345', 'charlie', 'qq')
+  // ];
 
   // users = [
   //   {id: "111", username: "hunter", password: "hunter", firstname: "h" }
@@ -23,8 +23,8 @@ export class UserService {
   constructor(private http: HttpClient) {}
   baseUrl = environment.baseUrl;
 
-  createUser(user: User) {
-    const userbody = {_id: '', username: user.username, password: user.password };
+  createUser(user: any) {
+    const userbody = { username: user.username, password: user.password };
     return this.http.post(this.baseUrl + '/api/user', userbody);
   }
 
@@ -35,9 +35,7 @@ export class UserService {
   findUserById(userId: String) {
     return this.http.get(this.baseUrl + '/api/user/' + userId);
   }
-   getUserList() {
-     return this.users;
-   }
+
   findUserByName(username: String) {
     return this.http.get(this.baseUrl + '/api/username?username=' + username);
   }

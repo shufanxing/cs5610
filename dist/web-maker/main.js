@@ -51,6 +51,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_widget_widget_edit_image_image_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./views/widget/widget-edit/image/image.component */ "./src/app/views/widget/widget-edit/image/image.component.ts");
 /* harmony import */ var _views_widget_widget_edit_youtube_youtube_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./views/widget/widget-edit/youtube/youtube.component */ "./src/app/views/widget/widget-edit/youtube/youtube.component.ts");
 /* harmony import */ var _views_widget_widget_edit_widget_edit_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./views/widget/widget-edit/widget-edit.component */ "./src/app/views/widget/widget-edit/widget-edit.component.ts");
+/* harmony import */ var _views_widget_widget_edit_image_flickr_image_search_flickr_image_search_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component */ "./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.ts");
+/* harmony import */ var _views_widget_widget_edit_html_html_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./views/widget/widget-edit/html/html.component */ "./src/app/views/widget/widget-edit/html/html.component.ts");
+/* harmony import */ var _views_widget_widget_edit_text_text_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/widget/widget-edit/text/text.component */ "./src/app/views/widget/widget-edit/text/text.component.ts");
+
+
+
 
 
 
@@ -85,7 +91,10 @@ var routes = [
     { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid', component: _views_widget_widget_edit_widget_edit_component__WEBPACK_IMPORTED_MODULE_17__["WidgetEditComponent"] },
     { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:header', component: _views_widget_widget_edit_heading_heading_component__WEBPACK_IMPORTED_MODULE_14__["HeadingComponent"] },
     { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:image', component: _views_widget_widget_edit_image_image_component__WEBPACK_IMPORTED_MODULE_15__["ImageComponent"] },
-    { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:youtube', component: _views_widget_widget_edit_youtube_youtube_component__WEBPACK_IMPORTED_MODULE_16__["YoutubeComponent"] }
+    { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:youtube', component: _views_widget_widget_edit_youtube_youtube_component__WEBPACK_IMPORTED_MODULE_16__["YoutubeComponent"] },
+    { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:html', component: _views_widget_widget_edit_html_html_component__WEBPACK_IMPORTED_MODULE_19__["HtmlComponent"] },
+    { path: 'user/:uid/website/:wid/page/:pid/widget/:wgid/:text', component: _views_widget_widget_edit_text_text_component__WEBPACK_IMPORTED_MODULE_20__["TextComponent"] },
+    { path: 'user/website/:wid/page/:pid/widget/:wgid/flickr', component: _views_widget_widget_edit_image_flickr_image_search_flickr_image_search_component__WEBPACK_IMPORTED_MODULE_18__["FlickrImageSearchComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -205,6 +214,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_widget_widget_list_sortable_directive__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./views/widget/widget-list/sortable.directive */ "./src/app/views/widget/widget-list/sortable.directive.ts");
 /* harmony import */ var _views_widget_widget_list_order_by_pipe_pipe__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./views/widget/widget-list/order-by-pipe.pipe */ "./src/app/views/widget/widget-list/order-by-pipe.pipe.ts");
 /* harmony import */ var _views_widget_widget_list_safe_pipe_pipe__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./views/widget/widget-list/safe-pipe.pipe */ "./src/app/views/widget/widget-list/safe-pipe.pipe.ts");
+/* harmony import */ var ngx_quill_editor__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ngx-quill-editor */ "./node_modules/ngx-quill-editor/index.js");
+/* harmony import */ var _views_widget_widget_edit_html_html_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./views/widget/widget-edit/html/html.component */ "./src/app/views/widget/widget-edit/html/html.component.ts");
+/* harmony import */ var _views_widget_widget_edit_text_text_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./views/widget/widget-edit/text/text.component */ "./src/app/views/widget/widget-edit/text/text.component.ts");
+/* harmony import */ var _views_widget_widget_edit_image_flickr_image_search_flickr_image_search_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component */ "./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.ts");
+/* harmony import */ var _service_flickr_service_client__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./service/flickr.service.client */ "./src/app/service/flickr.service.client.ts");
 
 
 
@@ -230,6 +244,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+//import {QuillModule} from 'ngx-quill';
 
 
 
@@ -258,16 +278,21 @@ var AppModule = /** @class */ (function () {
                 _views_widget_widget_edit_widget_edit_component__WEBPACK_IMPORTED_MODULE_25__["WidgetEditComponent"],
                 _views_widget_widget_list_sortable_directive__WEBPACK_IMPORTED_MODULE_26__["SortableDirective"],
                 _views_widget_widget_list_order_by_pipe_pipe__WEBPACK_IMPORTED_MODULE_27__["OrderByPipe"],
-                _views_widget_widget_list_safe_pipe_pipe__WEBPACK_IMPORTED_MODULE_28__["SafePipe"]
+                _views_widget_widget_list_safe_pipe_pipe__WEBPACK_IMPORTED_MODULE_28__["SafePipe"],
+                _views_widget_widget_edit_html_html_component__WEBPACK_IMPORTED_MODULE_30__["HtmlComponent"],
+                _views_widget_widget_edit_text_text_component__WEBPACK_IMPORTED_MODULE_31__["TextComponent"],
+                _views_widget_widget_edit_image_flickr_image_search_flickr_image_search_component__WEBPACK_IMPORTED_MODULE_32__["FlickrImageSearchComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_22__["HttpClientModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                //QuillModule,
+                ngx_quill_editor__WEBPACK_IMPORTED_MODULE_29__["QuillEditorModule"]
             ],
-            providers: [_service_user_service_client__WEBPACK_IMPORTED_MODULE_17__["UserService"], _service_website_service_client__WEBPACK_IMPORTED_MODULE_18__["WebsiteService"], _service_widget_service_client__WEBPACK_IMPORTED_MODULE_23__["WidgetService"], _service_page_service_client__WEBPACK_IMPORTED_MODULE_24__["PageService"]],
+            providers: [_service_user_service_client__WEBPACK_IMPORTED_MODULE_17__["UserService"], _service_website_service_client__WEBPACK_IMPORTED_MODULE_18__["WebsiteService"], _service_widget_service_client__WEBPACK_IMPORTED_MODULE_23__["WidgetService"], _service_page_service_client__WEBPACK_IMPORTED_MODULE_24__["PageService"], _service_flickr_service_client__WEBPACK_IMPORTED_MODULE_33__["FlickrService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
@@ -302,35 +327,6 @@ var Page = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/models/user.model.client.ts":
-/*!*********************************************!*\
-  !*** ./src/app/models/user.model.client.ts ***!
-  \*********************************************/
-/*! exports provided: User */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
-var User = /** @class */ (function () {
-    function User(_id, username, password, firstname, lastname, email) {
-        if (firstname === void 0) { firstname = 'alice'; }
-        if (lastname === void 0) { lastname = 'chase'; }
-        if (email === void 0) { email = 'alice@gmail'; }
-        this._id = _id;
-        this.username = username;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-    }
-    return User;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/models/website.model.client.ts":
 /*!************************************************!*\
   !*** ./src/app/models/website.model.client.ts ***!
@@ -343,7 +339,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Website", function() { return Website; });
 var Website = /** @class */ (function () {
     function Website(_id, name, developerId, description) {
-        if (_id === void 0) { _id = '9899999'; }
         if (name === void 0) { name = 'name'; }
         if (description === void 0) { description = 'description'; }
         this._id = _id;
@@ -369,12 +364,18 @@ var Website = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Widget", function() { return Widget; });
 var Widget = /** @class */ (function () {
-    function Widget(_id, name, widgetType, pageId, size, text, width, url) {
+    function Widget(_id, name, widgetType, pageId, position, size, text, width, url, placeholder, height, rows, icon, deletable, formatted) {
         if (name === void 0) { name = 'name'; }
         if (size === void 0) { size = '1'; }
         if (text === void 0) { text = 'text'; }
         if (width === void 0) { width = '100%'; }
         if (url === void 0) { url = 'url'; }
+        if (placeholder === void 0) { placeholder = ''; }
+        if (height === void 0) { height = ''; }
+        if (rows === void 0) { rows = 1; }
+        if (icon === void 0) { icon = ''; }
+        if (deletable === void 0) { deletable = false; }
+        if (formatted === void 0) { formatted = false; }
         this._id = _id;
         this.name = name;
         this.widgetType = widgetType;
@@ -383,8 +384,57 @@ var Widget = /** @class */ (function () {
         this.text = text;
         this.url = url;
         this.width = width;
+        this.position = position;
+        this.deletable = deletable;
+        this.formatted = formatted;
+        this.rows = rows;
+        this.height = height;
+        this.placeholder = placeholder;
+        this.icon = icon;
     }
     return Widget;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/service/flickr.service.client.ts":
+/*!**************************************************!*\
+  !*** ./src/app/service/flickr.service.client.ts ***!
+  \**************************************************/
+/*! exports provided: FlickrService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlickrService", function() { return FlickrService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var FlickrService = /** @class */ (function () {
+    function FlickrService(_http) {
+        this._http = _http;
+        this.key = '90ea0df0685933f65ea96fab852a3023';
+        this.secret = '59b7fb7ceb0a467b';
+        this.urlBase = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT';
+    }
+    FlickrService.prototype.searchPhotos = function (searchTerm) {
+        console.log('I am searching photos in flicker' + this.urlBase);
+        var url = this.urlBase
+            .replace('API_KEY', this.key)
+            .replace('TEXT', searchTerm);
+        return this._http.get(url, { responseType: 'text' });
+    };
+    FlickrService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])() // needed as we're injecting Http service into this service
+        ,
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], FlickrService);
+    return FlickrService;
 }());
 
 
@@ -403,44 +453,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PageService", function() { return PageService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/page.model.client */ "./src/app/models/page.model.client.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
-/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
-/* harmony import */ var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment.prod */ "./src/environments/environment.prod.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 
 
 
 
 
 
-//import {environment} from '../../environments/environment';
-
+//import {environment} from '../../environments/environment.prod';
 var PageService = /** @class */ (function () {
+    // pages: Page[] = [
+    //   new Page ('321', 'Post 1', '890', 'Lorem'),
+    //   new Page ('432', 'Post 2', '890', 'Lorem'),
+    //   new Page ( '543', 'Post 3', '890', 'Lorem'),
+    //   new Page ('678', 'Post 1', '678', 'Lorem'),
+    //   new Page ('7789', 'Post 2', '678', 'Lorem'),
+    //   new Page ( '3456', 'Post 3', '678', 'Lorem')
+    // ];
     function PageService(http) {
         this.http = http;
-        this.pages = [
-            new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('321', 'Post 1', '890', 'Lorem'),
-            new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('432', 'Post 2', '890', 'Lorem'),
-            new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('543', 'Post 3', '890', 'Lorem'),
-            new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('678', 'Post 1', '678', 'Lorem'),
-            new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('7789', 'Post 2', '678', 'Lorem'),
-            new _models_page_model_client__WEBPACK_IMPORTED_MODULE_2__["Page"]('3456', 'Post 3', '678', 'Lorem')
-        ];
-        this.baseUrl = _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].baseUrl;
     }
     PageService.prototype.createPage = function (websiteId, page) {
-        var curpage = { _id: page._id, name: page.name, websiteId: page.websiteId, description: page.description };
+        var curpage = { name: page.name, websiteId: page.websiteId, description: page.description };
         return this.http.post(this.baseUrl + '/api/website/' + websiteId + '/page', curpage);
-    };
-    PageService.prototype.findPageByWebsiteId = function (websiteId) {
-        var resultSet = [];
-        for (var i in this.pages) {
-            if (this.pages[i].websiteId === websiteId) {
-                resultSet.push(this.pages[i]);
-            }
-        }
-        return resultSet;
     };
     PageService.prototype.findPageByWebsiteId2 = function (websiteId) {
         return this.http.get(this.baseUrl + '/api/website/' + websiteId + '/page');
@@ -460,7 +499,7 @@ var PageService = /** @class */ (function () {
     };
     PageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], PageService);
     return PageService;
 }());
@@ -480,35 +519,33 @@ var PageService = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _models_user_model_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/user.model.client */ "./src/app/models/user.model.client.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
-/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
-/* harmony import */ var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment.prod */ "./src/environments/environment.prod.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 
 
 
 
 
 
-//import {environment} from '../../environments/environment';
-
+//import {environment} from '../../environments/environment.prod';
 var UserService = /** @class */ (function () {
+    // users: User[] = [
+    //   new User('123', 'alice', 'qq'),
+    //   new User('234', 'bob', 'qq'),
+    //   new User('345', 'charlie', 'qq')
+    // ];
     // users = [
     //   {id: "111", username: "hunter", password: "hunter", firstname: "h" }
     // ]
     function UserService(http) {
         this.http = http;
-        this.users = [
-            new _models_user_model_client__WEBPACK_IMPORTED_MODULE_1__["User"]('123', 'alice', 'qq'),
-            new _models_user_model_client__WEBPACK_IMPORTED_MODULE_1__["User"]('234', 'bob', 'qq'),
-            new _models_user_model_client__WEBPACK_IMPORTED_MODULE_1__["User"]('345', 'charlie', 'qq')
-        ];
-        this.baseUrl = _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].baseUrl;
     }
     UserService.prototype.createUser = function (user) {
-        var userbody = { _id: '', username: user.username, password: user.password };
+        var userbody = { username: user.username, password: user.password };
         return this.http.post(this.baseUrl + '/api/user', userbody);
     };
     UserService.prototype.findUserByCredential = function (username, password) {
@@ -516,9 +553,6 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.findUserById = function (userId) {
         return this.http.get(this.baseUrl + '/api/user/' + userId);
-    };
-    UserService.prototype.getUserList = function () {
-        return this.users;
     };
     UserService.prototype.findUserByName = function (username) {
         return this.http.get(this.baseUrl + '/api/username?username=' + username);
@@ -532,8 +566,8 @@ var UserService = /** @class */ (function () {
         return this.http.delete(url);
     };
     UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], UserService);
     return UserService;
 }());
@@ -553,36 +587,34 @@ var UserService = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebsiteService", function() { return WebsiteService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/website.model.client */ "./src/app/models/website.model.client.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
-/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
-/* harmony import */ var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment.prod */ "./src/environments/environment.prod.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 
 
 
 
 
 
-//import {environment} from '../../environments/environment';
-
+//import {environment} from '../../environments/environment.prod';
 var WebsiteService = /** @class */ (function () {
+    // websites: Website[] = [
+    //   new Website('123', 'Facebook', '456', 'Lorem'),
+    //   new Website('234', 'Tweeter', '456', 'Lorem'),
+    //   new Website('456', 'Gizmodo', '456', 'Lorem'),
+    //   new Website('890', 'Go', '123', 'Lorem'),
+    //   new Website('567', 'Tic Tac Toe', '123', 'Lorem'),
+    //   new Website('678', 'Checkers', '123', 'Lorem'),
+    //   new Website('789', 'Chess', '234', 'Lorem')
+    // ];
     function WebsiteService(http) {
         this.http = http;
-        this.websites = [
-            new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('123', 'Facebook', '456', 'Lorem'),
-            new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('234', 'Tweeter', '456', 'Lorem'),
-            new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('456', 'Gizmodo', '456', 'Lorem'),
-            new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('890', 'Go', '123', 'Lorem'),
-            new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('567', 'Tic Tac Toe', '123', 'Lorem'),
-            new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('678', 'Checkers', '123', 'Lorem'),
-            new _models_website_model_client__WEBPACK_IMPORTED_MODULE_1__["Website"]('789', 'Chess', '234', 'Lorem')
-        ];
-        this.baseUrl = _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].baseUrl;
     }
     WebsiteService.prototype.createWebsite = function (userId, website) {
-        var web = { _id: '', name: website.name, developerId: website.developerId, description: website.description };
+        var web = { name: website.name, developerId: website.developerId, description: website.description };
         return this.http.post(this.baseUrl + '/api/user/' + userId + '/website', web);
     };
     WebsiteService.prototype.findWebsitesByUser = function (userId) {
@@ -599,8 +631,8 @@ var WebsiteService = /** @class */ (function () {
         return this.http.delete(this.baseUrl + '/api/website/' + websiteId);
     };
     WebsiteService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], WebsiteService);
     return WebsiteService;
 }());
@@ -621,40 +653,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WidgetService", function() { return WidgetService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/widget.model.client */ "./src/app/models/widget.model.client.ts");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
-/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../environments/environment.prod */ "./src/environments/environment.prod.ts");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 
 
 
 
 
 
-//import {environment} from '../../environments/environment';
-
+//import {environment} from '../../environments/environment.prod';
 var WidgetService = /** @class */ (function () {
+    // constructor(_id:String, type:String, pageId:String, size= '1', text = 'text', width = '100%',url = 'url')
+    // widgets: Widget[] = [
+    //   new Widget(
+    //     '123',
+    //     'name',
+    //     'HEADER',
+    //     '321',
+    //     '2',
+    //     'London terror attack: Police fired \'unprecedented\' number of rounds' ),
+    //   new Widget(
+    //     '234',
+    //     'name',
+    //     'HEADER',
+    //     '321',
+    //     '4',
+    //     'Counter terrorism officers patrol near the scene of the attack on London Bridge.' ),
+    //   new Widget(
+    //     '345',
+    //     'name',
+    //     'IMAGE',
+    //     '321',
+    //     '2',
+    //     'text',
+    //     '100%',
+    //     'http://i2.cdn.cnn.com/cnnnext/dam/assets/170604130220-41-london-bridge-incident-0604-gallery-exlarge-169.jpg'),
+    //   new Widget(
+    //     '456',
+    //     'name',
+    //     'HEADER',
+    //     '321',
+    //     '5',
+    //     'Armed officers responding to the London ' +
+    //     'Bridge terror attack fired an "unprecedented" number of rounds at the three attackers because they ' +
+    //     'were wearing what appeared to be suicide belts, police said.'),
+    //   new Widget(
+    //     '678',
+    //     'name',
+    //     'YOUTUBE',
+    //     '321',
+    //     '2',
+    //     'text',
+    //     '100%',
+    //     'https://www.youtube.com/embed/APexI9Zb6iE' ),
+    //   new Widget(
+    //     '789',
+    //     'name',
+    //     'HEADER',
+    //     '321',
+    //     '5',
+    //     'There is a report of an incident ' +
+    //     'has occurred at London Bridge. From CNN London.')
+    // ];
     function WidgetService(http) {
         this.http = http;
-        // constructor(_id:String, type:String, pageId:String, size= '1', text = 'text', width = '100%',url = 'url')
-        this.widgets = [
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('123', 'name', 'HEADER', '321', '2', 'London terror attack: Police fired \'unprecedented\' number of rounds'),
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('234', 'name', 'HEADER', '321', '4', 'Counter terrorism officers patrol near the scene of the attack on London Bridge.'),
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('345', 'name', 'IMAGE', '321', '2', 'text', '100%', 'http://i2.cdn.cnn.com/cnnnext/dam/assets/170604130220-41-london-bridge-incident-0604-gallery-exlarge-169.jpg'),
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('456', 'name', 'HEADER', '321', '5', 'Armed officers responding to the London ' +
-                'Bridge terror attack fired an "unprecedented" number of rounds at the three attackers because they ' +
-                'were wearing what appeared to be suicide belts, police said.'),
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('678', 'name', 'YOUTUBE', '321', '2', 'text', '100%', 'https://www.youtube.com/embed/APexI9Zb6iE'),
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('789', 'name', 'HEADER', '321', '5', 'There is a report of an incident ' +
-                'has occurred at London Bridge. From CNN London.')
-        ];
-        this.baseUrl = _environments_environment_prod__WEBPACK_IMPORTED_MODULE_6__["environment"].baseUrl;
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].baseUrl;
     }
     WidgetService.prototype.createWidget = function (pageId, widget) {
-        var curWidget = { _id: widget._id, name: widget.name,
+        var curWidget = { name: widget.name,
             widgetType: widget.widgetType, pageId: widget.pageId, size: widget.size,
-            text: widget.text, width: widget.width, url: widget.url };
+            text: widget.text, width: widget.width, url: widget.url, position: widget.position };
         return this.http.post(this.baseUrl + '/api/page/' + pageId + '/widget', curWidget);
     };
     WidgetService.prototype.findWidgetByPageId = function (pageId) {
@@ -666,21 +736,26 @@ var WidgetService = /** @class */ (function () {
     WidgetService.prototype.updateWidget = function (widgetId, widget) {
         var curwidget = { _id: widget['_id'], name: widget['name'], widgetType: widget['widgetType'],
             pageId: widget['pageId'], size: widget['size'],
-            text: widget['text'], width: widget['width'], url: widget['url'] };
+            text: widget['text'], width: widget['width'], url: widget['url'], placeholder: widget['placeholder'],
+            formatted: widget['formatted'], rows: widget['rows']
+        };
         return this.http.put(this.baseUrl + '/api/widget/' + widgetId, curwidget);
     };
     WidgetService.prototype.deleteWidget = function (widgetId) {
         return this.http.delete(this.baseUrl + '/api/widget/' + widgetId);
     };
     WidgetService.prototype.reorderWidgets = function (startIndex, endIndex, pageId) {
-        //const url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
-        var url = 'https://webdev-shufanxing-cs5610.herokuapp.com' + '/api/page/' + pageId + '/widget?start='
-            + startIndex + '&end=' + endIndex;
+        var url = 'http://localhost:3200/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
+        //const url = 'https://webdev-shufanxing-cs5610.herokuapp.com' + '/api/page/' + pageId + '/widget?start='
+        // + startIndex + '&end=' + endIndex;
+        console.log('I will send request in this function');
+        console.log('start index is: ' + startIndex);
+        console.log('end index is: ' + endIndex);
         return this.http.put(url, '');
     };
     WidgetService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
     ], WidgetService);
     return WidgetService;
 }());
@@ -1009,7 +1084,7 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.ngOnInit = function () {
         // this.users = UserService.getAllUser();
         console.log('login page!' + this.username);
-        console.log(this.userService.users);
+        //console.log(this.userService.users);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('f'),
@@ -1048,7 +1123,7 @@ module.exports = "\nhtml, body {\n  margin: 0;\n  padding: 0\n}\n\nh3{margin-top
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<!--<h3 class = \"cl-profile-h3\">Profile</h3>-->\n\n<!--<form (ngSubmit)=\"updateUser()\" #fp = \"ngForm\">-->\n<!--<div class = \"cl-margin-left\" class=\"container\">-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"username\">Username</label>-->\n      <!--<input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" placeholder=\"jannunzi\"-->\n             <!--ngModel required #user.username=\"ngModel\">-->\n    <!--</div>-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"email\">Email address</label>-->\n      <!--<input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" placeholder=\"jannunzi@gmail.com\"-->\n             <!--ngModel required #user.email=\"ngModel\">-->\n    <!--</div>-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"firstname\">First Name</label>-->\n      <!--<input type=\"text\" class=\"form-control\" id=\"firstname\" name=\"firstname\" placeholder=\"Jose\"-->\n             <!--ngModel required #user.firstname=\"ngModel\">-->\n    <!--</div>-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"last-name\">Last Name</label>-->\n      <!--<input type=\"text\" class=\"form-control\" id=\"last-name\" name= \"lastname\" placeholder=\"Annunziato\"-->\n             <!--ngModel required #user.lastname=\"ngModel\">-->\n    <!--</div>-->\n  <!--<button class=\" btn btn-secondary btn-block\"-->\n     <!--type=\"submit\" >Update</button>-->\n  <!--<a class=\"btn btn-primary btn-block\"-->\n     <!--routerLink=\"/user/{{user._id}}/website\">Websites</a>-->\n  <!--<a class=\"btn btn-success  btn-block\"-->\n     <!--routerLink=\"/login\">Logout</a>-->\n\n\n\n<!--</div>-->\n\n<!--<div id=\"footer\" ></div>-->\n\n<!--</form>-->\n\n<nav class=\"navbar bg-primary fixed-top\">\n  <div class=\"container-fluid \">\n\n    <a class=\"navbar-brand cl-text-white\" routerLink=\"user/{{userId}}\">Profile</a>\n    <a (click)=\"updateUser()\" class=\"btn-primary navbar-text float-right\"><span class=\"fas fa-check\"></span></a>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <h3></h3>\n\n  <div class=\"form-group\">\n    <label for=\"username\">Username</label>\n    <input [(ngModel)]=\"user['username']\" type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"Username\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"email\">Email address</label>\n    <input [(ngModel)]=\"user['email']\" type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"alice@wonderland.com\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"first-name\">First Name</label>\n    <input [(ngModel)]=\"user['firstname']\" type=\"text\" class=\"form-control\" id=\"first-name\" placeholder=\"Alice\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"last-name\">Last Name</label>\n    <input [(ngModel)]=\"user['lastname']\" type=\"text\" class=\"form-control\" id=\"last-name\" placeholder=\"Wonderland\">\n  </div>\n\n  <a class=\"btn btn-primary btn-block\"\n     routerLink=\"/user/{{userId}}/website\">Websites</a>\n  <a class=\"btn btn-danger  btn-block\" routerLink=\"/login\">Logout</a>\n</div>\n\n\n"
+module.exports = "\n\n<!--<h3 class = \"cl-profile-h3\">Profile</h3>-->\n\n<!--<form (ngSubmit)=\"updateUser()\" #fp = \"ngForm\">-->\n<!--<div class = \"cl-margin-left\" class=\"container\">-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"username\">Username</label>-->\n      <!--<input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" placeholder=\"jannunzi\"-->\n             <!--ngModel required #user.username=\"ngModel\">-->\n    <!--</div>-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"email\">Email address</label>-->\n      <!--<input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" placeholder=\"jannunzi@gmail.com\"-->\n             <!--ngModel required #user.email=\"ngModel\">-->\n    <!--</div>-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"firstname\">First Name</label>-->\n      <!--<input type=\"text\" class=\"form-control\" id=\"firstname\" name=\"firstname\" placeholder=\"Jose\"-->\n             <!--ngModel required #user.firstname=\"ngModel\">-->\n    <!--</div>-->\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"last-name\">Last Name</label>-->\n      <!--<input type=\"text\" class=\"form-control\" id=\"last-name\" name= \"lastname\" placeholder=\"Annunziato\"-->\n             <!--ngModel required #user.lastname=\"ngModel\">-->\n    <!--</div>-->\n  <!--<button class=\" btn btn-secondary btn-block\"-->\n     <!--type=\"submit\" >Update</button>-->\n  <!--<a class=\"btn btn-primary btn-block\"-->\n     <!--routerLink=\"/user/{{user._id}}/website\">Websites</a>-->\n  <!--<a class=\"btn btn-success  btn-block\"-->\n     <!--routerLink=\"/login\">Logout</a>-->\n\n\n\n<!--</div>-->\n\n<!--<div id=\"footer\" ></div>-->\n\n<!--</form>-->\n\n<nav class=\"navbar bg-primary fixed-top\">\n  <div class=\"container-fluid \">\n\n    <a class=\"navbar-brand cl-text-white\" routerLink=\"user/{{userId}}\">Profile</a>\n    <a (click)=\"updateUser()\" class=\"btn-primary navbar-text float-right\"><span class=\"fas fa-check\"></span></a>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <h3></h3>\n\n  <div class=\"form-group\">\n    <label for=\"username\">Username</label>\n    <input [(ngModel)]=\"user['username']\" type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"Username\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"email\">Email address</label>\n    <input [(ngModel)]=\"user['email']\" type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"alice@wonderland.com\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"first-name\">First Name</label>\n    <input [(ngModel)]=\"user['firstName']\" type=\"text\" class=\"form-control\" id=\"first-name\" placeholder=\"Alice\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"last-name\">Last Name</label>\n    <input [(ngModel)]=\"user['lastName']\" type=\"text\" class=\"form-control\" id=\"last-name\" placeholder=\"Wonderland\">\n  </div>\n\n  <a class=\"btn btn-primary btn-block\"\n     routerLink=\"/user/{{userId}}/website\">Websites</a>\n  <a class=\"btn btn-danger  btn-block\" routerLink=\"/login\">Logout</a>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -1140,14 +1215,15 @@ var ProfileComponent = /** @class */ (function () {
         // console.log(this.user.password);
     }
     ProfileComponent.prototype.updateUser = function () {
-        var _this = this;
         // const cur_user: User = new User(this.user._id, this.user.username, this.user.password,
         //   String(this.firstname), String(this.lastname), String(this.email));
-        this.userService.updateUser(this.user).subscribe(function (data) {
-            _this.user = data;
-            console.log(_this.user);
-        }, function (error) {
-            alert('update failed!');
+        this.userService.updateUser(this.user).subscribe(
+        // (data: any) => {
+        //   this.user = data;
+        //   console.log(this.user);
+        // },
+        function (data) {
+            alert('update succeeded!');
         });
     };
     ProfileComponent.prototype.ngOnInit = function () {
@@ -1216,11 +1292,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _models_user_model_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../models/user.model.client */ "./src/app/models/user.model.client.ts");
-/* harmony import */ var _service_user_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../service/user.service.client */ "./src/app/service/user.service.client.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-
+/* harmony import */ var _service_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../service/user.service.client */ "./src/app/service/user.service.client.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
@@ -1235,6 +1309,7 @@ var RegisterComponent = /** @class */ (function () {
     }
     RegisterComponent.prototype.register = function () {
         var _this = this;
+        console.log('I am here to register a new user');
         this.username = this.myRegisterForm.value.username;
         this.password = this.myRegisterForm.value.password;
         this.v_password = this.myRegisterForm.value.v_password;
@@ -1248,8 +1323,18 @@ var RegisterComponent = /** @class */ (function () {
             if (user) {
                 _this.errorFlag2 = true;
             }
+            else {
+                console.log('I am in the right place');
+                var curuser = { username: _this.username, password: _this.password };
+                _this.userService.createUser(curuser).subscribe(function (user) {
+                    console.log(user);
+                });
+                alert('Registration succeed!');
+                _this.router.navigate(['/', 'login']);
+            }
         }, function (error) {
-            var curuser = new _models_user_model_client__WEBPACK_IMPORTED_MODULE_2__["User"]('', _this.username, _this.password);
+            console.log('I am in the right place');
+            var curuser = { username: _this.username, password: _this.password };
             _this.userService.createUser(curuser).subscribe(function (user) {
                 console.log(user);
             });
@@ -1267,7 +1352,7 @@ var RegisterComponent = /** @class */ (function () {
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('fr'),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgForm"])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"])
     ], RegisterComponent.prototype, "myRegisterForm", void 0);
     RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1275,7 +1360,7 @@ var RegisterComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./register.component.html */ "./src/app/views/user/register/register.component.html"),
             styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/views/user/register/register.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_user_service_client__WEBPACK_IMPORTED_MODULE_3__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], RegisterComponent);
     return RegisterComponent;
 }());
@@ -1370,6 +1455,7 @@ var WebsiteEditComponent = /** @class */ (function () {
         console.log('webId' + this.webId);
         this.websiteService.findWebsiteById(this.webId).subscribe(function (data) {
             _this.curweb = data;
+            console.log(_this.curweb);
         });
         this.websiteService.findWebsitesByUser(this.userId).subscribe(function (data) {
             _this.websites = data;
@@ -1397,7 +1483,7 @@ var WebsiteEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".cl-widget-images{\n  display: inline;\n  width: 85%;\n  z-index: 100;\n  position: relative;\n}\n\n@media all and (orientation:landscape) {\n  #left-chev{\n    visibility: visible;\n  }\n  #icon-plus{\n    visibility: hidden;\n  }\n  #icon-user{\n    visibility: hidden;\n  }\n  div ul li a span{\n    visibility: hidden;\n  }\n}\n\nbody {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3Mvd2Vic2l0ZS93ZWJzaXRlLWxpc3Qvd2Vic2l0ZS1saXN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0VBQ2YsVUFBVTtFQUNWLFlBQVk7RUFDWixrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRTtJQUNFLG1CQUFtQjtFQUNyQjtFQUNBO0lBQ0Usa0JBQWtCO0VBQ3BCO0VBQ0E7SUFDRSxrQkFBa0I7RUFDcEI7RUFDQTtJQUNFLGtCQUFrQjtFQUNwQjtBQUNGOztBQUNBO0VBQ0UsaUJBQWlCO0VBQ2pCLG9CQUFvQjtBQUN0QiIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3dlYnNpdGUvd2Vic2l0ZS1saXN0L3dlYnNpdGUtbGlzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNsLXdpZGdldC1pbWFnZXN7XG4gIGRpc3BsYXk6IGlubGluZTtcbiAgd2lkdGg6IDg1JTtcbiAgei1pbmRleDogMTAwO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbkBtZWRpYSBhbGwgYW5kIChvcmllbnRhdGlvbjpsYW5kc2NhcGUpIHtcbiAgI2xlZnQtY2hldntcbiAgICB2aXNpYmlsaXR5OiB2aXNpYmxlO1xuICB9XG4gICNpY29uLXBsdXN7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG4gICNpY29uLXVzZXJ7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG4gIGRpdiB1bCBsaSBhIHNwYW57XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG59XG5ib2R5IHtcbiAgcGFkZGluZy10b3A6IDcwcHg7XG4gIHBhZGRpbmctYm90dG9tOiA3MHB4O1xufVxuIl19 */"
+module.exports = "\n\n.cl-widget-images{\n  display: inline;\n  width: 85%;\n  z-index: 100;\n  position: relative;\n}\n\n@media all and (orientation:landscape) {\n  #left-chev{\n    visibility: visible;\n  }\n  #icon-plus{\n    visibility: hidden;\n  }\n  #icon-user{\n    visibility: hidden;\n  }\n  div ul li a span{\n    visibility: hidden;\n  }\n}\n\nbody {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3Mvd2Vic2l0ZS93ZWJzaXRlLWxpc3Qvd2Vic2l0ZS1saXN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFFQTtFQUNFLGVBQWU7RUFDZixVQUFVO0VBQ1YsWUFBWTtFQUNaLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFO0lBQ0UsbUJBQW1CO0VBQ3JCO0VBQ0E7SUFDRSxrQkFBa0I7RUFDcEI7RUFDQTtJQUNFLGtCQUFrQjtFQUNwQjtFQUNBO0lBQ0Usa0JBQWtCO0VBQ3BCO0FBQ0Y7O0FBQ0E7RUFDRSxpQkFBaUI7RUFDakIsb0JBQW9CO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvdmlld3Mvd2Vic2l0ZS93ZWJzaXRlLWxpc3Qvd2Vic2l0ZS1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcblxuLmNsLXdpZGdldC1pbWFnZXN7XG4gIGRpc3BsYXk6IGlubGluZTtcbiAgd2lkdGg6IDg1JTtcbiAgei1pbmRleDogMTAwO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbkBtZWRpYSBhbGwgYW5kIChvcmllbnRhdGlvbjpsYW5kc2NhcGUpIHtcbiAgI2xlZnQtY2hldntcbiAgICB2aXNpYmlsaXR5OiB2aXNpYmxlO1xuICB9XG4gICNpY29uLXBsdXN7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG4gICNpY29uLXVzZXJ7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG4gIGRpdiB1bCBsaSBhIHNwYW57XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xuICB9XG59XG5ib2R5IHtcbiAgcGFkZGluZy10b3A6IDcwcHg7XG4gIHBhZGRpbmctYm90dG9tOiA3MHB4O1xufVxuIl19 */"
 
 /***/ }),
 
@@ -1593,27 +1679,30 @@ var WidgetChooserComponent = /** @class */ (function () {
         this.route = route;
         this.activeroute = activeroute;
         this.widgets = [
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'HEADER', 'pageid'),
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'IMAGE', 'pageid'),
-            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'YOUTUBE', 'pageid')
+            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'HEADER', 'pageid', 1),
+            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'IMAGE', 'pageid', 2),
+            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'YOUTUBE', 'pageid', 3),
+            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'HTML', 'pageid', 4),
+            new _models_widget_model_client__WEBPACK_IMPORTED_MODULE_2__["Widget"]('id', 'name', 'TEXT', 'pageid', 5)
         ];
     }
     WidgetChooserComponent.prototype.creat = function (widget) {
         var _this = this;
-        var new_widget = {
-            _id: (new Date()).getTime() + '',
+        var newWidget = {
             name: widget.name,
             pageId: this.pageid,
             widgetType: widget.widgetType,
+            position: this.position,
             text: widget.text,
             url: widget.url,
             size: widget.size,
-            width: widget.width
+            width: widget.width,
         };
-        this.service.createWidget(this.pageid, new_widget).subscribe(function (newWidget) {
+        console.log('the positon in the widget is:' + newWidget['position']);
+        this.service.createWidget(this.pageid, newWidget).subscribe(function (newWidget) {
             console.log(newWidget);
             var url = '/user/' + _this.userid + '/website/' + _this.webid
-                + '/page/' + _this.pageid + '/widget/' + new_widget._id;
+                + '/page/' + _this.pageid + '/widget/' + newWidget._id;
             _this.route.navigateByUrl(url);
         });
     };
@@ -1623,6 +1712,10 @@ var WidgetChooserComponent = /** @class */ (function () {
             _this.userid = params.uid;
             _this.webid = params.wid;
             _this.pageid = params.pid;
+        });
+        this.service.findWidgetByPageId(this.pageid).subscribe(function (data) {
+            _this.position = Object.keys(data).length + 1;
+            console.log('current position is :' + _this.position);
         });
     };
     WidgetChooserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1733,6 +1826,258 @@ var HeadingComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/views/widget/widget-edit/html/html.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/html/html.component.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3dpZGdldC93aWRnZXQtZWRpdC9odG1sL2h0bWwuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/html/html.component.html":
+/*!*******************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/html/html.component.html ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--Header-->\n<nav class=\"navbar navbar-brand  fixed-top\">\n  <div class=\"container-fluid\">\n    <!--Left arrow-->\n    <p class=\"navbar-text float-left\">\n      <a routerLink=\"/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget\" class=\"navbar-link\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n    </p>\n    <span>\n        <!--heading on the nav bar-->\n        <p class=\"navbar-header float-left\">\n            <a class=\"navbar-brand thick\">\n                <b>Widget Edit</b>\n            </a>\n        </p>\n        </span>\n    <!--tick mark-->\n    <p class=\"navbar-text float-right\">\n      <a (click) = \"updateWidget()\" class=\"navbar-link\">\n        <span class=\"fas fa-check\"></span>\n      </a>\n    </p>\n\n  </div>\n\n  <div class=\"container\">\n    <div *ngIf=\"flag\"\n         class=\"alert alert-danger\">\n      {{error}}\n    </div>\n    <form novalidate name=\"model.myform\">\n      <div class=\"form-group\">\n        <label for=\"Name\">Name</label>\n        <input [(ngModel)]=\"widget.name\"\n               [ngModelOptions]=\"{standalone: true}\"\n               type=\"text\"\n               class=\"form-control\"\n               id=\"Name\"\n               name=\"widname\"\n               placeholder=\"Name\"\n               required>\n        <span class=\"alert-class\"\n              *ngIf=\"flag\">{{alert}}</span>\n      </div>\n      <!--<div ng-model=\"model.widget.text\"-->\n      <!--text-angular-->\n      <!--ta-toolbar=\"[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],-->\n      <!--['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],-->\n      <!--['indent','outdent'],['html']]\">-->\n      <!--</div>-->\n\n      <!-- use with ngModel -->\n      <quill-editor [(ngModel)]=\"widget['text']\" [ngModelOptions]=\"{standalone: true}\" name=\"text\"></quill-editor>\n      <!--[options]=\"editorOptions\"-->\n      <!--(blur)=\"onEditorBlured($event)\"-->\n      <!--(focus)=\"onEditorFocused($event)\"-->\n      <!--(ready)=\"onEditorCreated($event)\"-->\n      <!--(change)=\"onContentChanged($event)\"-->\n    </form>\n    <p></p>\n  </div>\n\n    <a class=\"btn btn-danger  btn-block\"\n       (click)=\"delete()\">Delete</a>\n\n</nav>\n\n\n\n<!-- Footer -->\n\n<nav class=\"navbar navbar-default fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text float-right\">\n      <a routerLink=\"/user/{{userId}}\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/html/html.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/html/html.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: HtmlComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HtmlComponent", function() { return HtmlComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _service_widget_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../service/widget.service.client */ "./src/app/service/widget.service.client.ts");
+
+
+
+
+var HtmlComponent = /** @class */ (function () {
+    function HtmlComponent(activatedRoute, widgetService, router) {
+        this.activatedRoute = activatedRoute;
+        this.widgetService = widgetService;
+        this.router = router;
+        this.widgetNew = { name: '', text: '' };
+        this.flag = false;
+        this.widget = {};
+    }
+    HtmlComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // initialize error and alert text
+        this.error = 'Enter the name of the widget';
+        this.alert = '* Enter the widget name';
+        // fetch ids from current url
+        this.activatedRoute.params
+            .subscribe(function (params) {
+            _this.websiteId = params['wid'];
+            _this.pageId = params['pid'];
+            _this.widgetId = params['wgid'];
+            _this.userId = params['uid'];
+        });
+        // fetching current widget based on widgetId
+        this.widgetService.findWidgetById(this.widgetId)
+            .subscribe(function (data) {
+            _this.widget = data;
+            console.log(_this.widget);
+        }, function (error) { return console.log(error); });
+    };
+    HtmlComponent.prototype.updateWidget = function () {
+        var _this = this;
+        // if name field is undefined then set error 'flag' to true making 'error' and 'alert' message visible
+        if (this.widget['name'] === '') {
+            this.flag = true;
+        }
+        else {
+            this.widgetService.updateWidget(this.widgetId, this.widget)
+                .subscribe(function (data) {
+                var url = '/user/' + _this.userId + '/website/' + _this.websiteId + '/page/' + _this.pageId + '/widget/' + _this.widgetId;
+                alert('Update succeed');
+                _this.router.navigateByUrl(url);
+            });
+        }
+    };
+    HtmlComponent.prototype.delete = function () {
+        var _this = this;
+        // call delete widget function from widget client service
+        this.widgetService.deleteWidget(this.widgetId)
+            .subscribe(function (data) {
+            var url = '/user/' + _this.userId + '/website/' + _this.websiteId + '/page/' + _this.pageId + '/widget';
+            _this.router.navigateByUrl(url);
+        }, function (error) { return console.log(error); });
+    };
+    HtmlComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-html',
+            template: __webpack_require__(/*! ./html.component.html */ "./src/app/views/widget/widget-edit/html/html.component.html"),
+            styles: [__webpack_require__(/*! ./html.component.css */ "./src/app/views/widget/widget-edit/html/html.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _service_widget_service_client__WEBPACK_IMPORTED_MODULE_3__["WidgetService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], HtmlComponent);
+    return HtmlComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.css":
+/*!******************************************************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.css ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3dpZGdldC93aWRnZXQtZWRpdC9pbWFnZS9mbGlja3ItaW1hZ2Utc2VhcmNoL2ZsaWNrci1pbWFnZS1zZWFyY2guY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.html ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--Header-->\n<nav class=\"navbar navbar-default fixed-top\">\n  <div class=\"container-fluid\">\n    <!--Left arrow-->\n    <p class=\"navbar-text float-left\">\n      <a [routerLink]=\"['/user',userId, 'website', websiteId, 'page', pageId, 'widget', widgetId]\" class=\"navbar-link\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n    </p>\n    <span>\n        <!--heading on the nav bar-->\n        <p class=\"navbar-header\">\n            <a class=\"navbar-brand thick\">\n                <b>Search Flickr</b>\n            </a>\n        </p>\n    </span>\n  </div>\n  <div class = \"container\">\n    <div class=\"input-group\">\n      <input [(ngModel)]=\"searchText\" type=\"text\" class=\"form-control\">\n      <span class=\"input-group-btn\">\n            <a (click)=\"searchPhotos()\" class=\"btn btn-default\" type=\"button\">\n                <span class=\"fas fa-search\"></span>\n            </a>\n        </span>\n    </div>\n\n    <div class=\"row\">\n      <!--<div *ngFor = \"let pic of photos['photo']\"-->\n      <div *ngFor = \"let pic of photos['photo']\"\n           class=\"col-xs-4\">\n        <img    (click)=\"selectPhoto(pic)\"\n                width=\"100%\"\n                [src] = \"['https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '_s.jpg']\"/>\n\n        <!--[src] = \"https://farm\" + photo.farm + \".staticflickr.com/\" + photo.server + \"/\" + photo.id + \"_\" + photo.secret + \"_\" + \"s.jpg\"/>-->\n        <p></p>\n      </div>\n    </div>\n\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.ts":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.ts ***!
+  \*****************************************************************************************************/
+/*! exports provided: FlickrImageSearchComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlickrImageSearchComponent", function() { return FlickrImageSearchComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _service_flickr_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../service/flickr.service.client */ "./src/app/service/flickr.service.client.ts");
+/* harmony import */ var _service_widget_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../service/widget.service.client */ "./src/app/service/widget.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _service_website_service_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../service/website.service.client */ "./src/app/service/website.service.client.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+
+
+
+
+var FlickrImageSearchComponent = /** @class */ (function () {
+    function FlickrImageSearchComponent(_http, flickrService, widgetService, router, activatedRoute, websiteService) {
+        this._http = _http;
+        this.flickrService = flickrService;
+        this.widgetService = widgetService;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.websiteService = websiteService;
+    }
+    FlickrImageSearchComponent.prototype.ngOnInit = function () {
+        // fetch userId from shared service
+        // this.userId = this.sharedService.user['_id'];
+        var _this = this;
+        // fetch userId, pageId and websiteId from url
+        this.activatedRoute.params
+            .subscribe(function (params) {
+            _this.websiteId = params['wid'];
+            _this.pageId = params['pid'];
+            _this.widgetId = params['wgid'];
+        });
+        this.websiteService.findWebsiteById(this.websiteId).subscribe(function (data) {
+            _this.userId = data['developerId'];
+        });
+    };
+    FlickrImageSearchComponent.prototype.searchPhotos = function () {
+        var _this = this;
+        this.flickrService
+            .searchPhotos(this.searchText)
+            .subscribe(function (data) {
+            console.log('I got a lot of ppictures wanted');
+            // const val: string;
+            var val = data;
+            val = val.substring(14, val.length - 1);
+            console.log(val);
+            var allPhotos = JSON.parse(val);
+            console.log(allPhotos.photos);
+            _this.photos = allPhotos.photos;
+        });
+    };
+    // searchPhotos(searchTerm: any) {
+    //   const key = '90ea0df0685933f65ea96fab852a3023';
+    //   const secret = '59b7fb7ceb0a467b';
+    //   const urlBase = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT';
+    //
+    //   console.log('I am searching photos in flicker' + urlBase);
+    //   const url = urlBase
+    //     .replace('API_KEY', key)
+    //     .replace('TEXT', searchTerm);
+    //   const dataOfPhoto =  this._http.get(url, {responseType: 'text'}).subscribe(
+    //     (data: string) => {
+    //       let val = data;
+    //       console.log(val);
+    //       val = val.replace('jsonFlickrApi(', '');
+    //       val = val.substring(0, val.length - 1);
+    //       return val;
+    //     }
+    //   );
+    //   this.photos = JSON.parse(dataOfPhoto['body']);
+    // }
+    FlickrImageSearchComponent.prototype.selectPhoto = function (photo) {
+        var _this = this;
+        var url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server;
+        url += '/' + photo.id + '_' + photo.secret + '_b.jpg';
+        console.log('flickr: ' + url);
+        var widget = {
+            websiteId: this.websiteId,
+            pageId: this.pageId,
+            url: url
+        };
+        this.widgetService
+            .updateWidget(this.widgetId, widget)
+            .subscribe(function (data) {
+            var result = data;
+            if (result) {
+                _this.router.navigate(['/user/' + '/website/'
+                        + _this.websiteId + '/page/' + _this.pageId + '/widget/' + _this.widgetId]);
+            }
+            else {
+                _this.error = 'failed!';
+            }
+        });
+    };
+    FlickrImageSearchComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-flickr-image-search',
+            template: __webpack_require__(/*! ./flickr-image-search.component.html */ "./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.html"),
+            styles: [__webpack_require__(/*! ./flickr-image-search.component.css */ "./src/app/views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"], _service_flickr_service_client__WEBPACK_IMPORTED_MODULE_2__["FlickrService"], _service_widget_service_client__WEBPACK_IMPORTED_MODULE_3__["WidgetService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _service_website_service_client__WEBPACK_IMPORTED_MODULE_5__["WebsiteService"]])
+    ], FlickrImageSearchComponent);
+    return FlickrImageSearchComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/views/widget/widget-edit/image/image.component.css":
 /*!********************************************************************!*\
   !*** ./src/app/views/widget/widget-edit/image/image.component.css ***!
@@ -1751,7 +2096,7 @@ module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n/*
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n<nav class=\"navbar navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n\n    <div >\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a  class = \"navbar-brand navbar-text cl-text-black cl-text-bold\"\n          routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widgetid}}/image\">\n        Widgets Edit\n      </a>\n    </div>\n\n    <div class=\"navbar-text pull-right\">\n      <a (click)= \"update()\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-check\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <form>\n    <div class=\"form-group\">\n      <label for=\"image-name\">Name</label>\n      <input [(ngModel)]=\"widget['name']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-name\" placeholder=\"Name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-text\">Text</label>\n      <input [(ngModel)]=\"widget['text']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-text\" placeholder=\"Text\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-URL\">URL</label>\n      <input [(ngModel)]=\"widget['url']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-URL\" placeholder=\"URL\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-width\">Width</label>\n      <input [(ngModel)]=\"widget['width']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-width\" placeholder=\"100%\">\n    </div>\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"exampleFormControlFile1\">Upload</label>-->\n      <!--<input (change)=\"onFileChange($event)\" type=\"file\" class=\"form-control-file\" id=\"exampleFormControlFile1\">-->\n    <!--</div>-->\n\n    <form ngNoForm action=\"{{baseUrl}}/api/upload\" method=\"post\" enctype=\"multipart/form-data\">\n      <input  name=\"myFile\"   type=\"file\" class=\"form-control\"/>\n      <input  name=\"widgetId\" value=\"{{widgetid}}\"   style=\"display: none\"/>\n      <input  name=\"websiteId\" value=\"{{webid}}\"   style=\"display: none\"/>\n      <input  name=\"pageId\" value=\"{{pageid}}\"   style=\"display: none\"/>\n      <input  name=\"userId\" value=\"{{userid}}\"   style=\"display: none\"/>\n      <button type=\"submit\"  onclick = \"submit()\" class=\"btn btn-block btn-primary\">Upload Image</button>\n      <br/>\n    </form>\n  </form>\n\n  <a (click)=\"delete()\" class=\"btn btn-danger  btn-block\">Delete</a>\n</div>\n\n<nav class=\"navbar  navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n    <div class=\"pull-right navbar-text\">\n    </div>\n    <div class = \"navbar-text\">\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n    </div>\n  </div>\n\n</nav>\n\n</body>\n"
+module.exports = "<body>\n<nav class=\"navbar navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n\n    <div >\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a  class = \"navbar-brand navbar-text cl-text-black cl-text-bold\"\n          routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widgetid}}/image\">\n        Widgets Edit\n      </a>\n    </div>\n\n    <div class=\"navbar-text float-right\">\n      <a (click)= \"update()\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-check\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <form>\n    <div class=\"form-group\">\n      <label for=\"image-name\">Name</label>\n      <input [(ngModel)]=\"widget['name']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-name\" placeholder=\"Name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-text\">Text</label>\n      <input [(ngModel)]=\"widget['text']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-text\" placeholder=\"Text\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-URL\">URL</label>\n      <input [(ngModel)]=\"widget['url']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-URL\" placeholder=\"URL\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"image-width\">Width</label>\n      <input [(ngModel)]=\"widget['width']\"\n             [ngModelOptions]=\"{standalone: true}\"\n             type=\"text\" class=\"form-control\" id=\"image-width\" placeholder=\"100%\">\n    </div>\n    <!--<div class=\"form-group\">-->\n      <!--<label for=\"exampleFormControlFile1\">Upload</label>-->\n      <!--<input (change)=\"onFileChange($event)\" type=\"file\" class=\"form-control-file\" id=\"exampleFormControlFile1\">-->\n    <!--</div>-->\n\n    <form ngNoForm action=\"{{baseUrl}}/api/widget/{{widgetid}}\" method=\"post\" enctype=\"multipart/form-data\">\n      <input  name=\"myFile\"   type=\"file\" class=\"form-control\"/>\n      <input  name=\"widgetId\" value=\"{{widgetid}}\"   style=\"display: none\"/>\n      <input  name=\"websiteId\" value=\"{{webid}}\"   style=\"display: none\"/>\n      <input  name=\"pageId\" value=\"{{pageid}}\"   style=\"display: none\"/>\n      <input  name=\"userId\" value=\"{{userid}}\"   style=\"display: none\"/>\n      <button type=\"submit\"  onclick = \"submit()\" class=\"btn btn-block btn-primary\">Upload Image</button>\n      <br/>\n    </form>\n  </form>\n  <a class=\"btn btn-primary btn-block \"\n     [routerLink]=\"['/user/'+'/website/'+webid+'/page/'+pageid+'/widget/'+widgetid+'/flickr']\" >Choose From Flickr</a>\n  <a (click)=\"delete()\" class=\"btn btn-danger  btn-block\">Delete</a>\n</div>\n\n<nav class=\"navbar  navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n    <div class=\"pull-right navbar-text\">\n    </div>\n    <div class = \"navbar-text\">\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n    </div>\n  </div>\n\n</nav>\n\n</body>\n"
 
 /***/ }),
 
@@ -1783,6 +2128,7 @@ var ImageSnippet = /** @class */ (function () {
     return ImageSnippet;
 }());
 var ImageComponent = /** @class */ (function () {
+    //baseUrl = 'https://webdev-shufanxing-cs5610.herokuapp.com'
     function ImageComponent(imageService, route, activeRoute, http) {
         this.imageService = imageService;
         this.route = route;
@@ -1790,8 +2136,7 @@ var ImageComponent = /** @class */ (function () {
         this.http = http;
         this.widget = {};
         this.allwidgets = [];
-        //baseUrl = 'http://localhost:3200';
-        this.baseUrl = 'https://webdev-shufanxing-cs5610.herokuapp.com';
+        this.baseUrl = 'http://localhost:3200';
     }
     ImageComponent.prototype.update = function () {
         var _this = this;
@@ -1862,6 +2207,111 @@ var ImageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/views/widget/widget-edit/text/text.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/text/text.component.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3dpZGdldC93aWRnZXQtZWRpdC90ZXh0L3RleHQuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/text/text.component.html":
+/*!*******************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/text/text.component.html ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-default  fixed-top\">\n  <div class=\"container-fluid\">\n    <!--Left arrow-->\n    <p class=\"navbar-text float-left\">\n      <a routerLink=\"/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget\" class=\"navbar-link\">\n        <span class=\"fas fa-chevron-left\"></span>\n      </a>\n    </p>\n    <span>\n        <!--heading on the nav bar-->\n        <p class=\"navbar-header float-left\">\n            <a class=\"navbar-brand thick\">\n                <b>Widget Edit</b>\n            </a>\n        </p>\n        </span>\n    <!--tick mark-->\n    <p class=\"navbar-text float-right\">\n      <a  (click) = \"updateWidget()\"\n          class=\"navbar-link\">\n        <span class=\"fas fa-check\"></span>\n      </a>\n    </p>\n\n  </div>\n  <!--Body of the page -->\n  <div class=\"container\">\n    <div *ngIf=flag\n         class=\"alert alert-danger\">\n      {{error}}\n    </div>\n    <form novalidate name=\"model.myform\">\n      <div class=\"form-group\">\n        <label for=\"Name\">Name</label>\n        <input [(ngModel)]=\"widget.name\"\n               [ngModelOptions]=\"{standalone: true}\"\n               type=\"text\"\n               class=\"form-control\"\n               id=\"Name\"\n               name=\"widname\"\n               placeholder=\"Name\"\n               required>\n        <span class=\"alert-class\"\n              *ngIf=\"flag\">{{alert}}</span>\n      </div>\n      <!--<div ng-model=\"model.widget.text\"-->\n      <!--text-angular-->\n      <!--ta-toolbar=\"[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],-->\n      <!--['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],-->\n      <!--['indent','outdent'],['html']]\">-->\n      <!--</div>-->\n\n      <!-- use with ngModel -->\n      <quill-editor [(ngModel)]=\"widget['text']\" [ngModelOptions]=\"{standalone: true}\" name=\"text\"></quill-editor>\n      <!--[options]=\"editorOptions\"-->\n      <!--(blur)=\"onEditorBlured($event)\"-->\n      <!--(focus)=\"onEditorFocused($event)\"-->\n      <!--(ready)=\"onEditorCreated($event)\"-->\n      <!--(change)=\"onContentChanged($event)\"-->\n      Rows\n      <input [(ngModel)]=\"widget['rows']\" [ngModelOptions]=\"{standalone: true}\" class=\"form-control\" type=\"number\"/>\n      Placeholder\n      <input [(ngModel)]=\"widget['placeholder']\" [ngModelOptions]=\"{standalone: true}\" class=\"form-control\" required/>\n      <p></p>\n      <div class=\"input-group\">\n        <input type=\"text\"\n               readonly\n               value=\"Formatted\"\n               class=\"form-control\"/>\n        <span class=\"input-group-addon\">\n        <input [(ngModel)]=\"widget['formatted']\" [ngModelOptions]=\"{standalone: true}\"\n               type=\"checkbox\"/>\n    </span>\n      </div>\n\n    </form>\n\n    <!--<input [(ngModel)]=\"widget['text']\" class=\"form-control\"/>-->\n\n    <!--<label for=\"Name\">Name</label>-->\n    <!--<div>-->\n      <!--<input [(ngModel)]=\"widget['name']\"-->\n             <!--type=\"text\"-->\n             <!--class=\"form-control\"-->\n             <!--id=\"Name\"-->\n             <!--name=\"name\"-->\n             <!--placeholder=\"Name\">-->\n      <!--<span class=\"alert-class\"-->\n            <!--*ngIf=flag>{{alert}}</span>-->\n    <!--</div>-->\n\n    <!--Placeholder-->\n    <!--<input [(ngModel)]=\"widget['placeholder']\" class=\"form-control\" required/>-->\n    <!--<p></p>-->\n    <!--<div class=\"input-group\">-->\n      <!--<input type=\"text\"-->\n             <!--readonly-->\n             <!--value=\"Formatted\"-->\n             <!--class=\"form-control\"/>-->\n      <!--<span class=\"input-group-addon\">-->\n        <!--<input [(ngModel)]=\"widget['formatted']\"-->\n               <!--type=\"checkbox\"/>-->\n    <!--</span>-->\n    <!--</div>-->\n    <!--Text-->\n    <!--<quill-editor [(ngModel)]=\"widget['text']\" name=\"text\" class = \"form-control\"></quill-editor>-->\n    <!--<p></p>-->\n\n  </div>\n\n  <a class=\"btn btn-danger btn-block \"\n     (click)=\"deleteWidget()\">Delete</a>\n\n</nav>\n\n\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text float-right\">\n      <a routerLink=\"/user/{{userId}}\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "./src/app/views/widget/widget-edit/text/text.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/views/widget/widget-edit/text/text.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: TextComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextComponent", function() { return TextComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _service_widget_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../service/widget.service.client */ "./src/app/service/widget.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+var TextComponent = /** @class */ (function () {
+    function TextComponent(widgetService, router, activatedRoute) {
+        this.widgetService = widgetService;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.flag = false; // setting error flag as false by default
+        this.widget = {};
+    }
+    TextComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // initialize error and alert text
+        this.error = 'Enter the required field';
+        this.alert = '* Enter the required fields';
+        // fetch ids from current url
+        this.activatedRoute.params
+            .subscribe(function (params) {
+            _this.websiteId = params['wid'];
+            _this.pageId = params['pid'];
+            _this.widgetId = params['wgid'];
+            _this.userId = params['uid'];
+        });
+        // fetch widget values as created on widget-new component
+        this.widgetService.findWidgetById(this.widgetId)
+            .subscribe(function (data) { return _this.widget = data; }, function (error) { return console.log(error); });
+    };
+    TextComponent.prototype.updateWidget = function () {
+        var _this = this;
+        // if name field is undefined then set error 'flag' to true making 'error' and 'alert' message visible
+        if (this.widget['name'] === undefined) {
+            this.flag = true;
+        }
+        else {
+            this.widgetService.updateWidget(this.widgetId, this.widget)
+                .subscribe(function (data) {
+                var url = '/user/' + _this.userId + '/website/' + _this.websiteId + '/page/' + _this.pageId + '/widget/' + _this.widgetId;
+                alert('Update succeed');
+                _this.router.navigateByUrl(url);
+            }, function (error) { return console.log(error); });
+        }
+    };
+    TextComponent.prototype.deleteWidget = function () {
+        var _this = this;
+        // call delete widget function from widget client service
+        this.widgetService.deleteWidget(this.widgetId)
+            .subscribe(function (data) {
+            var url = '/user/' + _this.userId + '/website/' + _this.websiteId + '/page/' + _this.pageId + '/widget';
+            alert('Update succeed');
+            _this.router.navigateByUrl(url);
+        }, function (error) { return console.log(error); });
+    };
+    TextComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-text',
+            template: __webpack_require__(/*! ./text.component.html */ "./src/app/views/widget/widget-edit/text/text.component.html"),
+            styles: [__webpack_require__(/*! ./text.component.css */ "./src/app/views/widget/widget-edit/text/text.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_widget_service_client__WEBPACK_IMPORTED_MODULE_2__["WidgetService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
+    ], TextComponent);
+    return TextComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/views/widget/widget-edit/widget-edit.component.css":
 /*!********************************************************************!*\
   !*** ./src/app/views/widget/widget-edit/widget-edit.component.css ***!
@@ -1880,7 +2330,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [ngSwitch]=\"widget['widgetType']\" >\n  <div *ngSwitchCase=\"'HEADER'\">\n    <app-heading></app-heading>\n  </div>\n  <div *ngSwitchCase=\"'IMAGE'\">\n    <app-image></app-image>\n  </div>\n  <div *ngSwitchCase=\"'YOUTUBE'\">\n    <app-youtube></app-youtube>\n  </div>\n\n</div>\n"
+module.exports = "<div [ngSwitch]=\"widget['widgetType']\" >\n  <div *ngSwitchCase=\"'HEADER'\">\n    <app-heading></app-heading>\n  </div>\n  <div *ngSwitchCase=\"'IMAGE'\">\n    <app-image></app-image>\n  </div>\n  <div *ngSwitchCase=\"'YOUTUBE'\">\n    <app-youtube></app-youtube>\n  </div>\n  <div *ngSwitchCase=\"'HTML'\">\n    <app-html></app-html>\n  </div>\n  <div *ngSwitchCase=\"'TEXT'\">\n    <app-text></app-text>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -2050,10 +2500,10 @@ var OrderByPipe = /** @class */ (function () {
     OrderByPipe.prototype.transform = function (array, args) {
         if (array !== undefined) {
             array.sort(function (a, b) {
-                if (a[args] < b[args]) {
+                if (a['position'] < b['position']) {
                     return -1;
                 }
-                else if (a[args] > b[args]) {
+                else if (a['position'] > b['position']) {
                     return 1;
                 }
                 else {
@@ -2175,7 +2625,7 @@ var SortableDirective = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3Mvd2lkZ2V0L3dpZGdldC1saXN0L3dpZGdldC1saXN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7RUFDakIsb0JBQW9CO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvdmlld3Mvd2lkZ2V0L3dpZGdldC1saXN0L3dpZGdldC1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgcGFkZGluZy10b3A6IDcwcHg7XG4gIHBhZGRpbmctYm90dG9tOiA3MHB4O1xufVxuIl19 */"
+module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n.youtube-widget { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; }\n.youtube-widget iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3Mvd2lkZ2V0L3dpZGdldC1saXN0L3dpZGdldC1saXN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7RUFDakIsb0JBQW9CO0FBQ3RCO0FBQ0Esa0JBQWtCLGtCQUFrQixFQUFFLHNCQUFzQixFQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUU7QUFDcEYseUJBQXlCLGtCQUFrQixFQUFFLE1BQU0sRUFBRSxPQUFPLEVBQUUsV0FBVyxFQUFFLFlBQVksRUFBRSIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3dpZGdldC93aWRnZXQtbGlzdC93aWRnZXQtbGlzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIHBhZGRpbmctdG9wOiA3MHB4O1xuICBwYWRkaW5nLWJvdHRvbTogNzBweDtcbn1cbi55b3V0dWJlLXdpZGdldCB7IHBvc2l0aW9uOiByZWxhdGl2ZTsgcGFkZGluZy1ib3R0b206IDU2LjI1JTsgLyogMTY6OSAqLyBoZWlnaHQ6IDA7IH1cbi55b3V0dWJlLXdpZGdldCBpZnJhbWUgeyBwb3NpdGlvbjogYWJzb2x1dGU7IHRvcDogMDsgbGVmdDogMDsgd2lkdGg6IDEwMCU7IGhlaWdodDogMTAwJTsgfVxuIl19 */"
 
 /***/ }),
 
@@ -2186,7 +2636,7 @@ module.exports = "body {\n  padding-top: 70px;\n  padding-bottom: 70px;\n}\n\n/*
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n    <div>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page\" class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a class=\"navbar-brand navbar-text cl-text-white cl-text-bold\"\n         routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\">\n        Widgets\n      </a>\n    </div>\n    <div class=\"navbar-text float-right\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/new\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-plus\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container cl-container-padding\" >\n  <div class=\"widget-list\" appSortable (newIndexes)=\"reorderWidgets($event)\">\n  <div *ngFor=\"let widget of widgets | orderBy\">\n  <div [ngSwitch]=\"widget['widgetType']\">\n    <div class=\"jga-widget\">\n    <div *ngSwitchCase=\"'HEADER'\"  >\n      <div class=\"float-right\">\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n           class=\"float-right\">\n          <router-outlet (click)=\"onActivate()\" >\n            <span class=\"fas fa-bars\"></span>\n          </router-outlet>\n        </a>\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n          <span class=\"fas fa-cog\"></span>\n        </a>\n      </div>\n      <div [ngSwitch]=\"widget['size']\">\n        <div *ngSwitchCase=\"1\">\n          <h1>{{ widget['text'] }}</h1>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <h2>{{ widget['text'] }}</h2>\n        </div>\n        <div *ngSwitchCase=\"3\">\n          <h3>{{ widget['text'] }}</h3>\n        </div>\n        <div *ngSwitchCase=\"4\">\n          <h4>{{ widget['text'] }}</h4>\n        </div>\n        <div *ngSwitchCase=\"5\">\n          <p>{{ widget['text'] }}</p>\n        </div>\n        <div *ngSwitchCase=\"6\">\n          <h6>{{ widget['text'] }}</h6>\n        </div>\n      </div>\n    </div>\n\n\n    <div *ngSwitchCase=\"'IMAGE'\" >\n        <div class=\"float-right\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right\">\n            <router-outlet (click)=\"onActivate()\">\n              <span class=\"fas fa-bars\"></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n            <span class=\"fas fa-cog\"></span>\n          </a>\n        </div>\n        <img class=\"img-responsive img-rounded cl-widget-images\"\n             src=\"{{widget['url']}}\">\n    </div>\n\n\n    <div *ngSwitchCase=\"'YOUTUBE'\">\n      <div class=\"embed-responsive embed-responsive-16by9\">\n        <iframe class = \"embed-responsive-item\" width=\"640\" height=\"360\"\n                [src]=\"getUrl(widget)\"\n                frameborder=\"0\"\n                allow=\"accelerometer autoplay encrypted-media gyroscope picture-in-picture\"\n                allowfullscreen>\n        </iframe>\n        <div class = \"overlay cl-relative-position\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right overlay cl-relative-position\">\n            <router-outlet (click)=\"onActivate()\" >\n              <span class=\"fas fa-bars cl-white-background\" ></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\"\n             class=\"float-right overlay cl-relative-position\">\n            <span class=\"fas fa-cog cl-relative-position cl-white-background\" ></span>\n          </a>\n        </div>\n      </div>\n    </div>\n    </div>\n\n    </div>\n   </div>\n  </div>\n</div>\n\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n    <div class=\"float-left navbar-text\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\" >\n          <span class=\"fas fa-play\"></span>\n        </router-outlet>\n      </a>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\">\n          <span class=\"fas fa-eye\"></span>\n        </router-outlet>\n      </a>\n\n    </div>\n    <div class=\"float-right navbar-text\">\n\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n\n    </div>\n  </div>\n</nav>\n</body>\n\n"
+module.exports = "<body>\n\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-top\">\n  <div class=\"container-fluid row\">\n    <div>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page\" class=\"cl-text-black cl-icon-padding\">\n          <span class=\"fas fa-chevron-left\">\n          </span>\n      </a>\n      <a class=\"navbar-brand navbar-text cl-text-white cl-text-bold\"\n         routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\">\n        Widgets\n      </a>\n    </div>\n    <div class=\"navbar-text float-right\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/new\"\n         class=\"cl-icon-padding cl-text-black\">\n          <span class=\"fas fa-plus\">\n          </span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container cl-container-padding\" >\n  <div class=\"widget-list\" appSortable (newIndexes)=\"reorderWidgets($event)\">\n  <div *ngFor=\"let widget of widgets | orderBy\">\n  <div [ngSwitch]=\"widget['widgetType']\">\n    <div class=\"jga-widget\">\n    <div *ngSwitchCase=\"'HEADER'\"  >\n      <div class=\"float-right\">\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n           class=\"float-right\">\n          <router-outlet (click)=\"onActivate()\" >\n            <span class=\"fas fa-bars\"></span>\n          </router-outlet>\n        </a>\n        <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n          <span class=\"fas fa-cog\"></span>\n        </a>\n      </div>\n      <div [ngSwitch]=\"widget['size']\">\n        <div *ngSwitchCase=\"1\">\n          <h1>{{ widget['text'] }}</h1>\n        </div>\n        <div *ngSwitchCase=\"2\">\n          <h2>{{ widget['text'] }}</h2>\n        </div>\n        <div *ngSwitchCase=\"3\">\n          <h3>{{ widget['text'] }}</h3>\n        </div>\n        <div *ngSwitchCase=\"4\">\n          <h4>{{ widget['text'] }}</h4>\n        </div>\n        <div *ngSwitchCase=\"5\">\n          <p>{{ widget['text'] }}</p>\n        </div>\n        <div *ngSwitchCase=\"6\">\n          <h6>{{ widget['text'] }}</h6>\n        </div>\n      </div>\n    </div>\n\n\n    <div *ngSwitchCase=\"'IMAGE'\" >\n        <div class=\"float-right\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right\">\n            <router-outlet (click)=\"onActivate()\">\n              <span class=\"fas fa-bars\"></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n            <span class=\"fas fa-cog\"></span>\n          </a>\n        </div>\n        <img class=\"img-responsive img-rounded cl-widget-images\"\n             src=\"{{widget['url']}}\">\n    </div>\n      <div *ngSwitchCase = \"'HTML'\">\n        <div class=\"float-right\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right\">\n            <router-outlet (click)=\"onActivate()\">\n              <span class=\"fas fa-bars\"></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n            <span class=\"fas fa-cog\"></span>\n          </a>\n        </div>\n        <quill-editor [(ngModel)]=\"widget['text']\" name=\"text\"></quill-editor>\n      </div>\n\n      <div *ngSwitchCase=\"'TEXT'\">\n        <div class=\"float-right\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right\">\n            <router-outlet (click)=\"onActivate()\">\n              <span class=\"fas fa-bars\"></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\">\n            <span class=\"fas fa-cog\"></span>\n          </a>\n        </div>\n        <div *ngIf=\"widget['formatted']\">\n          <quill-editor [(ngModel)]=\"widget['text']\" name=\"text\"></quill-editor>\n        </div>\n\n        <input *ngIf=\"!widget['formatted'] && (!widget['rows'] || widget['rows']===1)\"\n               placeholder=\"{{widget['placeholder']}}\" class=\"form-control\"/>\n\n        <textarea *ngIf=\"!widget['formatted'] && (widget['rows'] > 1)\"\n                  rows=\"{{widget['rows']}}\" placeholder=\"{{widget['placeholder']}}\"\n                  class=\"form-control\">{{widget['text']}}</textarea>\n      </div>\n\n    <div *ngSwitchCase=\"'YOUTUBE'\" class = \"youtube-widget\">\n      <div class=\"embed-responsive embed-responsive-16by9\">\n        <iframe class = \"embed-responsive-item\" width=\"640\" height=\"360\"\n                [src]=\"getUrl(widget)\"\n                frameborder=\"0\"\n                allow=\"accelerometer autoplay encrypted-media gyroscope picture-in-picture\"\n                allowfullscreen>\n        </iframe>\n        <div class = \"overlay cl-relative-position\">\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n             class=\"float-right overlay cl-relative-position\">\n            <router-outlet (click)=\"onActivate()\" >\n              <span class=\"fas fa-bars cl-white-background\" ></span>\n            </router-outlet>\n          </a>\n          <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget/{{widget['_id']}}\"\n             class=\"float-right overlay cl-relative-position\">\n            <span class=\"fas fa-cog cl-relative-position cl-white-background\" ></span>\n          </a>\n        </div>\n      </div>\n    </div>\n    </div>\n\n    </div>\n   </div>\n  </div>\n</div>\n\n<nav class=\"navbar navbar-brand navbar-light bg-light fixed-bottom\">\n  <div class=\"container-fluid row\">\n    <div class=\"float-left navbar-text\">\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\" >\n          <span class=\"fas fa-play\"></span>\n        </router-outlet>\n      </a>\n      <a routerLink=\"/user/{{userid}}/website/{{webid}}/page/{{pageid}}/widget\"\n         class=\"cl-icon-padding\">\n        <router-outlet (click)=\"onActivate()\">\n          <span class=\"fas fa-eye\"></span>\n        </router-outlet>\n      </a>\n\n    </div>\n    <div class=\"float-right navbar-text\">\n\n      <a routerLink=\"/user/{{userid}}\" class=\"cl-icon-padding\">\n        <span class=\"fas fa-user\"></span>\n      </a>\n\n    </div>\n  </div>\n</nav>\n</body>\n\n"
 
 /***/ }),
 
@@ -2258,24 +2708,6 @@ var WidgetListComponent = /** @class */ (function () {
     return WidgetListComponent;
 }());
 
-
-
-/***/ }),
-
-/***/ "./src/environments/environment.prod.ts":
-/*!**********************************************!*\
-  !*** ./src/environments/environment.prod.ts ***!
-  \**********************************************/
-/*! exports provided: environment */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
-var environment = {
-    production: true,
-    baseUrl: 'https://webdev-shufanxing-cs5610.herokuapp.com'
-};
 
 
 /***/ }),

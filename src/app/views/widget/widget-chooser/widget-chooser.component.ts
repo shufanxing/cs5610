@@ -12,28 +12,34 @@ export class WidgetChooserComponent implements OnInit {
   userid: string;
   webid: string;
   pageid: string;
+  position: Number;
   widgets: Widget[] = [
-    new Widget('id', 'name', 'HEADER', 'pageid'),
-    new Widget('id', 'name', 'IMAGE', 'pageid'),
-    new Widget('id', 'name', 'YOUTUBE', 'pageid')
+    new Widget('id', 'name', 'HEADER', 'pageid', 1),
+    new Widget('id', 'name', 'IMAGE', 'pageid', 2),
+    new Widget('id', 'name', 'YOUTUBE', 'pageid', 3),
+    new Widget('id', 'name', 'HTML', 'pageid', 4),
+    new Widget('id', 'name', 'TEXT', 'pageid', 5)
   ];
 
   constructor(private service: WidgetService, private route: Router, private activeroute: ActivatedRoute ) { }
   creat(widget) {
-      const new_widget = {
-        _id: (new Date()).getTime() + '',
-        name: widget.name,
-        pageId: this.pageid,
-        widgetType: widget.widgetType,
-        text: widget.text,
-        url: widget.url,
-        size: widget.size,
-        width: widget.width};
-      this.service.createWidget(this.pageid, new_widget).subscribe(
-        (newWidget: Widget) => {
+
+    const newWidget = {
+      name: widget.name,
+      pageId: this.pageid,
+      widgetType: widget.widgetType,
+      position: this.position,
+      text: widget.text,
+      url: widget.url,
+      size: widget.size,
+      width: widget.width,
+    };
+    console.log('the positon in the widget is:' + newWidget['position']);
+      this.service.createWidget(this.pageid, newWidget).subscribe(
+        (newWidget: any) => {
           console.log(newWidget);
           const url = '/user/' + this.userid + '/website/' + this.webid
-            + '/page/' + this.pageid + '/widget/' + new_widget._id;
+            + '/page/' + this.pageid + '/widget/' + newWidget._id;
           this.route.navigateByUrl(url);
         }
       );
@@ -45,6 +51,13 @@ export class WidgetChooserComponent implements OnInit {
       this.webid = params.wid;
       this.pageid = params.pid;
     });
+
+    this.service.findWidgetByPageId(this.pageid).subscribe(
+      (data: any) => {
+        this.position = Object.keys(data).length + 1;
+        console.log('current position is :' + this.position);
+      }
+    );
 
   }
 

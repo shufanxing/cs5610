@@ -5,6 +5,12 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const app = express();
+const  mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const connectionString = 'mongodb://127.0.0.1:27017/webdev';
+const  client = mongoose.connect(connectionString, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

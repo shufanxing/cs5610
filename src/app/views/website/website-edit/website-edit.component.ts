@@ -55,6 +55,7 @@ export class WebsiteEditComponent implements OnInit {
 
     this.websiteService.findWebsiteById(this.webId).subscribe((data: any) => {
       this.curweb = data;
+      console.log(this.curweb);
     });
     this.websiteService.findWebsitesByUser(this.userId).subscribe((data: any) => {
       this.websites = data;

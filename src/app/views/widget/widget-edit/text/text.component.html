@@ -1,0 +1,128 @@
+<nav class="navbar navbar-default  fixed-top">
+  <div class="container-fluid">
+    <!--Left arrow-->
+    <p class="navbar-text float-left">
+      <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" class="navbar-link">
+        <span class="fas fa-chevron-left"></span>
+      </a>
+    </p>
+    <span>
+        <!--heading on the nav bar-->
+        <p class="navbar-header float-left">
+            <a class="navbar-brand thick">
+                <b>Widget Edit</b>
+            </a>
+        </p>
+        </span>
+    <!--tick mark-->
+    <p class="navbar-text float-right">
+      <a  (click) = "updateWidget()"
+          class="navbar-link">
+        <span class="fas fa-check"></span>
+      </a>
+    </p>
+
+  </div>
+  <!--Body of the page -->
+  <div class="container">
+    <div *ngIf=flag
+         class="alert alert-danger">
+      {{error}}
+    </div>
+    <form novalidate name="model.myform">
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input [(ngModel)]="widget.name"
+               [ngModelOptions]="{standalone: true}"
+               type="text"
+               class="form-control"
+               id="Name"
+               name="widname"
+               placeholder="Name"
+               required>
+        <span class="alert-class"
+              *ngIf="flag">{{alert}}</span>
+      </div>
+      <!--<div ng-model="model.widget.text"-->
+      <!--text-angular-->
+      <!--ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],-->
+      <!--['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],-->
+      <!--['indent','outdent'],['html']]">-->
+      <!--</div>-->
+
+      <!-- use with ngModel -->
+      <quill-editor [(ngModel)]="widget['text']" [ngModelOptions]="{standalone: true}" name="text"></quill-editor>
+      <!--[options]="editorOptions"-->
+      <!--(blur)="onEditorBlured($event)"-->
+      <!--(focus)="onEditorFocused($event)"-->
+      <!--(ready)="onEditorCreated($event)"-->
+      <!--(change)="onContentChanged($event)"-->
+      Rows
+      <input [(ngModel)]="widget['rows']" [ngModelOptions]="{standalone: true}" class="form-control" type="number"/>
+      Placeholder
+      <input [(ngModel)]="widget['placeholder']" [ngModelOptions]="{standalone: true}" class="form-control" required/>
+      <p></p>
+      <div class="input-group">
+        <input type="text"
+               readonly
+               value="Formatted"
+               class="form-control"/>
+        <span class="input-group-addon">
+        <input [(ngModel)]="widget['formatted']" [ngModelOptions]="{standalone: true}"
+               type="checkbox"/>
+    </span>
+      </div>
+
+    </form>
+
+    <!--<input [(ngModel)]="widget['text']" class="form-control"/>-->
+
+    <!--<label for="Name">Name</label>-->
+    <!--<div>-->
+      <!--<input [(ngModel)]="widget['name']"-->
+             <!--type="text"-->
+             <!--class="form-control"-->
+             <!--id="Name"-->
+             <!--name="name"-->
+             <!--placeholder="Name">-->
+      <!--<span class="alert-class"-->
+            <!--*ngIf=flag>{{alert}}</span>-->
+    <!--</div>-->
+
+    <!--Placeholder-->
+    <!--<input [(ngModel)]="widget['placeholder']" class="form-control" required/>-->
+    <!--<p></p>-->
+    <!--<div class="input-group">-->
+      <!--<input type="text"-->
+             <!--readonly-->
+             <!--value="Formatted"-->
+             <!--class="form-control"/>-->
+      <!--<span class="input-group-addon">-->
+        <!--<input [(ngModel)]="widget['formatted']"-->
+               <!--type="checkbox"/>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--Text-->
+    <!--<quill-editor [(ngModel)]="widget['text']" name="text" class = "form-control"></quill-editor>-->
+    <!--<p></p>-->
+
+  </div>
+
+  <a class="btn btn-danger btn-block "
+     (click)="deleteWidget()">Delete</a>
+
+</nav>
+
+
+
+<!-- Footer -->
+<nav class="navbar navbar-default fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text float-right">
+      <a routerLink="/user/{{userId}}">
+        <span class="fas fa-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
