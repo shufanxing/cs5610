@@ -8,7 +8,7 @@ const app = express();
 const  mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //const connectionString = 'mongodb://127.0.0.1:27017/webdev';
-const connectionString = 'mongodb://username:password@ds351455.mlab.com:51455/heroku_rpqz8zsb'
+const connectionString = 'mongodb://heroku_rpqz8zsb:webdev-shufanxing-cs5610@ds351455.mlab.com:51455/heroku_rpqz8zsb'
 const  client = mongoose.connect(connectionString, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
