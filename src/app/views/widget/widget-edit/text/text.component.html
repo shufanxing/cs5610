@@ -1,3 +1,7 @@
+<div *ngIf="noName"
+     class="alert alert-danger">
+  {{errorMsg}}
+</div>
 <nav class="navbar navbar-default  fixed-top">
   <div class="container-fluid">
     <!--Left arrow-->
@@ -119,7 +123,7 @@
 <nav class="navbar navbar-default fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text float-right">
-      <a routerLink="/user/{{userId}}">
+      <a routerLink="/profile">
         <span class="fas fa-user"></span>
       </a>
     </p>

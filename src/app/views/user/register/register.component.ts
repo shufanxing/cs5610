@@ -4,6 +4,7 @@ import {UserService} from '../../../service/user.service.client';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,10 +15,12 @@ export class RegisterComponent implements OnInit {
     username: string;
     password: string;
     v_password: string;
+    noName: boolean;
   errorFlag1: boolean;
   errorFlag2: boolean;
   errorMsg1 = 'Password mis-matching!';
   errorMsg2 = 'This username has been used, please enter another username!';
+  errorMsg = 'Please enter a user name';
 
 
   constructor(private userService: UserService, private router: Router) { }
@@ -29,46 +32,23 @@ export class RegisterComponent implements OnInit {
     this.v_password = this.myRegisterForm.value.v_password;
     this.errorFlag1 = false;
     this.errorFlag2 = false;
+    this.noName = false;
     if (this.v_password !== this.password) {
       this.errorFlag1 = true;
       return;
     }
-    this.userService.findUserByName(this.username).subscribe(
-      (user: User) => {
-      if (user) {
-        this.errorFlag2 = true;
-      } else {
-        console.log('I am in the right place');
-        const curuser = {username: this.username, password: this.password};
-        this.userService.createUser(curuser).subscribe(
-          (user: any) => {
-            console.log(user);
-          }
-        );
-        alert('Registration succeed!');
-        this.router.navigate(['/', 'login']);
-      }
+    if (this.username === '' || this.username === null) {
+      this.noName = true;
+      return;
+    }
+    this.userService.register(this.username, this.password).subscribe(
+      (data: any) => {
+        this.router.navigate(['/profile']);
       },
-      (error: any) => {
-        console.log('I am in the right place');
-        const curuser = {username: this.username, password: this.password};
-        this.userService.createUser(curuser).subscribe(
-          (user: User) => {
-            console.log(user);
-          }
-        );
-        alert('Registration succeed!');
-        this.router.navigate(['/', 'login']);
+      (err: any) => {
+        this.errorFlag2 = true;
       }
     );
-
-
-    /*if ( (!this.errorFlag1) && (!this.errorFlag2)) {
-      const user: User = new User('', this.username, this.password);
-      this.userService.createUser(user);
-      alert('Registration succeed!');
-      this.router.navigate(['/', 'login']);
-    }*/
   }
 
   ngOnInit() {

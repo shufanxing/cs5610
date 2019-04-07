@@ -14,11 +14,11 @@ export class WidgetChooserComponent implements OnInit {
   pageid: string;
   position: Number;
   widgets: Widget[] = [
-    new Widget('id', 'name', 'HEADER', 'pageid', 1),
-    new Widget('id', 'name', 'IMAGE', 'pageid', 2),
-    new Widget('id', 'name', 'YOUTUBE', 'pageid', 3),
-    new Widget('id', 'name', 'HTML', 'pageid', 4),
-    new Widget('id', 'name', 'TEXT', 'pageid', 5)
+    new Widget('', '', 'HEADER', '', 1),
+    new Widget('', '', 'IMAGE', '', 2),
+    new Widget('', '', 'YOUTUBE', '', 3),
+    new Widget('', '', 'HTML', '', 4),
+    new Widget('', '', 'TEXT', '', 5)
   ];
 
   constructor(private service: WidgetService, private route: Router, private activeroute: ActivatedRoute ) { }

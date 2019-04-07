@@ -1,12 +1,14 @@
 import { User } from '../models/user.model.client';
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-//import {environment} from '../../environments/environment';
-import {environment} from '../../environments/environment.prod';
-
+import {environment} from '../../environments/environment';
+//import {environment} from '../../environments/environment.prod';
+import {Http, RequestOptions, Response} from '@angular/http';
+import {SharedService} from './shared.service';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -20,7 +22,10 @@ export class UserService {
   //   {id: "111", username: "hunter", password: "hunter", firstname: "h" }
   // ]
 
-  constructor(private http: HttpClient) {}
+  options = new RequestOptions();
+  apiHeader = new HttpHeaders();
+
+  constructor(private http: HttpClient, private router: Router, private sharedService: SharedService ) {}
   baseUrl = environment.baseUrl;
 
   createUser(user: any) {
@@ -28,8 +33,45 @@ export class UserService {
     return this.http.post(this.baseUrl + '/api/user', userbody);
   }
 
-  findUserByCredential(username: String, password: String) {
-    return this.http.get(this.baseUrl + '/api/user?username=' + username + '&password=' + password);
+  logOut() {
+    this.options.withCredentials = true;
+    this.sharedService.user = '';
+    return this.http.post(this.baseUrl + '/api/logout', '', { headers: this.apiHeader, withCredentials: true });
+  }
+
+  login(username: String, password: String) {
+    this.options.withCredentials = true;
+    const body = {
+      username: username,
+      password: password
+    }
+    return this.http.post(this.baseUrl + '/api/login', body, { headers: this.apiHeader, withCredentials: true });
+  }
+
+  register(username: String, password: String) {
+    this.options.withCredentials = true;
+    const user = {
+      username: username,
+      password: password
+    };
+    return this.http.post(this.baseUrl + '/api/register', user, { headers: this.apiHeader, withCredentials: true });
+  }
+
+
+  loggedin() {
+    this.options.withCredentials = true;
+    return this.http.post(this.baseUrl + '/api/loggedin', '', { headers: this.apiHeader, withCredentials: true }).
+    map(
+      (user: any) => {
+        if (user !== 0) {
+          this.sharedService.user = user;
+          return true;
+        } else {
+          this.router.navigate(['/login']);
+          return false;
+        }
+      }
+    );
   }
 
   findUserById(userId: String) {

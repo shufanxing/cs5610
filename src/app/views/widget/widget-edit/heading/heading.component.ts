@@ -9,17 +9,24 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./heading.component.css']
 })
 export class HeadingComponent implements OnInit {
+  noName: boolean;
   widget = {};
   userid: string;
   webid: string;
   pageid: string;
   widgetid: string;
   allwidgets = [] ;
+  errorMsg = 'Please enter a name for this widget!';
 
   constructor(private headingService: WidgetService, private route: Router,
               private activeRoute: ActivatedRoute) { }
 
   update() {
+    this.noName = false;
+    if (this.widget['name'] === null || this.widget['name'] === ''){
+      this.noName = true;
+      return;
+    }
     this.headingService.updateWidget(this.widgetid, this.widget).subscribe(
       (data: any) => {
         this.widget = data;

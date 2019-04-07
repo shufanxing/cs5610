@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import {routing} from './app-routing.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/user/login/login.component';
@@ -33,6 +33,9 @@ import { HtmlComponent } from './views/widget/widget-edit/html/html.component';
 import { TextComponent } from './views/widget/widget-edit/text/text.component';
 import { FlickrImageSearchComponent } from './views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component';
 import {FlickrService} from './service/flickr.service.client';
+// import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {SharedService} from './service/shared.service';
+import {AuthGuard} from './service/auth-guard.service.client';
 
 @NgModule({
   declarations: [
@@ -65,10 +68,11 @@ import {FlickrService} from './service/flickr.service.client';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    routing,
     //QuillModule,
     QuillEditorModule
   ],
-  providers: [UserService, WebsiteService, WidgetService, PageService, FlickrService],
+  providers: [UserService, WebsiteService, WidgetService, PageService, FlickrService, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './views/user/login/login.component';
 import {ProfileComponent} from './views/user/profile/profile.component';
@@ -18,14 +18,15 @@ import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.compon
 import {FlickrImageSearchComponent} from './views/widget/widget-edit/image/flickr-image-search/flickr-image-search.component';
 import {HtmlComponent} from './views/widget/widget-edit/html/html.component';
 import {TextComponent} from './views/widget/widget-edit/text/text.component';
+import {AuthGuard} from './service/auth-guard.service.client';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'user/:uid', component: ProfileComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent},
-  {path: 'user/:uid/website', component: WebsiteListComponent},
+  {path: 'user/website', component: WebsiteListComponent},
   {path: 'user/:uid/website/new', component: WebsiteNewComponent},
   {path: 'user/:uid/website/:wid', component: WebsiteEditComponent},
   {path: 'user/:uid/website/:wid/page', component: PageListComponent},
@@ -43,7 +44,10 @@ const routes: Routes = [
   ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routing = RouterModule.forRoot(routes, {useHash: true});
+
+

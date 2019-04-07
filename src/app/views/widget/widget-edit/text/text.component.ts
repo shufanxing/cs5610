@@ -8,7 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./text.component.css']
 })
 export class TextComponent implements OnInit {
-
+  noName: boolean;
+  errorMsg = 'Please enter a widget name!';
   flag = false; // setting error flag as false by default
   error: string;
   alert: string;
@@ -46,7 +47,11 @@ export class TextComponent implements OnInit {
   }
 
   updateWidget() {
-
+    this.noName = false;
+    if (this.widget['name'] === null || this.widget['name'] === null) {
+      this.noName = true;
+      return;
+    }
     // if name field is undefined then set error 'flag' to true making 'error' and 'alert' message visible
     if (this.widget['name'] === undefined) {
       this.flag = true;

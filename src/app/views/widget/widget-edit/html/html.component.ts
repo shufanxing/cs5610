@@ -20,6 +20,8 @@ export class HtmlComponent implements OnInit {
   pageId: string;
   widgetId: string;
   baseUrl: string;
+  noName: boolean;
+  errorMsg = 'Please enter a widget name!';
 
   constructor(private activatedRoute: ActivatedRoute, private widgetService: WidgetService, private router: Router) { }
 
@@ -53,7 +55,11 @@ export class HtmlComponent implements OnInit {
   }
 
   updateWidget() {
-
+    this.noName = false;
+    if (this.widget['name'] === null || this.widget['name'] === null) {
+      this.noName = true;
+      return;
+    }
     // if name field is undefined then set error 'flag' to true making 'error' and 'alert' message visible
     if (this.widget['name'] === '') {
       this.flag = true;
@@ -70,7 +76,6 @@ export class HtmlComponent implements OnInit {
   }
 
   delete() {
-
     // call delete widget function from widget client service
     this.widgetService.deleteWidget(this.widgetId)
       .subscribe(

@@ -17,6 +17,8 @@ class ImageSnippet {
 
 
 export class ImageComponent implements OnInit {
+  noName: boolean;
+  errorMsg = 'Please enter a widget name!';
   widget = {};
   allwidgets = [] ;
   userid: string;
@@ -26,12 +28,17 @@ export class ImageComponent implements OnInit {
   file: any;
   input: string;
   selectedfile: ImageSnippet;
-  //baseUrl = 'http://localhost:3200';
-  baseUrl = 'https://webdev-shufanxing-cs5610.herokuapp.com'
+  baseUrl = 'http://localhost:3200';
+  //baseUrl = 'https://webdev-shufanxing-cs5610.herokuapp.com'
   constructor(private imageService: WidgetService, private route: Router,
               private activeRoute: ActivatedRoute, private http: HttpClient) { }
 
   update() {
+    this.noName = false;
+    if (this.widget['name'] === null || this.widget['name'] === null) {
+      this.noName = true;
+      return;
+    }
     this.imageService.updateWidget(this.widgetid, this.widget).subscribe(
       (data: any) => {
         this.widget = data;

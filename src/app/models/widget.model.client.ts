@@ -18,7 +18,7 @@ export class Widget {
 
 
 
-  constructor( _id, name = 'name', widgetType, pageId, position, size= '1', text = 'text', width = '100%', url = 'url'
+  constructor( _id, name = '', widgetType, pageId, position, size= '', text = '', width = '', url = ''
   , placeholder = '', height = '' , rows = 1, icon = '', deletable = false, formatted = false) {
     this._id = _id;
     this.name = name;

@@ -9,6 +9,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./youtube.component.css']
 })
 export class YoutubeComponent implements OnInit {
+  noName: boolean;
+  errorMsg = 'Please enter a widget name!';
   widget = {};
   allwidgets = [];
   userid: string;
@@ -20,6 +22,11 @@ export class YoutubeComponent implements OnInit {
               private activeRoute: ActivatedRoute) { }
 
   update() {
+    this.noName = false;
+    if (this.widget['name'] === null || this.widget['name'] === null) {
+      this.noName = true;
+      return;
+    }
     this.youtubeService.updateWidget(this.widgetid, this.widget).subscribe(
       (data: any) => {
         this.widget = data;

@@ -1,12 +1,16 @@
 <body>
+<div *ngIf="noName"
+     class="alert alert-danger">
+  {{errorMsg}}
+</div>
 <nav class = "navbar navbar-brand cl-blue-navbar fixed-top cl-full-width" >
   <div class="row" >
     <div class="col-sm-4 navbar-text  cl-blue-navbar"  id = "division2">
-      <a routerLink="/user/{{userId}}/website" class="navbar-link cl-text-white">
+      <a routerLink="/user/website" class="navbar-link cl-text-white">
         <span class="fas fa-chevron-left"></span>
       </a>
 
-      <a  class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/{{userId}}/website" id = "websites">
+      <a  class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/website" id = "websites">
         Websites
       </a>
       <a routerLink="/user/{{userId}}/website/new" class="navbar-link navbar-text float-right cl-text-white">
@@ -19,11 +23,11 @@
 
     <div class="col-sm-8 navbar-text  cl-blue-navbar">
       <!--<div class="container-fluid">-->
-      <a routerLink="/user/{{userId}}/website" class="navbar-link cl-text-white" id = "icon-chev2">
+      <a routerLink="/user/website" class="navbar-link cl-text-white" id = "icon-chev2">
         <span class="fas fa-chevron-left"></span>
       </a>
       <a class="cl-text-white navbar-brand cl-text-bold"
-         routerLink="/user/{{userId}}/website">
+         routerLink="/user/website">
         Edit Websites
       </a>
       <a (click)="update()" class="navbar-link navbar-text float-right cl-text-white " id = "icon-ok">
@@ -63,7 +67,7 @@
 <nav class="navbar fixed-bottom cl-blue-navbar">
   <div class="container-fuild">
   </div>
-  <a routerLink= "/user/{{userId}}" class="navbar-text cl-text-white cl-icon-padding">
+  <a routerLink= "/profile" class="navbar-text cl-text-white cl-icon-padding">
     <span class="fas fa-user cl-text-white " id = "icon-user"></span>
   </a>
 </nav>

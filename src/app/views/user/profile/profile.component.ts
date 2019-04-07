@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../models/user.model.client';
 import {UserService} from '../../../service/user.service.client';
 import {NgForm} from '@angular/forms';
+import {SharedService} from '../../../service/shared.service';
 
 
 
@@ -83,7 +84,7 @@ export class ProfileComponent implements OnInit {
   errorFlag : boolean;
   errorMsg = 'Invalid username or password !';
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private sharedService: SharedService) {
     //this.user = this.userService.findUserById(this.userId);
     // console.log(this.user.username);
     // console.log(this.user.password);
@@ -103,17 +104,23 @@ export class ProfileComponent implements OnInit {
        }
      );
   }
+  logOut() {
+    this.userService.logOut().subscribe(
+      (data: any) => this.router.navigate(['/login'])
+    );
+  }
   ngOnInit() {
     this.route.params.subscribe((params: any) => {this.userId = params.uid; });
     //this.user = this.userService.findUserById(this.userId);
     console.log('user id: ' + this.userId);
+    this.user = this.sharedService.user;
     //console.log('user name' + this.user.username);
-    this.userService.findUserById(this.userId)
-      .subscribe((data: any) => {
-        console.log('in login comp...');
-        console.log(data);
-        this.user = data;
-      });
+    // this.userService.findUserById(this.userId)
+    //   .subscribe((data: any) => {
+    //     console.log('in login comp...');
+    //     console.log(data);
+    //     this.user = data;
+    //   });
     // this.username = this.user['username'];
     // this.lastName = this.user['lastName'];
     // this.firstName = this.user['firstName'];

@@ -12,10 +12,18 @@ export class WebsiteNewComponent implements OnInit {
   curweb: Website;
   userId: string;
   websites: Website[];
+  noName: boolean;
+  errorMsg = 'Please give your new website a name!';
   constructor(private webservice: WebsiteService, private route: Router,
               private activeroute: ActivatedRoute) { }
   create() {
+    if (this.curweb.name !== '') {
+      this.noName = false;
+    } else {
+      this.noName = true;
+    }
     this.curweb = new Website(this.curweb._id, this.curweb.name, this.userId, this.curweb.description);
+    if ( !this.noName) {
     this.webservice.createWebsite(this.userId, this.curweb).subscribe(
       (data: any) => {
         console.log('cur developerid' + this.curweb.developerId);
@@ -26,6 +34,7 @@ export class WebsiteNewComponent implements OnInit {
         });
       }
     );
+    }
 
   }
   ngOnInit() {
@@ -33,7 +42,7 @@ export class WebsiteNewComponent implements OnInit {
     this.webservice.findWebsitesByUser(this.userId).subscribe((data: any) => {
       this.websites = data;
     });
-    this.curweb = new Website('id', 'name', this.userId, 'des');
+    this.curweb = new Website('', '', this.userId, '');
     console.log(this.curweb.developerId);
   }
 

@@ -14,6 +14,8 @@ export class PageEditComponent implements OnInit {
   pageid: string;
   curpage = {};
   pages = [];
+  noName: boolean;
+  errorMsg = 'Please enter a name for this page';
   constructor(private pageservice: PageService,
               private pagerouter: Router,
               private activatedRouter: ActivatedRoute) { }
@@ -28,6 +30,12 @@ export class PageEditComponent implements OnInit {
     );
   }
   update() {
+    if (this.curpage['name'] === '' || this.curpage['name'] === null){
+      this.noName = true;
+    } else {
+      this.noName = false;
+    }
+    if (!this.noName) {
     this.pageservice.updatePage(this.pageid, this.curpage).subscribe(
       (data: any ) => {
         this.curpage = data;
@@ -39,6 +47,7 @@ export class PageEditComponent implements OnInit {
         alert ('update not successful');
       }
     );
+    }
   }
 
   ngOnInit() {

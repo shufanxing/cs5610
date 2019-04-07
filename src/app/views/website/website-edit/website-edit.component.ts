@@ -13,6 +13,8 @@ export class WebsiteEditComponent implements OnInit {
   webId: String;
   curweb = {};
   websites = [];
+  noName: boolean;
+  errorMsg = 'Please enter a name for this website!';
   constructor(private websiteService: WebsiteService, private route: ActivatedRoute, private link: Router) {
     // console.log(this.user.username);
     // console.log(this.user.password);
@@ -21,16 +23,21 @@ export class WebsiteEditComponent implements OnInit {
     this.websiteService.deleteWebsite(this.webId).subscribe(
       (data: any) => {
         this.websites = data;
-        const url = '/user/' + this.userId + '/website';
+        const url = '/user/website';
         console.log(url);
         this.link.navigateByUrl(url);
       }
     );
   }
   update() {
+    this.noName = false;
+    if (this.curweb['name'] === '' || this.curweb['name'] === null ){
+      this.noName = true;
+      return;
+    }
     this.websiteService.updateWebsite(this.webId, this.curweb).subscribe(
       (data: any) => {
-        const url = '/user/' + this.userId + '/website';
+        const url = '/user/website';
         this.link.navigateByUrl(url);
       }
     );

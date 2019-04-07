@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const  mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-//const connectionString = 'mongodb://127.0.0.1:27017/webdev';
-const connectionString =
-  'mongodb://admin:webdev-shufanxing-cs5610@ds351455.mlab.com:51455/heroku_rpqz8zsb';
+const connectionString = 'mongodb://127.0.0.1:27017/webdev';
+// const connectionString =
+//   'mongodb://admin:webdev-shufanxing-cs5610@ds351455.mlab.com:51455/heroku_rpqz8zsb';
 const  client = mongoose.connect(connectionString, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -30,14 +30,25 @@ app.use(function(req, res, next) {
   next();
 });
 
+// const data = process.env.WHATEVER;
 const port = process.env.PORT || '3200';
 app.set('port', port);
 
 
 // Create HTTP server
 const server = http.createServer(app);
-server.listen( port , () => console.log('Running on port 3200'));
 
+
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+app.use(cookieParser());
+app.use(session({secret: 'secret: process.env.SESSION_SECRET '}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+server.listen( port , () => console.log('Running on port 3200'));
+require("./server/app")(app);
 
 
 /*var dbServer = require('./test-mongodb/app');
@@ -68,4 +79,3 @@ dbServer(app);*/
 // require('./test')(app);
 
 //require('./server/app')(app);
-require("./server/app")(app);

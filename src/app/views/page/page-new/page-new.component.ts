@@ -15,9 +15,17 @@ export class PageNewComponent implements OnInit {
   name: string;
   newdescription: string;
   pages = [];
+  noName: boolean;
+  errorMsg = 'Please enter a name for this Page';
   constructor(private route: Router, private activatedroute: ActivatedRoute, private pageservice: PageService) {
   }
   creat() {
+    if (this.curpage.name !== '') {
+      this.noName = false;
+    } else {
+      this.noName = true;
+    }
+    if (!this.noName) {
     this.pageservice.createPage(this.webid, this.curpage).subscribe(
       (data: any) => {
         this.pages = data;
@@ -28,13 +36,12 @@ export class PageNewComponent implements OnInit {
         this.route.navigateByUrl(url);
       }
     );
+    }
   }
 
   ngOnInit() {
     this.activatedroute.params.subscribe((params: any) => {this.userid = params.uid; this.webid = params.wid; });
-    this.curpage = new Page('', 'name', this.webid, 'description');
-
-
+    this.curpage = new Page('', '', this.webid, '');
   }
 
 }
