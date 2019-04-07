@@ -27,7 +27,7 @@ export class WebsiteNewComponent implements OnInit {
     this.webservice.createWebsite(this.userId, this.curweb).subscribe(
       (data: any) => {
         console.log('cur developerid' + this.curweb.developerId);
-        const url = '/user/' + this.userId + '/website';
+        const url = '/user/website';
         this.route.navigateByUrl(url);
         this.webservice.findWebsitesByUser(this.userId).subscribe((webs: any) => {
           this.websites = webs;
