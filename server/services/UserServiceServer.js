@@ -4,18 +4,18 @@ module.exports= function(app) {
   const LocalStrategy = require('passport-local').Strategy;
   const FacebookStrategy = require('passport-facebook').Strategy;
   const bcrypt = require('bcrypt-nodejs');
-  // var facebookConfig =
-  //   { clientID : process.env.FACEBOOK_CLIENT_ID,
-  //     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-  //     callbackURL : process.env.FACEBOOK_CALLBACK_URL
-  //   };
-  const appId = 262440037976791;
-  const appSecret = '6ae869ca826f18673b07225df40e0136';
-  var facebookConfig = {
-    clientID: appId,
-    clientSecret: appSecret,
-    callbackURL: '/auth/facebook/callback'
-  };
+  var facebookConfig =
+    { clientID : process.env.FACEBOOK_CLIENT_ID,
+      clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+      callbackURL : process.env.FACEBOOK_CALLBACK_URL
+    };
+  // const appId = 262440037976791;
+  // const appSecret = '6ae869ca826f18673b07225df40e0136';
+  // var facebookConfig = {
+  //   clientID: appId,
+  //   clientSecret: appSecret,
+  //   callbackURL: '/auth/facebook/callback'
+  // };
   app.post("/api/user", createUser);
   app.get("/api/user/:userId", findUserById);
   app.get("/api/username", findUserByUserName);

@@ -28,8 +28,8 @@ export class ImageComponent implements OnInit {
   file: any;
   input: string;
   selectedfile: ImageSnippet;
-  baseUrl = 'http://localhost:3200';
-  //baseUrl = 'https://webdev-shufanxing-cs5610.herokuapp.com'
+  //baseUrl = 'http://localhost:3200';
+  baseUrl = 'https://webdev-shufanxing-cs5610.herokuapp.com'
   constructor(private imageService: WidgetService, private route: Router,
               private activeRoute: ActivatedRoute, private http: HttpClient) { }
 
