@@ -42,6 +42,10 @@ export class LoginComponent implements OnInit {
           } else {
             this.errorFlag = true;
           }
+        },
+        (error: any) => {
+         this.errorFlag = true;
+         console.log(error);
         }
       );
   }
