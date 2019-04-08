@@ -11,15 +11,14 @@ module.exports= function(app){
    function createWebsite(req, res){
      var userId = req.params['userId'];
      var website = req.body;
-     websiteModel.createWebsiteForUser(userId, website).then({
+     websiteModel.createWebsiteForUser(userId, website).then(
        function(website){
-         res.send(website);
+         res.json(website);
        },
        function(error){
          res.status(400).send("Error of create website:"+error);
        }
-     });
-
+     );
    }
    // function getAllWebsitesForUser(userId){
    //   var webs=[];
@@ -40,7 +39,7 @@ module.exports= function(app){
          function (err) {
            res.statusCode(400).send(err);
          }
-       )
+       );
    }
 
     function findWebsiteById(req,res){
